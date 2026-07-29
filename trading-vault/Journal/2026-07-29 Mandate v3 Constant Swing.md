@@ -27,4 +27,4 @@ Trigger-management API calls (create/delete recurring Routine) hit an approval g
 
 - $400.54, all cash; $390.54 settles overnight.
 - 2026-07-30 9:35 AM ET: bootstrap — tranche A (~$200) buys that morning's top qualifier; tranche B waits one day to create the stagger.
-- Options approval still pending with the owner: https://applink.robinhood.com/upgrade_options?account_number=671861227
+- ~~Options approval still pending with the owner~~ **Update 10:35 AM ET:** owner reported "unable to turn on options," but a fresh account fetch shows the Agentic account at **option_level_2** — the application actually succeeded. Overlay is armed: it engages at a daily wakeup when the slot-1 asset also has a positive 4-week trend (today every high-momentum name is trend-negative, so likely not immediately) and settled cash is available. Level 2 + single-leg API = long calls only for the trend overlay; covered calls/CSPs possible later if the book warrants.

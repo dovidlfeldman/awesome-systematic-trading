@@ -36,7 +36,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Settled buying power | $10 (rest settles 2026-07-30) |
 | Target book | v3 daily rotation: two ~$200 tranches, top-2 qualifiers by 10-day momentum |
 | Leverage switch | OFF pending positive 4-week underlying trend (carries over from v2) |
-| Options overlay | **Blocked on approval** — owner to complete: [upgrade link](https://applink.robinhood.com/upgrade_options?account_number=671861227) |
+| Options overlay | **Approved 2026-07-29: Level 2** (long calls/puts, covered calls, CSPs). Engages per v3 §9 when slot-1 has positive 4-week trend and settled cash is available |
 
 ## Standing schedule
 

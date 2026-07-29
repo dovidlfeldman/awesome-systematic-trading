@@ -9,33 +9,34 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 ## Map of Content
 
 - **Strategy**
-  - [[Dual Momentum Rotation]] — the active strategy: rules, rationale, evidence
-  - [[Risk Rules]] — hard limits that override everything else
+  - [[Aggressive Leveraged Momentum v2]] — **active** since 2026-07-29 (owner mandate: aggressive + options)
+  - [[Risk Rules v2]] — active hard limits
+  - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
+  - [[Risk Rules]] — retired v1 limits
 - **Signals**
-  - [[2026-07-29 Momentum Rankings]] — signal snapshot behind the initial deployment
+  - [[2026-07-29 Momentum Rankings v2]] — aggressive-mandate signal (SMH #1, leverage off)
+  - [[2026-07-29 Momentum Rankings]] — original v1 signal
 - **Trades**
-  - [[2026-07-29 IWM Buy]] — filled
-  - [[2026-07-29 EEM Buy]] — filled (after resolving [[2026-07-29 EEM Buy (blocked)|the investor-profile block]])
+  - [[2026-07-29 IWM Buy]] — filled (v1)
+  - [[2026-07-29 EEM Buy]] — filled (v1, after [[2026-07-29 EEM Buy (blocked)|the investor-profile block]])
+  - [[2026-07-29 Rotation Sells]] — filled (v1 liquidation, +$0.54)
+  - [[2026-07-30 SMH Buy (scheduled)]] — pending T+1 settlement
 - **Journal**
-  - [[2026-07-29 Initial Deployment]] — decision narrative for day one
+  - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
+  - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
 
-## Account snapshot (as of 2026-07-29, pre-deployment)
+## Current state (as of 2026-07-29, ~10:05 AM ET)
 
-| Field | Value |
+| Item | Value |
 |---|---|
-| Account | Robinhood "Agentic", cash, individual |
-| Starting capital | $400.00 (all cash) |
-| Options level | None (equities only) |
-| Prior positions / orders | None |
+| Account value | **$400.54** (all cash) |
+| Realized P&L to date | +$0.54 |
+| Settled buying power | $10 (rest settles 2026-07-30) |
+| Target position | 100% SMH (1x) — buy scheduled 2026-07-30 9:35 AM ET |
+| Leverage switch (SOXL) | **OFF** — SMH 4-week trend −8.2%; engages on positive 4w at a weekly check |
+| Options overlay | **Blocked on approval** — owner to complete: [upgrade link](https://applink.robinhood.com/upgrade_options?account_number=671861227) |
 
-## Current state (after 2026-07-29 deployment)
+## Standing schedule
 
-| Holding | Qty | Cost basis | Allocation |
-|---|---|---|---|
-| IWM | 0.668037 | $291.90/sh ($195.00) | ~49% |
-| EEM | 3.165841 | $61.595/sh ($195.00) | ~49% |
-| Cash | — | $10.00 | ~2% |
-
-Both strategy slots are deployed; no open items.
-
-**Next scheduled action:** monthly rebalance on the first trading day of September 2026 (signals recomputed as of the last completed week of August).
+- **2026-07-30 9:35 AM ET** — automated wakeup: deploy settled cash into SMH ([[2026-07-30 SMH Buy (scheduled)]]).
+- **Weekly (first trading day)** — recompute [[2026-07-29 Momentum Rankings v2|rankings]]; rotate asset and/or flip leverage switch per [[Aggressive Leveraged Momentum v2]].

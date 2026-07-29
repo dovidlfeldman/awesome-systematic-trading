@@ -4,6 +4,8 @@ tags: [strategy, risk]
 
 # Risk Rules
 
+> [!warning] Retired 2026-07-29 — superseded by [[Risk Rules v2]] after the owner's aggressive-mandate change. Kept for the record.
+
 Hard limits. These override [[Dual Momentum Rotation]] and any future strategy. A trade that violates any rule below does not get placed, full stop.
 
 1. **Instruments:** long US-listed ETFs and large-cap equities only. No options, no margin, no leveraged/inverse ETFs, no crypto, no penny/illiquid stocks (min ~$1M avg daily dollar volume — trivially satisfied by the current universe).

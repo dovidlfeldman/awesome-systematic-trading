@@ -1,10 +1,14 @@
 ---
-tags: [strategy, active]
-status: active
+tags: [strategy, retired]
+status: retired
 adopted: 2026-07-29
+retired: 2026-07-29
+superseded_by: "[[Aggressive Leveraged Momentum v2]]"
 ---
 
 # Dual Momentum Rotation
+
+> [!warning] Retired 2026-07-29 — same day it was deployed — by owner mandate change to aggressive trading. See [[2026-07-29 Mandate Change to Aggressive]]. Kept for the record.
 
 The single active strategy for the Agentic account. Chosen because it is one of the most robust, widely replicated anomalies in the academic literature (Jegadeesh & Titman 1993; Antonacci's *Dual Momentum*; Keller's VAA family), it needs no options approval or margin, and it trades rarely — which matters in a small cash account where settlement and slippage dominate.
 

@@ -15,7 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Momentum Rankings]] — signal snapshot behind the initial deployment
 - **Trades**
   - [[2026-07-29 IWM Buy]] — filled
-  - [[2026-07-29 EEM Buy (blocked)]] — blocked by Robinhood investor-profile requirement
+  - [[2026-07-29 EEM Buy]] — filled (after resolving [[2026-07-29 EEM Buy (blocked)|the investor-profile block]])
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — decision narrative for day one
 
@@ -33,8 +33,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Holding | Qty | Cost basis | Allocation |
 |---|---|---|---|
 | IWM | 0.668037 | $291.90/sh ($195.00) | ~49% |
-| Cash | — | $205.00 | ~51% |
+| EEM | 3.165841 | $61.595/sh ($195.00) | ~49% |
+| Cash | — | $10.00 | ~2% |
 
-**Open item:** second position (EEM, $195) is blocked until the investor profile for this account is completed. See [[2026-07-29 EEM Buy (blocked)]].
+Both strategy slots are deployed; no open items.
 
 **Next scheduled action:** monthly rebalance on the first trading day of September 2026 (signals recomputed as of the last completed week of August).

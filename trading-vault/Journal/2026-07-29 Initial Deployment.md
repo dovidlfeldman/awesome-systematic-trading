@@ -23,6 +23,10 @@ First session on the Agentic account: $400 cash, no positions, no order history,
 - Blocked EEM leg documented with a standing-intent rule (fresh quote, and fresh signal if delayed).
 - Next mechanical action: September monthly rebalance, unless the profile is completed sooner (then: fill the EEM slot).
 
+## Update — same day, 13:58 UTC
+
+Owner completed the investor profile ~6 minutes after the block. EEM leg re-reviewed and filled: 3.165841 sh @ $61.595 ($195.00) — [[2026-07-29 EEM Buy]]. Deployment is now complete: IWM ~49% / EEM ~49% / cash ~2%. Next action is the September rebalance.
+
 ## What I deliberately did not do
 
 - No single-stock picks, no "hot" trades, no options — no edge, unbounded downside for this account size.

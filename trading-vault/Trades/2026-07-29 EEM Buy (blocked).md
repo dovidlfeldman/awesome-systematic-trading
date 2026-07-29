@@ -30,3 +30,7 @@ https://applink.robinhood.com/investment_profile?account_number=671861227&contex
 ## Standing intent
 
 Once unblocked, the EEM slot should be re-evaluated against a **fresh quote and, if meaningfully later, a fresh signal**: if executed within a few days, place the same $195 EEM order; if it slips near/past the next monthly signal date, recompute rankings first rather than executing a stale signal. Until then the account holds ~$205 cash against the intended ~$10.
+
+## Resolution — same day
+
+The account owner completed the investor profile ~6 minutes after the block. The order was re-reviewed and placed at 13:58 UTC and filled — see [[2026-07-29 EEM Buy]].

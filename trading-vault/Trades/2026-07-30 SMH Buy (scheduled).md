@@ -6,7 +6,9 @@ side: buy
 state: scheduled
 ---
 
-# BUY SMH — scheduled for 2026-07-30 — PENDING SETTLEMENT
+# BUY SMH — scheduled for 2026-07-30 — SUPERSEDED BY v3
+
+> [!warning] Superseded same day: mandate moved to [[Staggered Daily Swing Rotation v3]]. The 2026-07-30 9:35 AM wakeup still fires, but it now runs the v3 bootstrap — tranche A (~$200) buys that morning's top-ranked qualifier (whatever the daily signal says, possibly but not necessarily SMH), tranche B holds cash one day to create the stagger. The plan below is kept for the record.
 
 | Field | Value |
 |---|---|

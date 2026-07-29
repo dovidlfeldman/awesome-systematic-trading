@@ -1,11 +1,15 @@
 ---
-tags: [strategy, active]
-status: active
+tags: [strategy, retired]
+status: retired
 adopted: 2026-07-29
+retired: 2026-07-29
 supersedes: "[[Dual Momentum Rotation]]"
+superseded_by: "[[Staggered Daily Swing Rotation v3]]"
 ---
 
 # Aggressive Leveraged Momentum v2
+
+> [!warning] Retired 2026-07-29 (before its first buy executed) — superseded by [[Staggered Daily Swing Rotation v3]] when the owner escalated to constant swing/day trading. Its leverage switch (§3) and options overlay spec (§6) carry over into v3.
 
 Adopted 2026-07-29 on the owner's explicit instruction: **"I want much more aggressive trading. Options also."** This supersedes [[Dual Momentum Rotation]] (retired same day it was deployed; see [[2026-07-29 Mandate Change to Aggressive]]).
 

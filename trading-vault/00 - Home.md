@@ -9,8 +9,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 ## Map of Content
 
 - **Strategy**
-  - [[Aggressive Leveraged Momentum v2]] — **active** since 2026-07-29 (owner mandate: aggressive + options)
+  - [[Staggered Daily Swing Rotation v3]] — **active** since 2026-07-29 (owner mandate: constant swing/day trading)
   - [[Risk Rules v2]] — active hard limits
+  - [[Aggressive Leveraged Momentum v2]] — retired (leverage switch + options spec carry into v3)
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
@@ -24,6 +25,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
+  - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
 ## Current state (as of 2026-07-29, ~10:05 AM ET)
 
@@ -32,11 +34,10 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Account value | **$400.54** (all cash) |
 | Realized P&L to date | +$0.54 |
 | Settled buying power | $10 (rest settles 2026-07-30) |
-| Target position | 100% SMH (1x) — buy scheduled 2026-07-30 9:35 AM ET |
-| Leverage switch (SOXL) | **OFF** — SMH 4-week trend −8.2%; engages on positive 4w at a weekly check |
+| Target book | v3 daily rotation: two ~$200 tranches, top-2 qualifiers by 10-day momentum |
+| Leverage switch | OFF pending positive 4-week underlying trend (carries over from v2) |
 | Options overlay | **Blocked on approval** — owner to complete: [upgrade link](https://applink.robinhood.com/upgrade_options?account_number=671861227) |
 
 ## Standing schedule
 
-- **2026-07-30 9:35 AM ET** — automated wakeup: deploy settled cash into SMH ([[2026-07-30 SMH Buy (scheduled)]]).
-- **Weekly (first trading day)** — recompute [[2026-07-29 Momentum Rankings v2|rankings]]; rotate asset and/or flip leverage switch per [[Aggressive Leveraged Momentum v2]].
+- **Every trading day 9:35 AM ET** — automated wakeup runs the [[Staggered Daily Swing Rotation v3]] cycle: signals → sells (if target changed) → buys (settled tranche) → vault log → re-arm next wakeup. Bootstrap 2026-07-30: tranche A buys, tranche B waits one day.

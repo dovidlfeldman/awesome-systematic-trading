@@ -13,7 +13,7 @@ Rewritten 2026-07-29 at the owner's direction ("much more aggressive trading, op
 4. **Options sleeve cap:** ≤50% of account value in premium at risk; long-only (defined max loss); 45–90 DTE; limit orders only.
 5. **Order hygiene (unchanged):** review before place; market orders only on penny-spread instruments in regular hours.
 6. **Cash-account discipline (unchanged):** settled funds only for sizing; no same-day sale of positions bought with unsettled funds.
-7. **Circuit-breaker (revised):** if account value closes below **$200** (−50% from the $400 start), liquidate everything, halt, and require an explicit owner conversation before any new trade. The owner chose high risk; the breaker exists so one bad regime doesn't take the account to zero on autopilot.
+7. **Circuit-breaker (revised):** if account value closes below **50% of contributed capital**, liquidate everything, halt, and require an explicit owner conversation before any new trade. The owner chose high risk; the breaker exists so one bad regime doesn't take the account to zero on autopilot. *(Contributed capital: $400 initial + $250 deposit 2026-07-31 = $650.54 → breaker at $325.)*
 8. **Documentation (unchanged):** every order — filled, blocked, or scheduled — gets a vault note with its reasoning before or immediately after placement.
 
 ## What the owner accepted by choosing this mandate

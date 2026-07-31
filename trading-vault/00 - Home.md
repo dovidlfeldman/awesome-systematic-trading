@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-07-31 Daily Signals]] — v3 cycle #2: XLE holds, GLD takes slot 2, options sleeve engaged
   - [[2026-07-30 Daily Signals]] — v3 cycle #1: XLE/XLF lead, semis crash dodged
   - [[2026-07-29 Momentum Rankings v2]] — aggressive-mandate signal (SMH #1, leverage off)
   - [[2026-07-29 Momentum Rankings]] — original v1 signal
@@ -24,23 +25,26 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Rotation Sells]] — filled (v1 liquidation, +$0.54)
   - [[2026-07-30 SMH Buy (scheduled)]] — never executed: v3 signal disqualified SMH (−23% 20d), dodging ~−10%
   - [[2026-07-30 XLE Buy]] — filled (tranche A, v3 cycle #1)
+  - [[2026-07-31 GLD Buy]] — filled (tranche B, v3 cycle #2)
+  - [[2026-07-31 XLE Call Buy]] — Oct $59C, limit at mid, working at log time
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-07-30, ~9:40 AM ET — v3 cycle #1 done)
+## Current state (as of 2026-07-31, ~10:00 AM ET — v3 cycle #2 done)
 
 | Item | Value |
 |---|---|
-| Account value | ~$400.5 |
+| Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) |
+| Account value at cycle start | $651.37 |
 | Realized P&L to date | +$0.54 |
-| Tranche A | **XLE** 3.417056 sh @ $58.53 ($200.00) — bought 2026-07-30 |
-| Tranche B | Cash ~$200.54 (bootstrap stagger; deploys 2026-07-31) |
-| Leverage switch | OFF (no 3x wrapper exists for XLE in the approved set) |
-| Options overlay | Gate **OPEN** on XLE (20d +10.4%) but no conforming contract ≤$200 premium in the 0.50–0.65Δ band — sleeve empty, re-checked daily |
+| Tranche A | **XLE** 3.417056 sh @ $58.53 — held (still slot 1) |
+| Tranche B | **GLD** 0.473454 sh @ $369.62 ($175) — bought this cycle |
+| Options sleeve | **XLE Oct 16 $59C ×1** — limit $2.73 (mid) **working** at log time; $273 reserved |
+| Circuit-breaker | $325 (50% of contributed capital) |
 
 ## Standing schedule
 
-- **Every trading day 9:35 AM ET** — chained wakeup runs the [[Staggered Daily Swing Rotation v3]] cycle: signals → sells (if target changed) → buys (settled tranche) → vault log → re-arm next wakeup.
-- **2026-07-31:** tranche B deploys — conforming XLE call if one fits the sleeve rules, else XLF equity (slot 2).
+- **Every trading day ~9:38 AM ET** — scheduled cycle (session-local job; re-verified/re-created each run since durable triggers are approval-gated): signals → sells (if target changed) → buys/sleeve → vault log.
+- **Next cycle (Mon 2026-08-03):** check the GFD call order's fate (filled vs expired → re-place if conforming); normal rotation checks on XLE and GLD.

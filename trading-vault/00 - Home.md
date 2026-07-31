@@ -26,7 +26,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-30 SMH Buy (scheduled)]] — never executed: v3 signal disqualified SMH (−23% 20d), dodging ~−10%
   - [[2026-07-30 XLE Buy]] — filled (tranche A, v3 cycle #1)
   - [[2026-07-31 GLD Buy]] — filled (tranche B, v3 cycle #2)
-  - [[2026-07-31 XLE Call Buy]] — Oct $59C, limit at mid, working at log time
+  - [[2026-07-31 XLE Call Buy]] — Oct $59C filled at $2.73 (sleeve first engagement)
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
@@ -41,10 +41,10 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Realized P&L to date | +$0.54 |
 | Tranche A | **XLE** 3.417056 sh @ $58.53 — held (still slot 1) |
 | Tranche B | **GLD** 0.473454 sh @ $369.62 ($175) — bought this cycle |
-| Options sleeve | **XLE Oct 16 $59C ×1** — limit $2.73 (mid) **working** at log time; $273 reserved |
+| Options sleeve | **XLE Oct 16 $59C ×1** — filled $2.73 ($273 + $0.04 fees) |
 | Circuit-breaker | $325 (50% of contributed capital) |
 
 ## Standing schedule
 
 - **Every trading day ~9:38 AM ET** — scheduled cycle (session-local job; re-verified/re-created each run since durable triggers are approval-gated): signals → sells (if target changed) → buys/sleeve → vault log.
-- **Next cycle (Mon 2026-08-03):** check the GFD call order's fate (filled vs expired → re-place if conforming); normal rotation checks on XLE and GLD.
+- **Next cycle (Mon 2026-08-03):** normal rotation checks on XLE, GLD, and the call (exit if XLE loses slot 1 or its 20-day trend turns negative).

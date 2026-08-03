@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-08-03 Daily Signals]] — v3 cycle #3: XLE holds, GLD whipsawed out, XLF queued
   - [[2026-07-31 Daily Signals]] — v3 cycle #2: XLE holds, GLD takes slot 2, options sleeve engaged
   - [[2026-07-30 Daily Signals]] — v3 cycle #1: XLE/XLF lead, semis crash dodged
   - [[2026-07-29 Momentum Rankings v2]] — aggressive-mandate signal (SMH #1, leverage off)
@@ -27,24 +28,25 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-30 XLE Buy]] — filled (tranche A, v3 cycle #1)
   - [[2026-07-31 GLD Buy]] — filled (tranche B, v3 cycle #2)
   - [[2026-07-31 XLE Call Buy]] — Oct $59C filled at $2.73 (sleeve first engagement)
+  - [[2026-08-03 GLD Sell]] — whipsaw exit, +$0.13 realized
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-07-31, ~10:00 AM ET — v3 cycle #2 done)
+## Current state (as of 2026-08-03, ~9:45 AM ET — v3 cycle #3 done)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) |
-| Account value at cycle start | $651.37 |
-| Realized P&L to date | +$0.54 |
-| Tranche A | **XLE** 3.417056 sh @ $58.53 — held (still slot 1) |
-| Tranche B | **GLD** 0.473454 sh @ $369.62 ($175) — bought this cycle |
-| Options sleeve | **XLE Oct 16 $59C ×1** — filled $2.73 ($273 + $0.04 fees) |
+| Account value at cycle start | $625.30 (−4.0% vs contributed) |
+| Realized P&L to date | +$0.67 |
+| Tranche A | **XLE** 3.417056 sh @ $58.53 — held (slot 1, day 3) |
+| Tranche B | Cash $175.13 (GLD sold; settles 08-04, buys XLF at cycle #4) |
+| Options sleeve | **XLE Oct 16 $59C ×1** @ $2.73 — held; mark $2.48 (−$25 open), gate open, 74 DTE |
 | Circuit-breaker | $325 (50% of contributed capital) |
 
 ## Standing schedule
 
 - **Every trading day ~9:38 AM ET** — scheduled cycle (session-local job; re-verified/re-created each run since durable triggers are approval-gated): signals → sells (if target changed) → buys/sleeve → vault log.
-- **Next cycle (Mon 2026-08-03):** normal rotation checks on XLE, GLD, and the call (exit if XLE loses slot 1 or its 20-day trend turns negative).
+- **Next cycle (Tue 2026-08-04):** tranche B buys slot-2 target (XLF if still qualified) with settled GLD proceeds; rotation checks on XLE and the call.

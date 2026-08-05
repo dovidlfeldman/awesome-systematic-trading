@@ -38,6 +38,38 @@ tools, git, and file edits — review it, then keep or trim it. Anything not all
 will fail silently in headless mode (this is what kept blocking the options sleeve in the
 cloud sessions).
 
+> **⚠️ As shipped, this step does not work. Two fixes are required (2026-08-05).**
+>
+> **4a. Trust the workspace.** Until you do, Claude Code discards *every* allowlist entry
+> and logs `Ignoring 26 permissions.allow entries from .claude/settings.json: this
+> workspace has not been trusted`. Fix by running `claude` interactively once in the repo
+> and accepting the trust dialog.
+>
+> **4b. Fix the MCP prefix.** The shipped entries are named `mcp__Robinhood__*`, but the
+> connector actually exposes `mcp__claude_ai_Robinhood__*`. Matching is exact, so all 17
+> broker entries are dead strings even after 4a. Rewrite them:
+>
+> ```bash
+> python3 - <<'EOF'
+> import json
+> p = ".claude/settings.json"
+> d = json.load(open(p))
+> a = d["permissions"]["allow"]
+> a += [e.replace("mcp__Robinhood__", "mcp__claude_ai_Robinhood__")
+>       for e in a if e.startswith("mcp__Robinhood__")]
+> d["permissions"]["allow"] = sorted(set(a))
+> json.dump(d, open(p, "w"), indent=2)
+> EOF
+> ```
+>
+> Confirm the connector's real prefix with `/mcp` in an interactive session before
+> trusting the rewrite — if the connector is renamed, the prefix moves with it.
+
+**How to tell a run actually worked:** a healthy log ends with `Cycle finished
+<timestamp>`. The runner uses `set -e`, so a nonzero `claude -p` exit kills the script
+before that line — a log with no trailer, or one containing "Ignoring N permissions", is a
+failed run even though nothing looks obviously wrong.
+
 Test before scheduling — run one full cycle interactively and approve anything that prompts:
 
 ```bash
@@ -77,8 +109,10 @@ rule-based buys (sleeve first, then equity slots) → vault log → commit + pus
 
 ## Handoff notes (from the cloud sessions, 2026-08-05)
 
-- Book at handoff: XLF 3.051443 sh, SPY 0.252006 sh, ~$215 cash; sleeve empty (options
-  permission was gated in the cloud environment — step 4 fixes that locally).
+- Book at handoff: XLF 3.051443 sh, SPY 0.252006 sh, ~$215 cash; sleeve empty.
+- The sleeve block was **not** an options-specific approval gate, as earlier notes assumed —
+  it was the whole allowlist failing to apply. See the warning in step 4; a post-close run
+  on 2026-08-05 confirmed even read-only `get_portfolio` was denied.
 - Realized P&L to date −$65.38; account ~$587 vs $650.54 contributed; breaker at $325.
 - The cloud session's in-session scheduler is retired once this is live — don't run both.
 - Kill switch: remove the cron/Task Scheduler entry, or revoke the Robinhood connector.

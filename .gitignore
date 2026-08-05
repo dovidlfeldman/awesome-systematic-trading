@@ -1,1 +1,5 @@
 .DS_Store
+
+# Per-run cycle logs — local diagnostic output, would churn/conflict on every rebase.
+# Failures get written up in trading-vault/Signals/ instead.
+automation/logs/

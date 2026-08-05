@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-08-05 Cycle Skipped (after close)]] — **ops**: post-close re-run skipped; found the headless runner has never had broker permission
   - [[2026-08-05 Daily Signals]] — v3 cycle #5: XLF/SPY book set; sleeve re-arm blocked on tool approval
   - [[2026-08-04 Daily Signals]] — v3 cycle #4: XLF takes the lead, XLE rotated out, sleeve closing
   - [[2026-08-03 Daily Signals]] — v3 cycle #3: XLE holds, GLD whipsawed out, XLF queued
@@ -47,11 +48,12 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Realized P&L to date | **−$65.38** (equity legs −$2.30; options sleeve −$63.08) |
 | Tranche A | **SPY** 0.252006 sh @ $773.79 ($195) — slot 2, bought this cycle |
 | Tranche B | **XLF** 3.051443 sh @ $57.35 — slot 1, held |
-| Options sleeve | Empty — re-arm on XLF Oct $58C **blocked: options tools need owner approval** |
+| Options sleeve | Empty — re-arm on XLF Oct $58C blocked; **cause now identified as a permissions-config bug, not an options-specific approval gate** (see [[2026-08-05 Cycle Skipped (after close)]]) |
 | Circuit-breaker | $325 (50% of contributed capital) |
 
 ## Standing schedule
 
-- **Migrating to owner's desktop** (2026-08-05): `automation/` in the repo root contains the canonical daily-cycle prompt, a headless Claude Code runner script, a tool-permission allowlist (`.claude/settings.json`), and a setup guide (`automation/README.md`). Once the desktop cron is live, the cloud session's in-session scheduler is retired — exactly one runner should be active.
-- Until the desktop is set up: cloud cycle still fires ~9:42 AM ET when the session is alive; a "Run" ping works any time.
-- **Next cycle (Thu 2026-08-06):** rotation checks on XLF/SPY; sleeve re-arm retries wherever options tool calls are permitted (locally, step 4 of the README fixes this).
+- **Migrating to owner's desktop** (2026-08-05): `automation/` in the repo root contains the canonical daily-cycle prompt, a headless Claude Code runner script, a tool-permission allowlist (`.claude/settings.json`), and a setup guide (`automation/README.md`).
+- ⚠️ **The desktop runner does not work yet.** A post-close run on 2026-08-05 proved it has never had broker access: the workspace is untrusted (whole allowlist discarded) *and* the allowlist uses the wrong MCP prefix (`mcp__Robinhood__` vs the real `mcp__claude_ai_Robinhood__`). Both need fixing; see [[2026-08-05 Cycle Skipped (after close)]] for the two-minute remediation. **Do not retire the cloud runner until a manual desktop run logs real tool calls and ends with `Cycle finished`.**
+- Until then: cloud cycle still fires ~9:42 AM ET when the session is alive; a "Run" ping works any time. Scheduled desktop fires will silently no-op.
+- **Next cycle (Thu 2026-08-06):** rotation checks on XLF/SPY; sleeve re-arm retries once broker permissions actually apply.

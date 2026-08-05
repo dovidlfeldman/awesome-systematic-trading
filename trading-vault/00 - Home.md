@@ -52,5 +52,6 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 
 ## Standing schedule
 
-- **Every trading day ~9:38 AM ET** — scheduled cycle (session-local job; re-verified/re-created each run since durable triggers are approval-gated): signals → sells (if target changed) → buys/sleeve → vault log.
-- **Next cycle (Thu 2026-08-06):** rotation checks on XLF/SPY; retry sleeve re-arm if options tool calls are approved.
+- **Migrating to owner's desktop** (2026-08-05): `automation/` in the repo root contains the canonical daily-cycle prompt, a headless Claude Code runner script, a tool-permission allowlist (`.claude/settings.json`), and a setup guide (`automation/README.md`). Once the desktop cron is live, the cloud session's in-session scheduler is retired — exactly one runner should be active.
+- Until the desktop is set up: cloud cycle still fires ~9:42 AM ET when the session is alive; a "Run" ping works any time.
+- **Next cycle (Thu 2026-08-06):** rotation checks on XLF/SPY; sleeve re-arm retries wherever options tool calls are permitted (locally, step 4 of the README fixes this).

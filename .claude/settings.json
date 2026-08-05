@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git pull:*)",
+      "Bash(git status:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(python3:*)",
+      "Edit",
+      "Write",
+      "mcp__Robinhood__get_accounts",
+      "mcp__Robinhood__get_portfolio",
+      "mcp__Robinhood__get_equity_positions",
+      "mcp__Robinhood__get_equity_quotes",
+      "mcp__Robinhood__get_equity_historicals",
+      "mcp__Robinhood__get_equity_orders",
+      "mcp__Robinhood__review_equity_order",
+      "mcp__Robinhood__place_equity_order",
+      "mcp__Robinhood__get_option_chains",
+      "mcp__Robinhood__get_option_instruments",
+      "mcp__Robinhood__get_option_quotes",
+      "mcp__Robinhood__get_option_orders",
+      "mcp__Robinhood__get_option_positions",
+      "mcp__Robinhood__review_option_order",
+      "mcp__Robinhood__place_option_order",
+      "mcp__Robinhood__cancel_equity_order",
+      "mcp__Robinhood__cancel_option_order"
+    ]
+  }
+}

@@ -25,3 +25,7 @@ First engagement of the options sleeve ([[Aggressive Leveraged Momentum v2]] §6
 ## Exit plan
 
 Sell to close when: XLE loses slot 1 or its 20-day turns negative (trend-gate close), or the contract's remaining DTE < 21 (roll/exit to avoid gamma-decay zone), or circuit-breaker. Premium is the max loss; no assignment risk on a long call.
+
+## Outcome — CLOSED 2026-08-04
+
+Exit trigger "XLE loses slot 1" fired at cycle #4. Sold to close at the $2.10 limit (filled 13:53 UTC, order `6a71e9e3`). Round-trip: in $273.04, out $209.96 → **−$63.08 realized** over 4 calendar days. Post-mortem: entry came the session before energy's leadership broke; the 0.54-delta position lost ~23% of premium on a ~1.6% adverse underlying move plus vol softening — the leverage worked exactly as advertised, in the wrong direction. The rules capped it: defined-risk premium, mechanical exit on the first slot change, no averaging down.

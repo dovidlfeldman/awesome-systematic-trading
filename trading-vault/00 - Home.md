@@ -15,6 +15,8 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-08-25 Daily Signals]] — v3 cycle #6: regime flip to GLD/XLE, full two-slot rotation
+  - [[2026-08-25 Automation Gap]] — **ops**: 14 trading days missed; desktop runner proven working today
   - [[2026-08-05 Cycle Skipped (after close)]] — **ops**: post-close re-run skipped; found the headless runner has never had broker permission
   - [[2026-08-05 Daily Signals]] — v3 cycle #5: XLF/SPY book set; sleeve re-arm blocked on tool approval
   - [[2026-08-04 Daily Signals]] — v3 cycle #4: XLF takes the lead, XLE rotated out, sleeve closing
@@ -34,26 +36,28 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-03 GLD Sell]] — whipsaw exit, +$0.13 realized
   - [[2026-08-04 Rotation XLE out, XLF in]] — XLE −$2.97 realized; XLF in at $57.35; call closed −$63.08
   - [[2026-08-05 SPY Buy]] — filled (tranche A, slot 2)
+  - [[2026-08-25 Rotation XLF+SPY out, GLD+XLE in]] — full two-slot rotation; XLF +$2.48, SPY −$2.10
 - **Journal**
   - [[2026-07-29 Initial Deployment]] — v1 deployment narrative
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-08-05, ~10:45 AM ET — v3 cycle #5 done)
+## Current state (as of 2026-08-25, ~12:01 PM ET — v3 cycle #6 done)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) |
-| Account value at cycle start | $587.15 (−9.7% vs contributed) |
-| Realized P&L to date | **−$65.38** (equity legs −$2.30; options sleeve −$63.08) |
-| Tranche A | **SPY** 0.252006 sh @ $773.79 ($195) — slot 2, bought this cycle |
-| Tranche B | **XLF** 3.051443 sh @ $57.35 — slot 1, held |
-| Options sleeve | Empty — re-arm on XLF Oct $58C blocked; **cause now identified as a permissions-config bug, not an options-specific approval gate** (see [[2026-08-05 Cycle Skipped (after close)]]) |
-| Circuit-breaker | $325 (50% of contributed capital) |
+| Account value at cycle start | $585.09 (−10.1% vs contributed) |
+| Realized P&L to date | **−$64.99** (equity legs −$1.91; options sleeve −$63.08) |
+| Slot 1 | **GLD** 0.249121 sh @ $426.74 ($106.31) — bought this cycle |
+| Slot 2 | **XLE** 1.697789 sh @ $62.6167 ($106.31) — bought this cycle |
+| Cash | $2.01 free + **$370.38 unsettled** (XLF/SPY proceeds, settle 2026-08-26) |
+| Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: Oct $425C (0.556Δ, 52 DTE) marks $1,907.50 vs a $292.55 premium cap. Structural whenever slot 1 is an expensive underlying — needs an owner decision (see [[2026-08-25 Daily Signals]]) |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at 1.80× |
 
 ## Standing schedule
 
-- **Migrating to owner's desktop** (2026-08-05): `automation/` in the repo root contains the canonical daily-cycle prompt, a headless Claude Code runner script, a tool-permission allowlist (`.claude/settings.json`), and a setup guide (`automation/README.md`).
-- ⚠️ **The desktop runner does not work yet.** A post-close run on 2026-08-05 proved it has never had broker access: the workspace is untrusted (whole allowlist discarded) *and* the allowlist uses the wrong MCP prefix (`mcp__Robinhood__` vs the real `mcp__claude_ai_Robinhood__`). Both need fixing; see [[2026-08-05 Cycle Skipped (after close)]] for the two-minute remediation. **Do not retire the cloud runner until a manual desktop run logs real tool calls and ends with `Cycle finished`.**
-- Until then: cloud cycle still fires ~9:42 AM ET when the session is alive; a "Run" ping works any time. Scheduled desktop fires will silently no-op.
-- **Next cycle (Thu 2026-08-06):** rotation checks on XLF/SPY; sleeve re-arm retries once broker permissions actually apply.
+- **Desktop runner works.** `automation/` holds the canonical prompt, the headless runner, the tool allowlist (`.claude/settings.json`), and `automation/README.md`. Cycle #6 **was** a desktop run: it placed four real orders with no approval prompt. The 08-05 MCP-prefix/trust remediation is confirmed applied.
+- ⚠️ **But the schedule is broken.** The runner fired on 08-05 and 08-25 and **no day in between** — 14 trading days missed, entirely undetected. Today's fire was also 2h23m late (11:58 vs 9:35 ET). Cause not determined from inside the run (`crontab`/`launchctl` are outside the allowlist). **Owner: verify the cron/launchd entry exists and is loaded** — see [[2026-08-25 Automation Gap]] for the checklist.
+- Still untested: `review_option_order` / `place_option_order` under the desktop allowlist. Nothing affordable came up to exercise them.
+- **Next cycle (Wed 2026-08-26):** rotation checks on GLD/XLE; $370.38 settles overnight and is deployable. Sleeve stays empty while GLD holds slot 1 — it only becomes reachable if slot 1 rotates to XLF or XLE.

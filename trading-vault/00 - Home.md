@@ -52,12 +52,23 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Slot 1 | **GLD** 0.249121 sh @ $426.74 ($106.31) — bought this cycle |
 | Slot 2 | **XLE** 1.697789 sh @ $62.6167 ($106.31) — bought this cycle |
 | Cash | $2.01 free + **$370.38 unsettled** (XLF/SPY proceeds, settle 2026-08-26) |
-| Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: Oct $425C (0.556Δ, 52 DTE) marks $1,907.50 vs a $292.55 premium cap. Structural whenever slot 1 is an expensive underlying — needs an owner decision (see [[2026-08-25 Daily Signals]]) |
+| Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: Oct $425C (0.556Δ, 52 DTE) marks $1,907.50 vs a $292.55 premium cap. **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** The sleeve stays gated by the Risk Rules v2 §4 premium cap and re-arms on its own once the account is large enough that a conforming contract fits (~$3,800+ for GLD-class names, less for XLF/XLE). Accepted that it idles meanwhile (see [[2026-08-25 Daily Signals]]) |
 | Circuit-breaker | $325 (50% of contributed capital) — checked first, account at 1.80× |
 
 ## Standing schedule
 
-- **Desktop runner works.** `automation/` holds the canonical prompt, the headless runner, the tool allowlist (`.claude/settings.json`), and `automation/README.md`. Cycle #6 **was** a desktop run: it placed four real orders with no approval prompt. The 08-05 MCP-prefix/trust remediation is confirmed applied.
-- ⚠️ **But the schedule is broken.** The runner fired on 08-05 and 08-25 and **no day in between** — 14 trading days missed, entirely undetected. Today's fire was also 2h23m late (11:58 vs 9:35 ET). Cause not determined from inside the run (`crontab`/`launchctl` are outside the allowlist). **Owner: verify the cron/launchd entry exists and is loaded** — see [[2026-08-25 Automation Gap]] for the checklist.
+**Scheduler installed 2026-08-25 (launchd).** The 14-day gap is fixed: three `launchd` agents in `~/Library/LaunchAgents/` (`com.dfeldman.trading.*`) now fire on weekdays, machine-local time = ET (DST-tracked):
+
+| Time (ET) | Agent | Script | Scope |
+|---|---|---|---|
+| 9:30 AM | daily-cycle | `run-daily-cycle.sh` | **Full** rotation (signals → sells → buys → log → push) |
+| 12:30 PM | market-check-midday | `run-market-check.sh` | **Risk exits only** — breaker + protective sleeve close; no buys/rotation |
+| 3:45 PM | market-check-close | `run-market-check.sh` | Same risk-exits-only check, 15 min before close |
+
+- The two intraday checks run the canonical `automation/market-check-prompt.md`: circuit-breaker first, then close the options sleeve only if the underlying's 20-day return turned negative or the contract is <21 DTE. They **never** buy or rotate — rebalancing is the 9:30 cycle's job alone.
+- **Trade-log mirror:** every run copies `trading-vault/Trades/*.md` into `~/Documents/Obsidian Vault/Trading/` via `automation/mirror-trades.sh` (one-way; the repo stays the git source of truth).
+- **Root cause of the old gap:** there was never any cron/launchd entry at all — the 08-05 and 08-25 runs were both manual. Liveness now visible via `automation/logs/launchd-*.{out,err}` and the per-run `cycle-*`/`check-*` logs.
+- Kill switch: `launchctl bootout gui/$(id -u)/com.dfeldman.trading.<label>` for any agent, or revoke the Robinhood connector.
+- Machine must be awake at the fire time; if asleep, launchd runs the job once on wake.
 - Still untested: `review_option_order` / `place_option_order` under the desktop allowlist. Nothing affordable came up to exercise them.
-- **Next cycle (Wed 2026-08-26):** rotation checks on GLD/XLE; $370.38 settles overnight and is deployable. Sleeve stays empty while GLD holds slot 1 — it only becomes reachable if slot 1 rotates to XLF or XLE.
+- **Next cycle (Wed 2026-08-26, 9:30 ET):** rotation checks on GLD/XLE; $370.38 settles overnight and is deployable. Sleeve stays empty while GLD holds slot 1 — it only becomes reachable if slot 1 rotates to XLF or XLE, and only once an affordable conforming contract exists.

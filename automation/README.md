@@ -38,32 +38,17 @@ tools, git, and file edits — review it, then keep or trim it. Anything not all
 will fail silently in headless mode (this is what kept blocking the options sleeve in the
 cloud sessions).
 
-> **⚠️ As shipped, this step does not work. Two fixes are required (2026-08-05).**
+> **✅ Resolved 2026-08-25 (commit `c974de7`).** Two defects that had silently disabled the
+> allowlist are now fixed and confirmed working (cycle #6 placed four real orders headlessly
+> with no prompt):
 >
-> **4a. Trust the workspace.** Until you do, Claude Code discards *every* allowlist entry
-> and logs `Ignoring 26 permissions.allow entries from .claude/settings.json: this
-> workspace has not been trusted`. Fix by running `claude` interactively once in the repo
-> and accepting the trust dialog.
->
-> **4b. Fix the MCP prefix.** The shipped entries are named `mcp__Robinhood__*`, but the
-> connector actually exposes `mcp__claude_ai_Robinhood__*`. Matching is exact, so all 17
-> broker entries are dead strings even after 4a. Rewrite them:
->
-> ```bash
-> python3 - <<'EOF'
-> import json
-> p = ".claude/settings.json"
-> d = json.load(open(p))
-> a = d["permissions"]["allow"]
-> a += [e.replace("mcp__Robinhood__", "mcp__claude_ai_Robinhood__")
->       for e in a if e.startswith("mcp__Robinhood__")]
-> d["permissions"]["allow"] = sorted(set(a))
-> json.dump(d, open(p, "w"), indent=2)
-> EOF
-> ```
->
-> Confirm the connector's real prefix with `/mcp` in an interactive session before
-> trusting the rewrite — if the connector is renamed, the prefix moves with it.
+> - **Workspace trust.** `hasTrustDialogAccepted: true` is set for this repo in
+>   `~/.claude.json` — otherwise Claude Code discards *every* allowlist entry and logs
+>   `Ignoring N permissions.allow entries ... workspace has not been trusted`.
+> - **MCP prefix.** The allowlist entries now use the connector's real prefix
+>   `mcp__claude_ai_Robinhood__*` (they shipped as `mcp__Robinhood__*`, which matched
+>   nothing). If you re-clone on a new machine, re-apply both: accept the trust dialog once
+>   via interactive `claude`, and confirm the prefix with `/mcp`.
 
 **How to tell a run actually worked:** a healthy log ends with `Cycle finished
 <timestamp>`. The runner uses `set -e`, so a nonzero `claude -p` exit kills the script
@@ -76,36 +61,66 @@ Test before scheduling — run one full cycle interactively and approve anything
 ./automation/run-daily-cycle.sh && tail -50 automation/logs/cycle-$(date +%Y-%m-%d).log
 ```
 
-### 5. Schedule it
+### 5. Schedule it (macOS launchd — installed 2026-08-25)
 
-The cycle should fire **9:35–10:00 AM ET, weekdays**. Adjust the hour if your machine is
-not in Eastern time (the script itself refuses to run on weekends as a backstop).
+Three `launchd` agents live in `~/Library/LaunchAgents/`, all weekday-only, firing on the
+machine's local wall-clock. **This machine is `America/New_York`, so the times below are ET
+and DST is tracked automatically.** If you deploy on a machine in another timezone, edit the
+`Hour` values in each plist to the local equivalent of the ET target.
 
-**macOS / Linux (cron):**
+| Time (ET) | Label (`com.dfeldman.trading.*`) | Script | Scope |
+|---|---|---|---|
+| 9:30 AM | `daily-cycle` | `run-daily-cycle.sh` | Full rotation |
+| 12:30 PM | `market-check-midday` | `run-market-check.sh` | Risk exits only |
+| 3:45 PM | `market-check-close` | `run-market-check.sh` | Risk exits only |
+
+Load / reload after editing a plist (idempotent):
 ```bash
-crontab -e
-# 9:37 AM America/New_York — adjust the hour for your machine's timezone:
-37 9 * * 1-5 /full/path/to/awesome-systematic-trading/automation/run-daily-cycle.sh
+UID_NUM=$(id -u)
+for L in daily-cycle market-check-midday market-check-close; do
+  launchctl bootout  "gui/$UID_NUM/com.dfeldman.trading.$L" 2>/dev/null || true
+  launchctl bootstrap "gui/$UID_NUM" "$HOME/Library/LaunchAgents/com.dfeldman.trading.$L.plist"
+done
+launchctl list | grep dfeldman.trading      # confirm all three are loaded
 ```
-macOS: also disable sleep at that hour (System Settings → Energy) or use `pmset repeat wake`.
 
-**Windows (Task Scheduler):**
-Create a task, weekdays 9:37 AM, action:
-`wsl.exe /home/<you>/awesome-systematic-trading/automation/run-daily-cycle.sh`
-(run the whole setup inside WSL; native PowerShell works too, but the script is bash).
-Enable "Wake the computer to run this task."
+**Kill switch:** `launchctl bootout gui/$(id -u)/com.dfeldman.trading.<label>` for one agent
+(or all three), or revoke the Robinhood connector in claude.ai.
 
 ### 6. Keep the machine on
 
-The single failure mode left is the desktop being off/asleep at 9:37. If a run is missed,
-nothing bad happens — the book just stays as-is until the next run or a manual
-`./automation/run-daily-cycle.sh`.
+The remaining failure mode is the desktop being off/asleep at the fire time. launchd runs a
+missed `StartCalendarInterval` job **once on wake**, so a short sleep is tolerated; a machine
+off all day skips that run (the book just holds until the next run or a manual invocation).
+For reliability, disable sleep during market hours (System Settings → Energy) or `pmset repeat wake`.
 
 ## What each run does
 
-See `daily-cycle-prompt.md` (the canonical instructions, versioned with the strategy):
-circuit-breaker check → daily signals → rule-based sells (including sleeve exits) →
-rule-based buys (sleeve first, then equity slots) → vault log → commit + push.
+**Full cycle** (`daily-cycle-prompt.md`, 9:30 ET): circuit-breaker check → daily signals →
+rule-based sells (including sleeve exits) → rule-based buys (sleeve first, then equity slots)
+→ vault log → commit + push.
+
+**Intraday risk check** (`market-check-prompt.md`, 12:30 & 3:45 ET): circuit-breaker →
+protective options-sleeve close only (underlying 20-day return negative, or contract <21 DTE)
+→ log + push. **Never buys or rotates** — that is the 9:30 cycle's job alone. Logs to
+`automation/logs/check-<date>-<HHMM>.log`; check notes land in `trading-vault/Checks/`.
+
+## Trade-log mirror to the personal Obsidian vault
+
+Every run ends by calling `mirror-trades.sh`, which one-way-copies `trading-vault/Trades/*.md`
+into `~/Documents/Obsidian Vault/Trading/` (override with `OBSIDIAN_TRADING_DIR`). The repo
+vault stays the git source of truth; the personal-vault copy is a read-only mirror (no
+`--delete`, so annotations you add there are never removed).
+
+## Liveness — how to tell it's actually running
+
+Silent failure is the historical enemy. To audit:
+- `automation/logs/launchd-*.{out,err}` — launchd's own capture; an `.err` with content or a
+  missing `.out` for a scheduled day means the wrapper itself failed to start.
+- `automation/logs/cycle-<date>.log` must end with `Cycle finished <ts>`;
+  `check-<date>-<HHMM>.log` must end with `Market check finished <ts>`. No trailer = the
+  `claude -p` call died (the scripts use `set -e`).
+- A log containing `Ignoring N permissions` means the trust/prefix fix regressed (see step 4).
 
 ## Handoff notes (from the cloud sessions, 2026-08-05)
 

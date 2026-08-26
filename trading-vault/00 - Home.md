@@ -40,6 +40,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-25 Rotation XLF+SPY out, GLD+XLE in]] — full two-slot rotation; XLF +$2.48, SPY −$2.10
   - [[2026-08-26 GLD+XLE Top-Up]] — filled; settled rotation proceeds deployed, book now ~100% invested
 - **Checks** (intraday risk checks — 12:30 & 3:45 ET, risk exits only)
+  - [[2026-08-26 1545 Close Check]] — no action: breaker clear at 1.80×, sleeve empty
   - [[2026-08-26 1230 Midday Check]] — no action: breaker clear at 1.81×, sleeve empty
   - [[2026-08-25 1236 Midday Check]] — no action: breaker clear at 1.80×, sleeve empty
   - [[2026-08-25 1545 Close Check]] — no action: breaker clear at 1.80×, sleeve empty
@@ -73,7 +74,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | 3:45 PM | market-check-close | `run-market-check.sh` | Same risk-exits-only check, 15 min before close |
 
 - The two intraday checks run the canonical `automation/market-check-prompt.md`: circuit-breaker first, then close the options sleeve only if the underlying's 20-day return turned negative or the contract is <21 DTE. They **never** buy or rotate — rebalancing is the 9:30 cycle's job alone.
-- **Trade-log mirror:** every run copies `trading-vault/Trades/*.md` into `~/Documents/Obsidian Vault/Trading/` via `automation/mirror-trades.sh` (one-way; the repo stays the git source of truth).
+- **Vault mirror:** every run copies the whole vault (`00 - Home.md` plus `Trades/`, `Signals/`, `Checks/`, `Journal/`, `Strategy/`) into `~/TradingVaultMirror/` via `automation/mirror-trades.sh`, preserving structure — so trade notes land in `Trading/Trades/`, not flat in `Trading/`. `~/Documents/Obsidian Vault/Trading` is a symlink to that path: `~/Documents` is TCC-protected and launchd cannot write there. One-way; the repo stays the git source of truth.
 - **Root cause of the old gap:** there was never any cron/launchd entry at all — the 08-05 and 08-25 runs were both manual. Liveness now visible via `automation/logs/launchd-*.{out,err}` and the per-run `cycle-*`/`check-*` logs.
 - Kill switch: `launchctl bootout gui/$(id -u)/com.dfeldman.trading.<label>` for any agent, or revoke the Robinhood connector.
 - Machine must be awake at the fire time; if asleep, launchd runs the job once on wake.

@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-08-26 Cycle Skipped (already ran)]] — **ops**: 15:51 ET re-run stood down; breaker re-verified clear at 1.80×
   - [[2026-08-26 Daily Signals]] — v3 cycle #7: no rotation, settled proceeds deployed; **first fully automated cycle**
   - [[2026-08-25 Daily Signals]] — v3 cycle #6: regime flip to GLD/XLE, full two-slot rotation
   - [[2026-08-25 Automation Gap]] — **ops**: 14 trading days missed; desktop runner proven working today
@@ -49,19 +50,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-08-26, ~9:36 AM ET — v3 cycle #7 done)
+## Current state (as of 2026-08-26, ~3:51 PM ET — v3 cycle #7 done, post-close re-run skipped)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) |
-| Account value | **$582.17** (−10.5% vs contributed) — equity $580.16, cash $2.01 |
+| Account value | **$585.07** (−10.1% vs contributed) — equity $583.06, cash $2.01 |
 | Realized P&L to date | **−$64.99** (equity legs −$1.91; options sleeve −$63.08) — unchanged, nothing sold this cycle |
-| Unrealized P&L | ≈ **−$2.85** on a $583.01 book basis (both slots opened within the last 2 days) |
+| Unrealized P&L | ≈ **+$0.08** on a $582.98 book basis — essentially flat; recovered ~$2.9 since the 9:36 read |
 | Slot 1 | **GLD** 0.686586 sh @ $424.56 avg ($291.51 basis) — topped up this cycle |
 | Slot 2 | **XLE** 4.699875 sh @ $62.02 avg ($291.50 basis) — topped up this cycle |
 | Cash | $2.01 free, **$0 unsettled** — book is ~100% deployed |
 | Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: re-verified 08-26 with a live quote — Oct 16 $420C (0.573Δ, 51 DTE, OI 8,306) marks $1,890.00 vs a $291.09 premium cap (6.5× over). **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** The sleeve stays gated by the Risk Rules v2 §4 premium cap and re-arms on its own once a conforming contract fits (~$3,800+ for GLD-class names, less for XLF/XLE). Accepted that it idles meanwhile |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **1.79×** |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **1.80×** (re-verified 15:51 ET) |
 
 ## Standing schedule
 

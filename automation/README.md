@@ -105,12 +105,30 @@ protective options-sleeve close only (underlying 20-day return negative, or cont
 → log + push. **Never buys or rotates** — that is the 9:30 cycle's job alone. Logs to
 `automation/logs/check-<date>-<HHMM>.log`; check notes land in `trading-vault/Checks/`.
 
-## Trade-log mirror to the personal Obsidian vault
+## Vault mirror to the personal Obsidian vault
 
-Every run ends by calling `mirror-trades.sh`, which one-way-copies `trading-vault/Trades/*.md`
-into `~/Documents/Obsidian Vault/Trading/` (override with `OBSIDIAN_TRADING_DIR`). The repo
-vault stays the git source of truth; the personal-vault copy is a read-only mirror (no
-`--delete`, so annotations you add there are never removed).
+Every run ends by calling `mirror-trades.sh`, which one-way-copies the whole vault —
+`00 - Home.md` plus `Trades/`, `Signals/`, `Checks/`, `Journal/`, `Strategy/` — into
+`~/TradingVaultMirror/`, preserving directory structure (override the destination with
+`OBSIDIAN_TRADING_DIR`). `~/Documents/Obsidian Vault/Trading` is a **symlink** to that path,
+so the notes still appear inside the Obsidian vault. Only `*.md` is copied; the repo vault's own
+`.obsidian/` config is skipped. The repo vault stays the git source of truth; the
+personal-vault copy is a read-only mirror (no `--delete`, so annotations you add there are
+never removed).
+
+> **⚠️ Why the destination is outside `~/Documents`.** `~/Documents` is TCC-protected, and
+> launchd-spawned processes have no access to it. Writing there failed with
+> `rsync: ... Trading/: open: Operation not permitted` on every *scheduled* run, while manual
+> runs from Terminal succeeded (Terminal has its own grant) — which is how it went unnoticed
+> from 2026-08-25 to 2026-08-26. Granting Full Disk Access to `/bin/bash` is the usual
+> workaround but is not practical on macOS 26: the picker hides `/bin` and refuses
+> SIP-protected system binaries. So the mirror writes to `~/TradingVaultMirror` instead
+> (home root is not TCC-protected) and the vault reaches it through a symlink. **No Full Disk
+> Access grant is required, and none should be added.** Verified 2026-08-26 with a throwaway
+> LaunchAgent running `mirror-trades.sh`: exit 0, empty stderr.
+>
+> If you ever repoint `OBSIDIAN_TRADING_DIR`, keep it out of `~/Documents`, `~/Desktop`, and
+> `~/Downloads`, or the scheduled runs will start failing again.
 
 ## Liveness — how to tell it's actually running
 
@@ -118,8 +136,10 @@ Silent failure is the historical enemy. To audit:
 - `automation/logs/launchd-*.{out,err}` — launchd's own capture; an `.err` with content or a
   missing `.out` for a scheduled day means the wrapper itself failed to start.
 - `automation/logs/cycle-<date>.log` must end with `Cycle finished <ts>`;
-  `check-<date>-<HHMM>.log` must end with `Market check finished <ts>`. No trailer = the
-  `claude -p` call died (the scripts use `set -e`).
+  `check-<date>-<HHMM>.log` must end with `Market check finished <ts>`. No trailer = either
+  the `claude -p` call or the vault mirror died (the scripts use `set -e`, and the mirror is
+  deliberately *not* guarded with `|| true` — a run that trades but never reaches the vault
+  must not look healthy).
 - A log containing `Ignoring N permissions` means the trust/prefix fix regressed (see step 4).
 
 ## Handoff notes (from the cloud sessions, 2026-08-05)

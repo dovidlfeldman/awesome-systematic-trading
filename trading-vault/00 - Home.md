@@ -40,6 +40,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-25 Rotation XLF+SPY out, GLD+XLE in]] — full two-slot rotation; XLF +$2.48, SPY −$2.10
   - [[2026-08-26 GLD+XLE Top-Up]] — filled; settled rotation proceeds deployed, book now ~100% invested
 - **Checks** (intraday risk checks — 12:30 & 3:45 ET, risk exits only)
+  - [[2026-08-26 1230 Midday Check]] — no action: breaker clear at 1.81×, sleeve empty
   - [[2026-08-25 1236 Midday Check]] — no action: breaker clear at 1.80×, sleeve empty
   - [[2026-08-25 1545 Close Check]] — no action: breaker clear at 1.80×, sleeve empty
 - **Journal**

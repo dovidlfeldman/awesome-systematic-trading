@@ -8,6 +8,7 @@
       "Bash(git status:*)",
       "Bash(git rev-parse:*)",
       "Bash(python3:*)",
+      "Bash(./automation/mirror-trades.sh:*)",
       "Edit",
       "Write",
       "mcp__claude_ai_Robinhood__get_accounts",

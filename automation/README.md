@@ -141,6 +141,17 @@ Silent failure is the historical enemy. To audit:
   deliberately *not* guarded with `|| true` — a run that trades but never reaches the vault
   must not look healthy).
 - A log containing `Ignoring N permissions` means the trust/prefix fix regressed (see step 4).
+- `automation/run-status.tsv` — the only run evidence that reaches the git remote. One line
+  per run: `utc_ts  kind  claude=ok|FAILED  mirror=ok|FAILED  md_repo=  md_mirror=  commit=`.
+  Both counts should match; `mirror=FAILED` or a stalled timestamp means the vault is not
+  being updated. Use this when auditing from anywhere that only has the remote (a cloud
+  agent, another machine) — `automation/logs/` is gitignored and `~/TradingVaultMirror` is
+  untracked, so neither is visible there.
+
+  Written by `record-status.sh` *after* the run and *before* the non-zero exit, so a failed
+  run still records why. Its call in the runners is suffixed `|| true`; that is deliberate
+  and is not the guard removed above — recording evidence must never fail the run, and it
+  masks nothing, because the verdict is enforced on the next line.
 
 ## Handoff notes (from the cloud sessions, 2026-08-05)
 

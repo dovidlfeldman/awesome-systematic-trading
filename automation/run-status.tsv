@@ -1,0 +1,4 @@
+# Append-only run evidence, one line per scheduled run. Newest last.
+# Written by automation/record-status.sh; this file is TRACKED on purpose so remote
+# checks can see it (automation/logs/ is gitignored, ~/TradingVaultMirror is untracked).
+# columns: utc_ts  kind  claude=  mirror=  md_repo=  md_mirror=  commit=

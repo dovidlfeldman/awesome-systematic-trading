@@ -21,12 +21,25 @@ git pull --rebase --autostash origin "$(git rev-parse --abbrev-ref HEAD)" >>"$LO
 
 # Headless Claude Code run. acceptEdits covers file edits; MCP tool permissions come from
 # .claude/settings.json.
-claude -p "$(cat "$REPO_DIR/automation/market-check-prompt.md")" \
+# Capture the status instead of letting set -e kill the script here: a failed run
+# must still be RECORDED to the tracked status file before we exit non-zero.
+if claude -p "$(cat "$REPO_DIR/automation/market-check-prompt.md")" \
   --permission-mode acceptEdits \
-  >>"$LOG_FILE" 2>&1
+  >>"$LOG_FILE" 2>&1; then RUN=ok; else RUN=FAILED; fi
 
-# Mirror the vault into the owner's personal Obsidian vault. No `|| true`: a failed mirror
-# must kill the run before the trailer line, so the liveness audit catches it (see README).
-"$REPO_DIR/automation/mirror-trades.sh" >>"$LOG_FILE" 2>&1
+# Mirror the vault into the owner's personal Obsidian vault. Still fatal (see the exit
+# below) — captured only so the failure reaches the tracked status file first.
+if "$REPO_DIR/automation/mirror-trades.sh" >>"$LOG_FILE" 2>&1; then MIRROR=ok; else MIRROR=FAILED; fi
+
+# One line of run evidence to a TRACKED file. `|| true` here is deliberate and is NOT
+# the guard we removed: recording evidence must never itself fail the run, and it
+# cannot mask anything, since the real verdict is enforced immediately below.
+"$REPO_DIR/automation/record-status.sh" check "$RUN" "$MIRROR" >>"$LOG_FILE" 2>&1 \
+  || echo "WARNING: could not record run status" >>"$LOG_FILE"
+
+if [ "$RUN" != ok ] || [ "$MIRROR" != ok ]; then
+  echo "FAILED (claude=$RUN mirror=$MIRROR) — no trailer written." >>"$LOG_FILE"
+  exit 1
+fi
 
 echo "Market check finished $(date -u +%FT%TZ)" >>"$LOG_FILE"

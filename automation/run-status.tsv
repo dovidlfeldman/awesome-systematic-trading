@@ -1,7 +1,10 @@
 # Append-only run evidence, one line per scheduled run. Newest last.
 # Written by automation/record-status.sh; this file is TRACKED on purpose so remote
 # checks can see it (automation/logs/ is gitignored, ~/TradingVaultMirror is untracked).
-# columns: utc_ts  kind  claude=  mirror=  md_repo=  md_mirror=  commit=
+# columns: utc_ts  kind  claude=  mirror=  note=  md_repo=  md_mirror=  commit=
+# note= added 2026-08-27: ok = agent wrote its Trades/ run note, stub = ensure-run-note.sh
+# had to write one in its place. Lines before that date predate the column.
 2026-08-26T20:15:06Z	test	claude=ok	mirror=ok	md_repo=38	md_mirror=38	commit=6ba1d1e
 2026-08-27T13:33:29Z	cycle	claude=ok	mirror=ok	md_repo=39	md_mirror=39	commit=56b99e0
 2026-08-27T16:31:32Z	check	claude=ok	mirror=ok	md_repo=40	md_mirror=40	commit=1547059
+2026-08-27T19:46:19Z	check	claude=ok	mirror=ok	note=ok	md_repo=41	md_mirror=41	commit=957cb54

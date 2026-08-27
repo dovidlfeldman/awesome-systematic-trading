@@ -28,7 +28,11 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-30 Daily Signals]] — v3 cycle #1: XLE/XLF lead, semis crash dodged
   - [[2026-07-29 Momentum Rankings v2]] — aggressive-mandate signal (SMH #1, leverage off)
   - [[2026-07-29 Momentum Rankings]] — original v1 signal
-- **Trades**
+- **Trades** — **the run ledger.** From 2026-08-27 every scheduled run writes exactly one
+  note here — the 9:30 cycle and both intraday checks alike — whether or not anything traded,
+  and even when the run is skipped. A slot with no note means the run did not happen. Notes
+  before that date are trade-only (a quiet day left nothing behind), which is the gap this
+  ledger closes.
   - [[2026-07-29 IWM Buy]] — filled (v1)
   - [[2026-07-29 EEM Buy]] — filled (v1, after [[2026-07-29 EEM Buy (blocked)|the investor-profile block]])
   - [[2026-07-29 Rotation Sells]] — filled (v1 liquidation, +$0.54)
@@ -41,7 +45,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-05 SPY Buy]] — filled (tranche A, slot 2)
   - [[2026-08-25 Rotation XLF+SPY out, GLD+XLE in]] — full two-slot rotation; XLF +$2.48, SPY −$2.10
   - [[2026-08-26 GLD+XLE Top-Up]] — filled; settled rotation proceeds deployed, book now ~100% invested
-- **Checks** (intraday risk checks — 12:30 & 3:45 ET, risk exits only)
+  - [[2026-08-27 1545 Check — No Action]] — close check, no trades: breaker clear at 1.80×, sleeve empty, no rotation (first run-ledger note)
+- **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
+  run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
   - [[2026-08-26 1545 Close Check]] — no action: breaker clear at 1.80×, sleeve empty
   - [[2026-08-26 1230 Midday Check]] — no action: breaker clear at 1.81×, sleeve empty
@@ -64,7 +70,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 | Slot 2 | **XLE** 4.699875 sh @ $62.02 avg ($291.50 basis) — held, still rank 2 |
 | Cash | $2.01 free, **$0 unsettled** — book is ~100% deployed; $2.01 *is* the required buffer, so there is nothing to deploy |
 | Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: re-verified 08-27 with a live quote — Oct 16 $420C (0.546Δ, 50 DTE, OI 7,449) marks $1,722.50 vs a $291.62 premium cap (5.9× over). **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** The sleeve stays gated by the Risk Rules v2 §4 premium cap and re-arms on its own once a conforming contract fits (~$3,800+ for GLD-class names, less for XLF/XLE). Accepted that it idles meanwhile |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **1.79×**. Clear |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **1.79×**. Clear (re-verified 15:45 ET: $585.21, **1.80×**) |
 
 ## Standing schedule
 
@@ -82,6 +88,13 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 - Kill switch: `launchctl bootout gui/$(id -u)/com.dfeldman.trading.<label>` for any agent, or revoke the Robinhood connector.
 - Machine must be awake at the fire time; if asleep, launchd runs the job once on wake.
 - **Scheduler proven 2026-08-26:** the 9:30 daily-cycle agent fired on its own and ran the full cycle end-to-end (breaker → signals → sells → buys → log → push) with no manual ping. The [[2026-08-25 Automation Gap]] is closed in practice, not just in config. Orders are held to 9:35 by the cycle's open-volatility gate; read-only work runs during the wait.
+- **Run ledger (added 2026-08-27):** every run writes one note to `trading-vault/Trades/`,
+  trades or not, so "did the bot run today?" is answered by looking in one folder instead of
+  inferring it from an absence. If the headless agent dies without writing its note,
+  `automation/ensure-run-note.sh` writes a stub in its place recording that the slot fired and
+  that what traded is unknown — a missed run can no longer masquerade as a quiet day. The
+  tracked `automation/run-status.tsv` carries a matching `note=ok|stub` column, so the same
+  fact is visible from the git remote without the vault.
 - Still untested: `review_option_order` / `place_option_order` under the desktop allowlist. Nothing affordable came up to exercise them.
 - **Scheduler proven again 2026-08-27:** second consecutive unattended 9:30 cycle, full path (breaker → signals → sells → buys → log → push) with no manual ping.
 - **Next cycle (Fri 2026-08-28, 9:30 ET):** rotation checks on GLD/XLE. The 08-26 RSI worry is off the table — GLD pulled back −1.6% and its RSI cooled to 66.1, seven points of headroom. The live risk now is **rank erosion, not overheating**: the qualifier bench is thin (only TLT +1.45% and XLF +0.59% behind the book), so if GLD or XLE rolls over, slot 2 could go to a weak name or to cash rather than a strong replacement. Book stays fully deployed with $2.01 cash, so a rotation can sell but **cannot redeploy proceeds until T+1** — the one-day cash gap risk carries over unchanged. Sleeve stays empty while GLD holds slot 1 (it only becomes reachable if slot 1 rotates to XLF/XLE).

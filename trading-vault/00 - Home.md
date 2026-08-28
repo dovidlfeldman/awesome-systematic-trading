@@ -48,6 +48,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-27 1545 Check — No Action]] — close check, no trades: breaker clear at 1.80×, sleeve empty, no rotation (first run-ledger note)
   - [[2026-08-28 0930 Cycle — No Run Note (agent finished without writing one)]] — **ops stub**: agent exited at 9:33 ET before the 9:35 gate; broker-reconciled, nothing traded, **no re-rank happened**
   - [[2026-08-28 1230 Check — No Action]] — midday check, no trades: breaker clear, sleeve empty; **cash up $258.48 with no sale (apparent deposit — needs owner confirmation)**; GLD −2.8%
+  - [[2026-08-28 1545 Check — No Action]] — close check, no trades: breaker clear at 2.57×, sleeve empty; GLD closed the week −3.1% with **ranks still unscored since Thursday**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -108,9 +109,10 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
      contributed" reading is a stale-denominator artifact, not a gain: the account is −8.0%
      against contributed-plus-deposit.
   2. **The 08-28 9:30 cycle never re-ranked.** The agent exited at 9:33 ET before its own 9:35
-     open-volatility gate, so no rotation decision was made on a day GLD fell 2.8%. GLD/XLE
-     ranks are a full trading day stale going into Monday. The `note=stub` column caught it;
-     the gate-versus-exit race in `run-daily-cycle.sh` is the thing to fix.
+     open-volatility gate, so no rotation decision was made on a day GLD fell **3.1%** (final
+     15:45 mark $409.32). GLD/XLE ranks are a full trading day stale going into Monday. The
+     `note=stub` column caught it; the gate-versus-exit race in `run-daily-cycle.sh` is the
+     thing to fix.
 - **Next cycle (Mon 2026-08-31, 9:30 ET):** rotation checks on GLD/XLE, carrying the deferred
   08-28 re-rank plus whatever the new cash turns out to be. Original 08-28 framing below.
 - **Prior next-cycle note (Fri 2026-08-28, 9:30 ET — did not execute):** rotation checks on GLD/XLE. The 08-26 RSI worry is off the table — GLD pulled back −1.6% and its RSI cooled to 66.1, seven points of headroom. The live risk now is **rank erosion, not overheating**: the qualifier bench is thin (only TLT +1.45% and XLF +0.59% behind the book), so if GLD or XLE rolls over, slot 2 could go to a weak name or to cash rather than a strong replacement. Book stays fully deployed with $2.01 cash, so a rotation can sell but **cannot redeploy proceeds until T+1** — the one-day cash gap risk carries over unchanged. Sleeve stays empty while GLD holds slot 1 (it only becomes reachable if slot 1 rotates to XLF/XLE).

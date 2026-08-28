@@ -46,6 +46,8 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-25 Rotation XLF+SPY out, GLD+XLE in]] — full two-slot rotation; XLF +$2.48, SPY −$2.10
   - [[2026-08-26 GLD+XLE Top-Up]] — filled; settled rotation proceeds deployed, book now ~100% invested
   - [[2026-08-27 1545 Check — No Action]] — close check, no trades: breaker clear at 1.80×, sleeve empty, no rotation (first run-ledger note)
+  - [[2026-08-28 0930 Cycle — No Run Note (agent finished without writing one)]] — **ops stub**: agent exited at 9:33 ET before the 9:35 gate; broker-reconciled, nothing traded, **no re-rank happened**
+  - [[2026-08-28 1230 Check — No Action]] — midday check, no trades: breaker clear, sleeve empty; **cash up $258.48 with no sale (apparent deposit — needs owner confirmation)**; GLD −2.8%
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -97,4 +99,18 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   fact is visible from the git remote without the vault.
 - Still untested: `review_option_order` / `place_option_order` under the desktop allowlist. Nothing affordable came up to exercise them.
 - **Scheduler proven again 2026-08-27:** second consecutive unattended 9:30 cycle, full path (breaker → signals → sells → buys → log → push) with no manual ping.
-- **Next cycle (Fri 2026-08-28, 9:30 ET):** rotation checks on GLD/XLE. The 08-26 RSI worry is off the table — GLD pulled back −1.6% and its RSI cooled to 66.1, seven points of headroom. The live risk now is **rank erosion, not overheating**: the qualifier bench is thin (only TLT +1.45% and XLF +0.59% behind the book), so if GLD or XLE rolls over, slot 2 could go to a weak name or to cash rather than a strong replacement. Book stays fully deployed with $2.01 cash, so a rotation can sell but **cannot redeploy proceeds until T+1** — the one-day cash gap risk carries over unchanged. Sleeve stays empty while GLD holds slot 1 (it only becomes reachable if slot 1 rotates to XLF/XLE).
+- **Two open items from 2026-08-28 12:30 (see [[2026-08-28 1230 Check — No Action]]):**
+  1. **Unexplained +$258.48 cash.** Free cash went $2.01 → $260.49 with zero orders since 08-27
+     and both share counts unchanged; `unsettled_funds` and `pending_deposits` are both $0.
+     Consistent with a settled owner deposit. **Contributed capital and the breaker are left
+     unchanged pending owner confirmation** — if confirmed, contributed becomes $909.02 and the
+     breaker moves $325 → $454.51 (account still clear at 1.84×). Until then the "+28.6% vs
+     contributed" reading is a stale-denominator artifact, not a gain: the account is −8.0%
+     against contributed-plus-deposit.
+  2. **The 08-28 9:30 cycle never re-ranked.** The agent exited at 9:33 ET before its own 9:35
+     open-volatility gate, so no rotation decision was made on a day GLD fell 2.8%. GLD/XLE
+     ranks are a full trading day stale going into Monday. The `note=stub` column caught it;
+     the gate-versus-exit race in `run-daily-cycle.sh` is the thing to fix.
+- **Next cycle (Mon 2026-08-31, 9:30 ET):** rotation checks on GLD/XLE, carrying the deferred
+  08-28 re-rank plus whatever the new cash turns out to be. Original 08-28 framing below.
+- **Prior next-cycle note (Fri 2026-08-28, 9:30 ET — did not execute):** rotation checks on GLD/XLE. The 08-26 RSI worry is off the table — GLD pulled back −1.6% and its RSI cooled to 66.1, seven points of headroom. The live risk now is **rank erosion, not overheating**: the qualifier bench is thin (only TLT +1.45% and XLF +0.59% behind the book), so if GLD or XLE rolls over, slot 2 could go to a weak name or to cash rather than a strong replacement. Book stays fully deployed with $2.01 cash, so a rotation can sell but **cannot redeploy proceeds until T+1** — the one-day cash gap risk carries over unchanged. Sleeve stays empty while GLD holds slot 1 (it only becomes reachable if slot 1 rotates to XLF/XLE).

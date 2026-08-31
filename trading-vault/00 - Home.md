@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-08-31 Daily Signals]] — v3 cycle #9: no rotation (GLD/XLE hold), idle cash deployed; momentum flat market-wide
   - [[2026-08-27 Daily Signals]] — v3 cycle #8: no rotation, no trades; GLD's RSI cooled to 66.1
   - [[2026-08-26 Cycle Skipped (already ran)]] — **ops**: 15:51 ET re-run stood down; breaker re-verified clear at 1.80×
   - [[2026-08-26 Daily Signals]] — v3 cycle #7: no rotation, settled proceeds deployed; **first fully automated cycle**
@@ -49,6 +50,8 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-28 0930 Cycle — No Run Note (agent finished without writing one)]] — **ops stub**: agent exited at 9:33 ET before the 9:35 gate; broker-reconciled, nothing traded, **no re-rank happened**
   - [[2026-08-28 1230 Check — No Action]] — midday check, no trades: breaker clear, sleeve empty; **cash up $258.48 with no sale (apparent deposit — needs owner confirmation)**; GLD −2.8%
   - [[2026-08-28 1545 Check — No Action]] — close check, no trades: breaker clear at 2.57×, sleeve empty; GLD closed the week −3.1% with **ranks still unscored since Thursday**
+  - [[2026-08-31 0930 Cycle — Top-Up GLD+XLE (idle cash deployed)]] — **traded**: no rotation (GLD/XLE still top-2), $258.49 of idle settled cash deployed into both slots; account back to ~100% invested, deferred 08-28 re-rank cleared
+  - [[2026-08-31 1230 Check — No Action]] — midday check, no trades: breaker clear at 2.57×, sleeve empty; book quiet (GLD −0.4%, XLE +0.9%), XLE leading a second session into tomorrow's re-rank
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -61,19 +64,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-08-27, ~9:35 AM ET — v3 cycle #8 done, no trades)
+## Current state (as of 2026-08-31, ~9:33 AM ET — v3 cycle #9 done, traded)
 
 | Item | Value |
 |---|---|
-| Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) |
-| Account value | **$583.25** (−10.3% vs contributed) — equity $581.24, cash $2.01 |
+| Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
+| Account value | **$839.93** — equity $837.93, cash $2.00. **+29.1%** vs $650.54 contributed, or **−7.6%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
 | Realized P&L to date | **−$64.99** (equity legs −$1.91; options sleeve −$63.08) — unchanged, nothing sold this cycle |
-| Unrealized P&L | ≈ **−$1.40** on a $582.98 book basis (GLD −$2.72, XLE +$1.32) at the 9:31 ET marks |
-| Slot 1 | **GLD** 0.686586 sh @ $424.56 avg ($291.51 basis) — held, still rank 1 |
-| Slot 2 | **XLE** 4.699875 sh @ $62.02 avg ($291.50 basis) — held, still rank 2 |
-| Cash | $2.01 free, **$0 unsettled** — book is ~100% deployed; $2.01 *is* the required buffer, so there is nothing to deploy |
-| Options sleeve | Empty — gate open, but **no conforming GLD call is affordable**: re-verified 08-27 with a live quote — Oct 16 $420C (0.546Δ, 50 DTE, OI 7,449) marks $1,722.50 vs a $291.62 premium cap (5.9× over). **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** The sleeve stays gated by the Risk Rules v2 §4 premium cap and re-arms on its own once a conforming contract fits (~$3,800+ for GLD-class names, less for XLF/XLE). Accepted that it idles meanwhile |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **1.79×**. Clear (re-verified 15:45 ET: $585.21, **1.80×**) |
+| Unrealized P&L | ≈ **−$3.57** on an $841.50 book basis (GLD −$12.1, XLE +$8.5) at the 9:33 ET marks |
+| Slot 1 | **GLD** 1.029288 sh @ $418.73 avg ($431.00 basis) — held, still rank 1; topped up $139.49 today |
+| Slot 2 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, still rank 2; topped up $119.00 today |
+| Cash | $2.00 free, **$0 unsettled** — book is ~100% deployed again; $2.00 *is* the required buffer, so there is nothing left to deploy |
+| Options sleeve | Empty — gate open (GLD 20d +10.05%), but **no conforming GLD call is affordable**: re-verified 08-31 with a live quote — Oct 16 $410C (0.507Δ, 46 DTE, OI 5,949) marks $1,292.50 vs a $419.93 premium cap (**3.08× over**, down from 5.9× on 08-27). The cheaper $420C is 0.393Δ, below spec. **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** Re-arms on its own at roughly **$2,585** of account value at today's GLD pricing |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.58×**. Clear. *(Also clear at **1.85×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
 
 ## Standing schedule
 
@@ -100,19 +103,38 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   fact is visible from the git remote without the vault.
 - Still untested: `review_option_order` / `place_option_order` under the desktop allowlist. Nothing affordable came up to exercise them.
 - **Scheduler proven again 2026-08-27:** second consecutive unattended 9:30 cycle, full path (breaker → signals → sells → buys → log → push) with no manual ping.
-- **Two open items from 2026-08-28 12:30 (see [[2026-08-28 1230 Check — No Action]]):**
-  1. **Unexplained +$258.48 cash.** Free cash went $2.01 → $260.49 with zero orders since 08-27
-     and both share counts unchanged; `unsettled_funds` and `pending_deposits` are both $0.
-     Consistent with a settled owner deposit. **Contributed capital and the breaker are left
-     unchanged pending owner confirmation** — if confirmed, contributed becomes $909.02 and the
-     breaker moves $325 → $454.51 (account still clear at 1.84×). Until then the "+28.6% vs
-     contributed" reading is a stale-denominator artifact, not a gain: the account is −8.0%
-     against contributed-plus-deposit.
-  2. **The 08-28 9:30 cycle never re-ranked.** The agent exited at 9:33 ET before its own 9:35
-     open-volatility gate, so no rotation decision was made on a day GLD fell **3.1%** (final
-     15:45 mark $409.32). GLD/XLE ranks are a full trading day stale going into Monday. The
-     `note=stub` column caught it; the gate-versus-exit race in `run-daily-cycle.sh` is the
-     thing to fix.
-- **Next cycle (Mon 2026-08-31, 9:30 ET):** rotation checks on GLD/XLE, carrying the deferred
-  08-28 re-rank plus whatever the new cash turns out to be. Original 08-28 framing below.
-- **Prior next-cycle note (Fri 2026-08-28, 9:30 ET — did not execute):** rotation checks on GLD/XLE. The 08-26 RSI worry is off the table — GLD pulled back −1.6% and its RSI cooled to 66.1, seven points of headroom. The live risk now is **rank erosion, not overheating**: the qualifier bench is thin (only TLT +1.45% and XLF +0.59% behind the book), so if GLD or XLE rolls over, slot 2 could go to a weak name or to cash rather than a strong replacement. Book stays fully deployed with $2.01 cash, so a rotation can sell but **cannot redeploy proceeds until T+1** — the one-day cash gap risk carries over unchanged. Sleeve stays empty while GLD holds slot 1 (it only becomes reachable if slot 1 rotates to XLF/XLE).
+- **Status of the two open items from 2026-08-28 (both moved on 08-31):**
+  1. **Unexplained +$258.48 cash — still unconfirmed, but now deployed.** Free cash went
+     $2.01 → $260.49 with zero orders and both share counts unchanged; `unsettled_funds` and
+     `pending_deposits` both $0. The 08-31 cycle **deployed it** into GLD/XLE rather than let a
+     third of the account sit idle indefinitely: it has fully cleared, it matches the owner's
+     prior $250 deposit on 07-31, and the position is reversible for ~1–3 bp if the owner says
+     otherwise. **Contributed capital and the breaker are still left unchanged pending owner
+     confirmation** — deploying cash is a trading call, restating the denominator is a fact
+     nobody has confirmed. If confirmed, contributed becomes $909.02 and the breaker moves
+     $325 → $454.51 (account still clear at 1.85×). Until then the "+29.1% vs contributed"
+     reading is a stale-denominator artifact, not a gain: the account is −7.6% against
+     contributed-plus-deposit. **Owner action still wanted: confirm or deny the deposit.**
+  2. **The 08-28 missed re-rank is cleared.** ✅ The 08-31 cycle scored all 8 names on fresh bars
+     through the 08-28 close; no rotation was owed (GLD/XLE were still the top two), so the
+     skipped Friday decision cost nothing. **The underlying bug is not fixed:** the 08-28 agent
+     exited at 9:33 ET before its own 9:35 gate. The 08-31 run avoided it by filling the wait
+     with read-only work and placing at 9:32:38, but the gate-versus-exit race in
+     `run-daily-cycle.sh` is still the thing to fix.
+  3. **New 08-31: the agent could not commit or push.** `git add`/`commit`/`push` were refused by
+     the agent's permission layer on a non-interactive run, so the 08-31 vault files (run note,
+     signals, this file) were written to disk but **left uncommitted**. Neither post-step covers
+     it — `ensure-run-note.sh` exits early once a note exists, and `record-status.sh` stages only
+     `run-status.tsv`. The Obsidian mirror still updated (it copies the working tree), so only the
+     git remote goes stale. **Files committed and pushed by the 12:30 check** (run note, signals,
+     Home, plus the uncommitted run-ledger automation changes), so the remote is current again.
+     **Still open: the permissions fix, so the next cycle can publish itself unattended.**
+- **Next cycle (Tue 2026-09-01, 9:30 ET):** rotation checks on GLD/XLE. **Watch for a slot swap** —
+  XLE opened Monday +1.9% ($62.68 → $63.88) against GLD −0.4%, so if that holds, XLE takes rank 1
+  from GLD on the next 10-day print. That matters beyond ordering: the options sleeve keys off
+  **slot 1**, and an XLE-led book puts a far cheaper underlying in that seat (XLE ~$64 vs GLD ~$407),
+  which is the one realistic path to the sleeve re-arming well before the ~$2,585 GLD-based
+  threshold. Book is back to ~100% deployed with $2.00 cash, so a rotation can sell but **cannot
+  redeploy proceeds until T+1** — the one-day cash gap risk is live again, and both slots now carry
+  intraday quantity from today's top-up. Bench (TLT +1.02%, XLF −0.10%, both qualifying) is thin but
+  no longer weak, so a forced rotation would at least land somewhere defensible.

@@ -103,7 +103,27 @@ rule-based sells (including sleeve exits) → rule-based buys (sleeve first, the
 **Intraday risk check** (`market-check-prompt.md`, 12:30 & 3:45 ET): circuit-breaker →
 protective options-sleeve close only (underlying 20-day return negative, or contract <21 DTE)
 → log + push. **Never buys or rotates** — that is the 9:30 cycle's job alone. Logs to
-`automation/logs/check-<date>-<HHMM>.log`; check notes land in `trading-vault/Checks/`.
+`automation/logs/check-<date>-<HHMM>.log`.
+
+### The run ledger (`trading-vault/Trades/`)
+
+Since 2026-08-27, **every** scheduled run — the 9:30 cycle and both intraday checks — writes
+exactly one note into `trading-vault/Trades/`, whether or not anything traded and even when the
+run skips itself (market closed, already ran, outside the window). Before this, a day with no
+trades left nothing behind, so "it did not trade" and "it never ran" looked identical in the
+vault; that ambiguity is what this closes. `trading-vault/Checks/` is now an archive — the
+intraday checks write to the ledger instead.
+
+Notes are named `<YYYY-MM-DD> <HHMM> <Cycle|Check> — <outcome>.md`, ET. The runner computes the
+date and slot **once** and injects them into the prompt under a "This run" heading, so the
+agent and `ensure-run-note.sh` agree on the filename rather than each deriving its own clock.
+
+`ensure-run-note.sh` runs after the agent and before the mirror. If no note matching the slot
+prefix exists it writes a **stub** — frontmatter, the fired-but-unnoted status, the last 40 log
+lines, and instructions to reconcile against the broker — then commits and pushes it. That is
+the part that survives the failure mode the ledger exists for: an agent that dies early cannot
+leave the folder looking like a quiet day. Its exit code is the signal (`0` = the agent wrote
+its own note, `10` = a stub was written), and it reaches `run-status.tsv` as `note=ok|stub`.
 
 ## Vault mirror to the personal Obsidian vault
 
@@ -142,9 +162,11 @@ Silent failure is the historical enemy. To audit:
   must not look healthy).
 - A log containing `Ignoring N permissions` means the trust/prefix fix regressed (see step 4).
 - `automation/run-status.tsv` — the only run evidence that reaches the git remote. One line
-  per run: `utc_ts  kind  claude=ok|FAILED  mirror=ok|FAILED  md_repo=  md_mirror=  commit=`.
+  per run:
+  `utc_ts  kind  claude=ok|FAILED  mirror=ok|FAILED  note=ok|stub  md_repo=  md_mirror=  commit=`.
   Both counts should match; `mirror=FAILED` or a stalled timestamp means the vault is not
-  being updated. Use this when auditing from anywhere that only has the remote (a cloud
+  being updated, and `note=stub` means the run fired but the agent never wrote its ledger
+  entry — go read the stub. (`note=` was added 2026-08-27; earlier lines lack the column.) Use this when auditing from anywhere that only has the remote (a cloud
   agent, another machine) — `automation/logs/` is gitignored and `~/TradingVaultMirror` is
   untracked, so neither is visible there.
 

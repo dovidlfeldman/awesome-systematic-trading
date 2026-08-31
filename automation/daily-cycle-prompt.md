@@ -6,9 +6,10 @@ documented in `trading-vault/` in this repository — read `trading-vault/00 - H
 and treat `trading-vault/Strategy/Staggered Daily Swing Rotation v3.md` and
 `trading-vault/Strategy/Risk Rules v2.md` as the authority on every rule referenced below.
 
-Run the following steps in order. Skip the whole cycle (log why, still push) if:
-the market is closed today; it is before 9:35 AM ET; or the cycle already ran today
-(check `get_equity_orders` and `get_option_orders` with `created_at_gte` = today UTC).
+Run the following steps in order. Skip the whole cycle if: the market is closed today; it is
+before 9:35 AM ET; or the cycle already ran today (check `get_equity_orders` and
+`get_option_orders` with `created_at_gte` = today UTC). **A skip is still a run:** write the
+step-6 run note recording that it was skipped and why, then push. Never exit without a note.
 
 1. **Circuit-breaker first.** `get_portfolio`. If total account value is below the breaker in
    Risk Rules v2 §7 (50% of contributed capital — see Home for the current figure), liquidate
@@ -35,10 +36,53 @@ the market is closed today; it is before 9:35 AM ET; or the cycle already ran to
    order. Never sell a position bought with unsettled funds; never buy with unsettled
    proceeds. Market orders only on penny-spread ETFs during regular hours.
 
-6. **Log.** Write today's signal table + decisions to `trading-vault/Signals/`, a note per
-   trade (or per rotation) in `trading-vault/Trades/`, update `trading-vault/00 - Home.md`
-   (positions, realized P&L, next-cycle expectations). Commit with a descriptive message and
-   push to the current branch.
+6. **Log — one run note per run, always.** Every run writes exactly one note into
+   `trading-vault/Trades/`, **whether or not anything traded** and **even if you skipped the
+   cycle in the guard above**. `Trades/` is the run ledger: a quiet day and a missed day must
+   never look the same in that folder. Use the exact filename prefix the runner injects under
+   "This run" below and append a short outcome to it — e.g.
+   `… Cycle — No Trades.md`, `… Cycle — Rotation XLF out, GLD in.md`,
+   `… Cycle — Skipped (market closed).md`, `… Cycle — HALT (breaker tripped).md`.
 
-7. **Report.** End with a short human-readable summary: account value, what traded and why,
-   realized/unrealized P&L, anything blocked or unusual.
+   Open the note with this block, keys verbatim, so a flat day is scannable at a glance:
+
+   ```
+   ---
+   tags: [trade, run, <traded|no-trades|skipped|halt>]
+   date: YYYY-MM-DD
+   slot: "HHMM"
+   kind: cycle
+   outcome: <the same short outcome used in the filename>
+   ---
+
+   # YYYY-MM-DD HHMM Cycle — <outcome>
+
+   | | |
+   |---|---|
+   | Ran | HH:MM ET |
+   | Account | $X (equity $Y + cash $Z), N% vs contributed |
+   | Circuit-breaker | $N — account at N× — clear / **TRIPPED** |
+   | Signals | rank 1 SYM (+N% 10d, RSI N), rank 2 SYM (…) |
+   | Target book | slot 1 SYM, slot 2 SYM |
+   | Held | SYM, SYM — unchanged |
+   | **Traded** | **none — <one-line reason>**  *(or the order table)* |
+   | Options sleeve | empty/held/closed — one-line why |
+   | Realized / unrealized P&L | $X / $Y |
+   | Blocked | none / … |
+   ```
+
+   Then the prose. On a day that traded, keep the existing depth: per-leg order table with
+   fills, `ref_id`s, verbatim review quotes, resulting position, hygiene notes. On a day that
+   did **not** trade, spend the note on *why there was nothing to do* — no rotation because
+   the book is still the top-2, no buys because settled cash is only the buffer, sleeve priced
+   out against the premium cap — plus anything that came close to firing and what would tip
+   it. "No trades" without a reason is not an acceptable note.
+
+7. **Signals + Home.** Also write the full signal table to `trading-vault/Signals/`, update
+   `trading-vault/00 - Home.md` (positions, realized P&L, next-cycle expectations), and add
+   the run note to Home's **Trades** list with a one-line summary. Commit with a descriptive
+   message and push to the current branch.
+
+8. **Report.** End with a short human-readable summary: account value, **whether anything
+   traded (say "no trades" explicitly when nothing did) and why**, realized/unrealized P&L,
+   anything blocked or unusual, and the filename of the run note you wrote.

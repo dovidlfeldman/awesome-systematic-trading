@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-09-01 Daily Signals]] — v3 cycle #10: **XLE to rank 1, TLT edges GLD out of slot 2 by $0.0015**; qualifiers down to 3 of 8
   - [[2026-08-31 Daily Signals]] — v3 cycle #9: no rotation (GLD/XLE hold), idle cash deployed; momentum flat market-wide
   - [[2026-08-27 Daily Signals]] — v3 cycle #8: no rotation, no trades; GLD's RSI cooled to 66.1
   - [[2026-08-26 Cycle Skipped (already ran)]] — **ops**: 15:51 ET re-run stood down; breaker re-verified clear at 1.80×
@@ -53,6 +54,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-08-31 0930 Cycle — Top-Up GLD+XLE (idle cash deployed)]] — **traded**: no rotation (GLD/XLE still top-2), $258.49 of idle settled cash deployed into both slots; account back to ~100% invested, deferred 08-28 re-rank cleared
   - [[2026-08-31 1230 Check — No Action]] — midday check, no trades: breaker clear at 2.57×, sleeve empty; book quiet (GLD −0.4%, XLE +0.9%), XLE leading a second session into tomorrow's re-rank
   - [[2026-08-31 1545 Check — No Action]] — close check, no trades: breaker clear at 2.59×, sleeve empty; XLE closed +1.9% vs GLD −0.4%, tightening the GLD/XLE rank-1 race into tomorrow's cycle
+  - [[2026-09-01 0930 Cycle — Rotation GLD out, slot 2 to cash]] — **traded**: GLD sold in full at $399.3303 (**−$19.97 realized**) after TLT cleared its 20-SMA by $0.0015 and took slot 2; proceeds unsettled so no buy — slot 2 and the sleeve both wait for 09-02. **Found the account is `limited_margin`: the T+1 wall is policy, not broker mechanics.** **XLE in slot 1 makes a conforming call affordable for the first time ($207 vs a $419 cap)**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -65,19 +67,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-08-31, ~9:33 AM ET — v3 cycle #9 done, traded)
+## Current state (as of 2026-09-01, ~9:36 AM ET — v3 cycle #10 done, traded)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$839.93** — equity $837.93, cash $2.00. **+29.1%** vs $650.54 contributed, or **−7.6%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$64.99** (equity legs −$1.91; options sleeve −$63.08) — unchanged, nothing sold this cycle |
-| Unrealized P&L | ≈ **−$3.57** on an $841.50 book basis (GLD −$12.1, XLE +$8.5) at the 9:33 ET marks |
-| Slot 1 | **GLD** 1.029288 sh @ $418.73 avg ($431.00 basis) — held, still rank 1; topped up $139.49 today |
-| Slot 2 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, still rank 2; topped up $119.00 today |
-| Cash | $2.00 free, **$0 unsettled** — book is ~100% deployed again; $2.00 *is* the required buffer, so there is nothing left to deploy |
-| Options sleeve | Empty — gate open (GLD 20d +10.05%), but **no conforming GLD call is affordable**: re-verified 08-31 with a live quote — Oct 16 $410C (0.507Δ, 46 DTE, OI 5,949) marks $1,292.50 vs a $419.93 premium cap (**3.08× over**, down from 5.9× on 08-27). The cheaper $420C is 0.393Δ, below spec. **Owner decision 2026-08-25: wait for a bigger account — do NOT relax the delta/DTE spec to fit.** Re-arms on its own at roughly **$2,585** of account value at today's GLD pricing |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.58×**. Clear. *(Also clear at **1.85×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
+| Account value | **$837.70** — equity $424.03, cash $413.67. **+28.8%** vs $650.54 contributed, or **−7.8%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Realized P&L to date | **−$84.96** (equity legs −$21.88; options sleeve −$63.08) — GLD's rotation exit cost **−$19.97** today |
+| Unrealized P&L | **+$13.53** on a $410.50 book basis (XLE only) at the 9:36 ET marks |
+| Slot 1 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, **promoted to rank 1** (+2.21% 10d, +8.79% 20d, RSI 67.5) |
+| Slot 2 | **Cash.** Target is **TLT**, but it could not be bought — see below. GLD was sold out of this slot today |
+| Cash | $413.67 total, of which **$411.03 is unsettled** (GLD proceeds, settle 2026-09-02) and only **$2.64 is free** — which *is* the required buffer. Nothing was deployable today |
+| Options sleeve | Empty — but **the pricing blocker is gone**. With XLE (~$64.66) in slot 1 instead of GLD (~$408), a conforming call is affordable for the first time: **Oct 16 $65C, 0.519Δ, 45 DTE, OI 7,903, $207 premium vs a $419.07 cap**. Gate open (XLE 20d +8.79%). Blocked **only on settled cash**, not on spec and not on the cap. **The ~$2,585 re-arm threshold below is obsolete** — it was a GLD-priced figure; at XLE pricing the sleeve arms at roughly **$414** of account value. No spec relaxation needed, so the owner's 2026-08-25 instruction stands and is now moot |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.58×**. Clear. *(Also clear at **1.84×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
 
 ## Standing schedule
 
@@ -130,12 +132,30 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
      git remote goes stale. **Files committed and pushed by the 12:30 check** (run note, signals,
      Home, plus the uncommitted run-ledger automation changes), so the remote is current again.
      **Still open: the permissions fix, so the next cycle can publish itself unattended.**
-- **Next cycle (Tue 2026-09-01, 9:30 ET):** rotation checks on GLD/XLE. **Watch for a slot swap** —
-  XLE opened Monday +1.9% ($62.68 → $63.88) against GLD −0.4%, so if that holds, XLE takes rank 1
-  from GLD on the next 10-day print. That matters beyond ordering: the options sleeve keys off
-  **slot 1**, and an XLE-led book puts a far cheaper underlying in that seat (XLE ~$64 vs GLD ~$407),
-  which is the one realistic path to the sleeve re-arming well before the ~$2,585 GLD-based
-  threshold. Book is back to ~100% deployed with $2.00 cash, so a rotation can sell but **cannot
-  redeploy proceeds until T+1** — the one-day cash gap risk is live again, and both slots now carry
-  intraday quantity from today's top-up. Bench (TLT +1.02%, XLF −0.10%, both qualifying) is thin but
-  no longer weak, so a forced rotation would at least land somewhere defensible.
+- **NEW 2026-09-01 — the T+1 wall is policy, not broker mechanics. Owner decision wanted.**
+  After today's GLD sale the broker reported **$413.67 of buying power** with the proceeds included.
+  This account is **`type: limited_margin`**, not a cash account, so unsettled proceeds *are*
+  tradable in it with no good-faith-violation risk — `unsettled_funds` was $411.03 and buying power
+  still offered all of it. [[Staggered Daily Swing Rotation v3]] opens by calling same-day
+  redeployment *"structurally impossible"* and the whole tranche-stagger design is built on that
+  premise; **the premise is wrong for this account.** The actual constraint is
+  [[Risk Rules v2]] §6 (*"settled funds only for sizing"*) — a conservatism the owner adopted, not a
+  wall the broker imposes. §6 was followed today (no buy on $2.64 of genuinely settled cash), which
+  idled ~$411 — about half the book — for a day, and delayed a sleeve entry that has been blocked
+  for a month. **Under a daily-cadence mandate this rule costs a day of exposure after every
+  rotation.** Keep it or relax it — but it should be a decision, not an inherited assumption.
+- **Next cycle (Wed 2026-09-02, 9:30 ET):** ~$413 settles overnight and the cycle finally has money
+  to deploy. Two things to get right:
+  1. **The sleeve should arm.** XLE holds slot 1, the gate is open (+8.79% 20d), and the Oct 16
+     $65C conforms at $207 against a ~$419 cap. This will be the **first live exercise of
+     `review_option_order` / `place_option_order`** under the desktop allowlist — still untested, so
+     watch for a *permission* failure rather than a pricing one. Note it sits at the 45-DTE floor
+     and hits the 21-DTE forced-close rule around **2026-09-25**.
+  2. **Re-score TLT before buying it.** It won slot 2 by $0.0015 on the 08-31 close and traded
+     **$81.98 on 09-01, ~$0.54 *below* that same 20-SMA**, so it may simply fail tomorrow. The
+     settled-cash rule accidentally bought a one-day confirmation lag here.
+  Step 4 ordering (sleeve first, then slots) leaves ~$205 for slot 2 after a $207 sleeve — workable.
+  **Bench risk is now acute:** qualifiers fell 5 → 3, XLF and SPY both lost their 20-SMAs, and six of
+  eight names are below trend. If XLE or TLT rolls over there is no fourth name and §4 sends that
+  slot to cash. XLE is also carrying 100% of equity exposure at RSI 67.5 — only 7.5 points under the
+  75 disqualification cap, so a sharp further rally could empty *both* slots.

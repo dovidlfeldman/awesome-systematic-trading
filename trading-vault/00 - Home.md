@@ -60,6 +60,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-01 1545 Check — No Action]] — close check, no trades: breaker clear at 2.58×, sleeve empty; XLE closed +1.1% (unrealized +$14.01) tightening its hold on slot 1, GLD −2.8% further below this morning's exit, TLT still under its 20-SMA into tomorrow's re-rank
   - [[2026-09-02 0930 Cycle — Options Sleeve Armed (XLE Nov 65C)]] — **traded**: **the options sleeve is finally armed** — 1 XLE Nov 20 $65C at $3.15 ($315, 0.539Δ, 79 DTE) on settled cash; **`review_option_order`/`place_option_order` proven working**. No equity trades: XLE holds slot 1, and with only 1 of 8 names qualifying slot 2 goes to cash. Yesterday's planned Oct 16 contract **fell to 44 DTE overnight and no longer conformed**, forcing the pricier Nov expiry
   - [[2026-09-02 1230 Check — No Action]] — midday check, no trades: breaker clear at 2.59×, **sleeve held** — XLE 20d **+13.3%** (needs negative to fire) and 79 DTE (floor 21), both tests passing wide; first check with a live options position to manage
+  - [[2026-09-02 1545 Check — No Action]] — close check, no trades: breaker clear at **2.65×**, **sleeve held** — XLE 20d **+13.8%** and 79 DTE, both tests passing wider than at midday; XLE closed the session **+0.67%** at $65.205 (a new high for the move), call marked $3.35 vs a $3.15 fill (**+$20.00**)
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -72,19 +73,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-02, 12:30 PM ET — midday check, no trades since the 9:30 cycle)
+## Current state (as of 2026-09-02, 3:45 PM ET — close check, no trades since the 9:30 cycle)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$842.96** — equity $426.33, options $318.00, cash $98.63. **+29.6%** vs $650.54 contributed, or **−7.3%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Account value | **$861.67** — equity $428.04, options $335.00, cash $98.63. **+32.5%** vs $650.54 contributed, or **−5.2%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
 | Realized P&L to date | **−$84.96** (equity legs −$21.88; options sleeve −$63.08) — unchanged today, nothing was closed |
-| Unrealized P&L | **+$18.33** — XLE **+$15.83** on a $410.50 basis, sleeve call **+$2.50** on a $315.00 basis, at the 12:30 ET marks |
-| Slot 1 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, **the only qualifying name in the universe** (+1.71% 10d, +10.68% 20d, RSI 70.5 as scored at 9:30; 20d **+13.3%** on the 12:30 mark of $64.945) |
+| Unrealized P&L | **+$37.56** — XLE **+$17.56** on a $410.50 basis, sleeve call **+$20.00** on a $315.00 basis, at the 15:45 ET marks |
+| Slot 1 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, **the only qualifying name in the universe** (+1.71% 10d, +10.68% 20d, RSI 70.5 as scored at 9:30; 20d **+13.8%** on the 15:45 mark of $65.205, **+0.67% on the day** and a new high for the move) |
 | Slot 2 | **Cash — by rule, not by accident.** Only 1 of 8 names qualified, so §4 puts this tranche in cash. TLT (the 09-01 target) failed trend by $0.60 and was never bought |
 | Cash | **$98.63, fully settled and free** (`unsettled_funds` $0.00). The ~$2 buffer sits inside it |
-| Options sleeve | **ARMED, held through the 12:30 check** — 1× **XLE Nov 20 $65C** @ $3.15, **$315 premium**, mark $3.175 (0.549Δ), 79 DTE, OI 34,930. Premium at risk **37.4%** of account vs a 50% ($421.48) cap. First sleeve position since 2026-08-04. **Both close tests passed wide at 12:30** (20d +13.3%, 79 DTE vs a 21 floor). Closes on the first of: XLE loses slot 1 / XLE 20d return turns negative / <21 DTE → **on or about 2026-10-30** |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.59×**. Clear. *(Also clear at **1.85×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
+| Options sleeve | **ARMED, held through both intraday checks** — 1× **XLE Nov 20 $65C** @ $3.15, **$315 premium**, mark $3.35 (0.563Δ, IV 24.6%), 79 DTE, OI 34,930. Premium at risk **38.9%** of account vs a 50% ($430.83) cap — note the ratio drifts *up* as the call gains, so a rally presses it, not a selloff. First sleeve position since 2026-08-04. **Both close tests passed wide at 15:45** (20d +13.8%, 79 DTE vs a 21 floor); XLE would have to fall ~$7.90 (−12.1%) to $57.31 to fire the 20d test. Closes on the first of: XLE loses slot 1 / XLE 20d return turns negative / <21 DTE → **on or about 2026-10-30** |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.65×** ($536.67 headroom). Clear. *(Also clear at **1.89×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
 | **Concentration** | **88% of the account is XLE** — $424 of shares plus a 0.54-delta call on 100 shares (~$3,490 notional). Permitted by [[Risk Rules v2]] §2 *because XLE is the top-ranked asset*, and it arose from the system (six names disqualified themselves), not conviction. But there is no diversifying position in the book, and an energy gap-down hits both legs at once |
 
 ## Standing schedule

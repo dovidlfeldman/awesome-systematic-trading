@@ -61,6 +61,8 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-02 0930 Cycle — Options Sleeve Armed (XLE Nov 65C)]] — **traded**: **the options sleeve is finally armed** — 1 XLE Nov 20 $65C at $3.15 ($315, 0.539Δ, 79 DTE) on settled cash; **`review_option_order`/`place_option_order` proven working**. No equity trades: XLE holds slot 1, and with only 1 of 8 names qualifying slot 2 goes to cash. Yesterday's planned Oct 16 contract **fell to 44 DTE overnight and no longer conformed**, forcing the pricier Nov expiry
   - [[2026-09-02 1230 Check — No Action]] — midday check, no trades: breaker clear at 2.59×, **sleeve held** — XLE 20d **+13.3%** (needs negative to fire) and 79 DTE (floor 21), both tests passing wide; first check with a live options position to manage
   - [[2026-09-02 1545 Check — No Action]] — close check, no trades: breaker clear at **2.65×**, **sleeve held** — XLE 20d **+13.8%** and 79 DTE, both tests passing wider than at midday; XLE closed the session **+0.67%** at $65.205 (a new high for the move), call marked $3.35 vs a $3.15 fill (**+$20.00**)
+  - [[2026-09-03 0930 Cycle — Run FAILED]] — **ops stub**: agent died on an **API 529 Overloaded** before acting; reconciled by the 12:30 check as a clean no-op — **nothing traded, but the universe was never re-ranked**
+  - [[2026-09-03 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.62×**, **sleeve held** — XLE 20d **+12.0%** (the window rolled off the 08-05 low, so the base rose; XLE did not fall) and 78 DTE, both tests passing wide; **reconciled this morning's failed cycle — nothing traded, but the book is held on yesterday's ranks**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -73,19 +75,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-02, 3:45 PM ET — close check, no trades since the 9:30 cycle)
+## Current state (as of 2026-09-03, 12:30 PM ET — midday check, no trades; **today's 9:30 cycle failed, so ranks are stale from 09-02**)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$861.67** — equity $428.04, options $335.00, cash $98.63. **+32.5%** vs $650.54 contributed, or **−5.2%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$84.96** (equity legs −$21.88; options sleeve −$63.08) — unchanged today, nothing was closed |
-| Unrealized P&L | **+$37.56** — XLE **+$17.56** on a $410.50 basis, sleeve call **+$20.00** on a $315.00 basis, at the 15:45 ET marks |
-| Slot 1 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, **the only qualifying name in the universe** (+1.71% 10d, +10.68% 20d, RSI 70.5 as scored at 9:30; 20d **+13.8%** on the 15:45 mark of $65.205, **+0.67% on the day** and a new high for the move) |
+| Account value | **$851.41** — equity $427.78, options $325.00, cash $98.63. **+30.9%** vs $650.54 contributed, or **−6.3%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Realized P&L to date | **−$84.96** (equity legs −$21.88; options sleeve −$63.08) — unchanged, nothing has been closed since 09-01 |
+| Unrealized P&L | **+$27.29** — XLE **+$17.29** on a $410.50 basis, sleeve call **+$10.00** on a $315.00 basis, at the 12:30 ET marks |
+| Slot 1 | **XLE** 6.564494 sh @ $62.53 avg ($410.50 basis) — held, **the only qualifying name in the universe** as of the last completed scoring (09-02 9:30: +1.71% 10d, +10.68% 20d, RSI 70.5). **Not re-scored today — the 9:30 cycle failed.** $65.165 at midday, **+0.10% on the day**, 20d **+12.0%** |
 | Slot 2 | **Cash — by rule, not by accident.** Only 1 of 8 names qualified, so §4 puts this tranche in cash. TLT (the 09-01 target) failed trend by $0.60 and was never bought |
 | Cash | **$98.63, fully settled and free** (`unsettled_funds` $0.00). The ~$2 buffer sits inside it |
-| Options sleeve | **ARMED, held through both intraday checks** — 1× **XLE Nov 20 $65C** @ $3.15, **$315 premium**, mark $3.35 (0.563Δ, IV 24.6%), 79 DTE, OI 34,930. Premium at risk **38.9%** of account vs a 50% ($430.83) cap — note the ratio drifts *up* as the call gains, so a rally presses it, not a selloff. First sleeve position since 2026-08-04. **Both close tests passed wide at 15:45** (20d +13.8%, 79 DTE vs a 21 floor); XLE would have to fall ~$7.90 (−12.1%) to $57.31 to fire the 20d test. Closes on the first of: XLE loses slot 1 / XLE 20d return turns negative / <21 DTE → **on or about 2026-10-30** |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.65×** ($536.67 headroom). Clear. *(Also clear at **1.89×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
+| Options sleeve | **ARMED, held through three consecutive checks** — 1× **XLE Nov 20 $65C** @ $3.15, **$315 premium**, mark $3.25 (0.561Δ, IV 24.1%), 78 DTE, OI 31,983. Premium at risk **38.2%** of account vs a 50% ($425.70) cap — note the ratio drifts *up* as the call gains, so a rally presses it, not a selloff. First sleeve position since 2026-08-04. **Both close tests passed wide at 12:30** (20d +12.0%, 78 DTE vs a 21 floor); XLE would have to fall ~$7.01 (−10.7%) to $58.16 to fire the 20d test. The 20d reading fell from +13.8% only because the window rolled off the 08-05 low of $57.31 onto 08-06's $58.16 — the base rose, XLE did not fall. Closes on the first of: XLE loses slot 1 / XLE 20d return turns negative / <21 DTE → **on or about 2026-10-30** |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.62×** ($526.41 headroom). Clear. *(Also clear at **1.87×** against the $454.51 breaker the deposit reading would imply — the verdict does not depend on which denominator is right)* |
 | **Concentration** | **88% of the account is XLE** — $424 of shares plus a 0.54-delta call on 100 shares (~$3,490 notional). Permitted by [[Risk Rules v2]] §2 *because XLE is the top-ranked asset*, and it arose from the system (six names disqualified themselves), not conviction. But there is no diversifying position in the book, and an energy gap-down hits both legs at once |
 
 ## Standing schedule
@@ -157,7 +159,19 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   45–90 DTE window held **exactly one expiration** — and the sleeve cost **$315 instead of $207**,
   52% more, for the same strike and delta. On this chain the DTE floor is a cliff, not a slope.
   **Price the contract on the morning you buy it; never carry yesterday's pick forward as valid.**
-- **Next cycle (Thu 2026-09-03, 9:30 ET):**
+- **NEW 2026-09-03 — the 9:30 cycle failed on an API 529 and the day's re-rank never happened.**
+  The headless agent exited non-zero on `API Error: 529 Overloaded` before taking any action;
+  `ensure-run-note.sh` wrote [[2026-09-03 0930 Cycle — Run FAILED]] in its place. The 12:30 check
+  reconciled against the broker: **nothing traded** — share count, contract, and cash are all
+  unchanged from the 09-02 close — so it was a clean no-op, not a partial run. **What was lost is
+  the decision, not money:** the 8-name scoring that sets slot 1, slot 2, and the sleeve's slot-1
+  close condition did not run, so the book is held on 09-02 ranks. The intraday checks cannot
+  cover for this — re-ranking is exactly the rotation they are forbidden to do, and their two risk
+  tests (20d return, DTE) both pass. **This is a new failure mode:** the previous gap-versus-exit
+  bug was a race in `run-daily-cycle.sh`; this is an upstream API error with no retry around it.
+  **Worth fixing: retry the agent invocation on 429/529 before declaring the slot failed.**
+  **Owner action wanted: re-run today's cycle manually, or accept stale ranks until Friday.**
+- **Next cycle (Fri 2026-09-04, 9:30 ET — carried forward from the failed 09-03 cycle):**
   1. **Re-rank first — the book now has an options leg that keys off slot 1.** If XLE loses rank 1,
      the sleeve closes the same morning (sell to close, limit at mid, GFD) *and* the equity slot
      rotates. Those two are coupled for the first time.

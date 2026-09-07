@@ -15,6 +15,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - *(no 2026-09-07 note — Labor Day, no session and no new bar. Writing one would have restated the
+    09-04 table under a date on which no market data existed, implying a re-rank that did not happen.
+    Ranks are stale by design until 09-08; see the run note in Trades.)*
   - [[2026-09-04 Daily Signals]] — v3 cycle #12: **XLF takes slot 1, SPY slot 2, XLE falls to rank 3 by $0.0136**; qualifiers recover 1 → 4 of 8
   - [[2026-09-02 Daily Signals]] — v3 cycle #11: **XLE is the only qualifier (1 of 8)**; TLT fails trend by $0.60, GLD loses its 20-SMA, slot 2 to cash
   - [[2026-09-01 Daily Signals]] — v3 cycle #10: **XLE to rank 1, TLT edges GLD out of slot 2 by $0.0015**; qualifiers down to 3 of 8
@@ -68,6 +71,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-04 0930 Cycle — Rotation XLE out, XLF+SPY in (sleeve closed)]] — **traded, 4 fills**: the **coupled unwind fired for the first time** — XLF took slot 1 from XLE, so the equity leg sold (+$7.62) *and* the Nov 65C closed (**−$66.04**) in the same session; SPY took slot 2 **by $0.0136 of closing price**. Realized **−$58.42**. **The sleeve is now 2-for-2 on losses (−$129.12) vs −$14.26 from all equity rotations combined.** Account is **87% cash until Tuesday** — $667.05 of proceeds unsettled, only $2.03 deployable
   - [[2026-09-04 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.36×**, **sleeve empty** (closed this morning, so both sleeve tests are n-a); the two new $48 legs drifted −$0.16 combined, and **XLE fell a further −0.80% to $64.10**, widening the gap behind this morning's 1.4-cent slot-2 decision
   - [[2026-09-04 1545 Check — No Action]] — close check, no trades: breaker clear at **2.36×**, **sleeve empty** (both tests n-a for a second consecutive check); the two $48 legs closed the week soft — XLF −0.79%, SPY −0.42%, combined unrealized **−$0.27** — and **XLE fell another −0.88% to $64.05**, a full session down since this morning's exit
+  - [[2026-09-07 0930 Cycle — Skipped (market closed, Labor Day)]] — **skipped at the guard**: US markets closed for **Labor Day**; no signals scored, nothing traded, breaker re-verified clear at **2.35×**. **Found the 09-04 forward plan had the calendar wrong** — it called 09-08 "Monday" and assumed a 09-07 session, so **settlement of the $667.03 is Wed 09-09, not Tue 09-08**; the account is unspendable one session longer than planned
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -80,19 +84,20 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-04, 9:35 AM ET — **full rotation executed**: XLE out of both slots, sleeve closed, XLF+SPY in)
+## Current state (as of 2026-09-07, 9:30 AM ET — **cycle skipped, market closed for Labor Day**; book unchanged from the 09-04 rotation)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$765.65** — equity $96.59, options $0, cash $669.06. **+17.7%** vs $650.54 contributed, or **−15.8%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$143.38** (equity legs **−$14.26**; options sleeve **−$129.12**) — **−$58.42 today**: XLE shares +$7.62, XLE Nov 65C −$66.04 |
-| Unrealized P&L | **−$0.01** — XLF and SPY were both bought minutes ago at $48.30 each; there is nothing aged enough to have moved |
-| Slot 1 | **XLF** 0.829919 sh @ $58.1984 ($48.30 basis) — bought today. Rank 1 at **+2.83% 10d**, RSI 60.5, $0.72 above its 20-SMA. **A token position, not a tranche** — there was only $98.63 of settled cash to split |
-| Slot 2 | **SPY** 0.0625 sh @ $772.80 ($48.30 basis) — bought today. Rank 2 at **+1.39% 10d**, RSI 58.6, $3.96 above its 20-SMA. Slot 2 is occupied for the first time since 09-01 |
-| Cash | **$669.06, of which only ~$2.03 is settled and deployable.** $667.05 is unsettled proceeds from today's sells and settles **Tuesday 2026-09-08** (Friday trade, T+1). **87% of the account is cash it cannot spend until Tuesday** |
+| Account value | **$765.38** — equity $96.32, options $0, cash $669.06. **+17.7%** vs $650.54 contributed, or **−15.8%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Realized P&L to date | **−$143.38** (equity legs **−$14.26**; options sleeve **−$129.12**) — unchanged; nothing traded on 09-07 |
+| Unrealized P&L | **−$0.29** — XLF marked $58.10 vs a $58.1984 basis, SPY $770.23 vs $772.80, on $96.60 of combined cost. Two $48 token legs; neither has moved enough to signify |
+| Slot 1 | **XLF** 0.829919 sh @ $58.1984 ($48.30 basis) — bought 09-04. Rank 1 on the **09-04 close** at **+2.83% 10d**, RSI 60.5, $0.72 above its 20-SMA. **A token position, not a tranche** — there was only $98.63 of settled cash to split |
+| Slot 2 | **SPY** 0.0625 sh @ $772.80 ($48.30 basis) — bought 09-04. Rank 2 on the **09-04 close** at **+1.39% 10d**, RSI 58.6, $3.96 above its 20-SMA |
+| **Ranks** | **Stale since the 2026-09-04 close.** 09-07 was a holiday, so no session and no re-rank. Next scoring is **Tue 2026-09-08**, on bars that roll three sessions off the 10-day window at once |
+| Cash | **$669.06, of which only ~$2.03 is settled and deployable.** $667.03 is unsettled proceeds from the 09-04 sells. **Settlement is Wed 2026-09-09, not Tue 09-08** — T+1 counts *business* days and Labor Day intervenes. **87% of the account is cash it cannot spend until Wednesday** |
 | Options sleeve | **CLOSED and empty.** The XLE Nov 20 $65C sold at **$2.49** ($248.96 net) against a $315.00 cost — **−$66.04**. It closed on the **slot-1 test only**; the other two conditions were far away (20d +11.11%, 77 DTE vs a 21 floor). **The sleeve was killed by XLF outperforming, not by XLE falling.** Not re-armed: XLF's gate is open (+1.30% 20d) but settled cash is $2.03 |
-| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.36×** ($440.65 headroom). Clear. *(Also clear at **1.68×** against the $454.51 breaker the deposit reading would imply)* |
+| Circuit-breaker | $325 (50% of contributed capital) — checked first, account at **2.35×** ($440.38 headroom). Clear. *(Also clear at **1.68×** against the $454.51 breaker the deposit reading would imply)* |
 | **Concentration** | **Resolved, for the wrong reason.** The 88%-XLE problem is gone because the position was sold, not because it was diversified — the account is now **87% idle cash** with two $48 token legs. Risk went from concentrated to absent; neither is the intended state |
 | **Sleeve scorecard** | **0-for-2, −$129.12** (Oct $59C −$63.08; Nov $65C −$66.04) vs **−$14.26** from every equity rotation combined. **The options sleeve is the account's entire loss story.** Both died the same way: a 45–90 DTE call held 2–4 days because slot 1 changed hands. See below |
 
@@ -200,17 +205,32 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   hysteresis band is worth the owner's consideration**: e.g. an incumbent holds its slot unless
   beaten by ≥25 bp of 10-day return. Today that band saves a spread and a settlement cycle. It is a
   strategy change, not a mid-cycle judgment call, and was deliberately *not* applied on the fly.
-- **Next cycle (Mon 2026-09-08, 9:30 ET):**
-  1. **Re-rank first, but expect to be unable to act.** Settled cash Monday is **~$2.03**; the
-     $667.05 settles **Tuesday 09-08**. Monday's cycle can sell and re-rank but effectively cannot
-     buy. **Tuesday is the first day the account can be put back to work at size.**
-  2. **XLE is 2 bp behind SPY at rank 3** and can retake a slot on a single session — which would
-     mean paying a spread to re-enter a position sold Friday. Watch for exactly the whipsaw the
+- **NEW 2026-09-07 — the forward plan had the calendar wrong, and it cost a settlement day.**
+  The 09-04 note and this file both wrote *"Next cycle (Mon 2026-09-08)"* — but **09-08 is a Tuesday**,
+  and the plan had silently assumed a trading session on **Mon 09-07, which is Labor Day.** The skip
+  guard caught the holiday this morning, but only *after* the plan had been built around a session
+  that was never going to happen. The harmless half: the "Monday can re-rank but not buy" session
+  simply does not exist, and nothing was lost because settled cash was $2.03 either way. **The
+  half that matters: T+1 counts business days, so the $667.03 settles Wed 2026-09-09, not Tue 09-08.**
+  The account is 87% unspendable for **one session longer** than planned. **Worth fixing: check the
+  market calendar when writing the forward plan, not only in the skip guard** — the guard protects
+  the run, it does not protect the plan. See [[2026-09-07 0930 Cycle — Skipped (market closed, Labor Day)]].
+- **Next cycle (Tue 2026-09-08, 9:30 ET):**
+  1. **Re-rank, but still expect to be unable to act.** Settled cash Tuesday is **~$2.03**; the
+     $667.03 settles **Wednesday 09-09**. Tuesday's cycle can sell and rotate but effectively cannot
+     buy. **Wednesday is the first day the account can be put back to work at size** — one session
+     later than the 09-04 plan claimed.
+  2. **Three sessions of tape arrive at once.** Tuesday's bars are the first new data since the 09-04
+     close, and the 10-day windows roll off three late-August prints in a single step. **Expect
+     larger rank moves than a normal overnight** — ranks have been stale since Friday.
+  3. **XLE is 2 bp behind SPY at rank 3** and can retake a slot on a single session — which would
+     mean paying a spread to re-enter a position sold on 09-04. Watch for exactly the whipsaw the
      hysteresis question above is about.
-  3. **The new legs are thin cover.** XLF clears its 20-SMA by 1.2% and SPY by 0.5%; one down
+  4. **The new legs are thin cover.** XLF clears its 20-SMA by 1.2% and SPY by 0.5%; one down
      session puts both back on the boundary, and each is only a $48 position.
-  4. **Sleeve re-arm is a Tuesday question at the earliest** — and per the item above, it should be
-     an explicit owner decision rather than an automatic re-entry.
+  5. **Sleeve re-arm is a Wednesday question at the earliest** — and per the item above, it should be
+     an explicit owner decision rather than an automatic re-entry the moment cash clears.
   **Breadth improved but is shallow:** qualifiers recovered **1 → 4 of 8** (XLF, SPY, XLE, GLD), and
-  QQQ missed by **$0.044**. The risk is no longer "nothing to rotate into" — it is that the account
-  is sitting on 87% unspendable cash during the recovery it correctly identified.
+  QQQ missed by **$0.044** — all as of the 09-04 close. The risk is no longer "nothing to rotate
+  into" — it is that the account sits on 87% unspendable cash through the recovery it correctly
+  identified, now for an extra day.

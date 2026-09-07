@@ -73,6 +73,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-04 1545 Check — No Action]] — close check, no trades: breaker clear at **2.36×**, **sleeve empty** (both tests n-a for a second consecutive check); the two $48 legs closed the week soft — XLF −0.79%, SPY −0.42%, combined unrealized **−$0.27** — and **XLE fell another −0.88% to $64.05**, a full session down since this morning's exit
   - [[2026-09-07 0930 Cycle — Skipped (market closed, Labor Day)]] — **skipped at the guard**: US markets closed for **Labor Day**; no signals scored, nothing traded, breaker re-verified clear at **2.35×**. **Found the 09-04 forward plan had the calendar wrong** — it called 09-08 "Monday" and assumed a 09-07 session, so **settlement of the $667.03 is Wed 09-09, not Tue 09-08**; the account is unspendable one session longer than planned
   - [[2026-09-07 1230 Check — Skipped (market closed, Labor Day)]] — **skipped at the guard**: holiday re-verified against the tape at 12:30 (no print since Friday 15:59:59 ET, book still stale-wide), nothing traded; breaker clear at **2.35×**, sleeve empty so both tests n-a, settlement guard not binding
+  - [[2026-09-07 1545 Check — Skipped (market closed, Labor Day)]] — **skipped at the guard**: third and final skip of the holiday, re-verified 15 minutes before what would have been the close — still **zero prints all day**, zero orders placed by anyone; breaker clear at **2.35×**, sleeve empty (5th straight check), book closes the day exactly as the 09-04 rotation left it
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -85,13 +86,13 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-07, 12:30 PM ET — **both runs skipped, market closed for Labor Day**; book unchanged from the 09-04 rotation)
+## Current state (as of 2026-09-07, 3:45 PM ET — **all three runs skipped, market closed for Labor Day**; book unchanged from the 09-04 rotation)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
 | Account value | **$765.38** — equity $96.32, options $0, cash $669.06. **+17.7%** vs $650.54 contributed, or **−15.8%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$143.38** (equity legs **−$14.26**; options sleeve **−$129.12**) — unchanged; nothing traded on 09-07 at either the 9:30 or 12:30 slot |
+| Realized P&L to date | **−$143.38** (equity legs **−$14.26**; options sleeve **−$129.12**) — unchanged; **nothing traded on 09-07 at any of the three slots** (9:30, 12:30, 15:45), and no order was placed by anyone all day |
 | Unrealized P&L | **−$0.29** — XLF marked $58.10 vs a $58.1984 basis, SPY $770.23 vs $772.80, on $96.60 of combined cost. Two $48 token legs; neither has moved enough to signify |
 | Slot 1 | **XLF** 0.829919 sh @ $58.1984 ($48.30 basis) — bought 09-04. Rank 1 on the **09-04 close** at **+2.83% 10d**, RSI 60.5, $0.72 above its 20-SMA. **A token position, not a tranche** — there was only $98.63 of settled cash to split |
 | Slot 2 | **SPY** 0.0625 sh @ $772.80 ($48.30 basis) — bought 09-04. Rank 2 on the **09-04 close** at **+1.39% 10d**, RSI 58.6, $3.96 above its 20-SMA |

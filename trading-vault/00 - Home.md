@@ -80,6 +80,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-08 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.35×**, sleeve empty (both tests n-a); the two legs split — **SMH +1.44%** and now $9.46 above its 20-SMA (this morning's "one bad session from disqualification" risk receded), while **XLF −0.95% has fallen ~$0.30 *below* its 20-SMA** and on current prices would fail the §3 filter. Logged for tomorrow's re-rank, not acted on — rotation is the 9:30 cycle's call
   - [[2026-09-08 1545 Check — No Action]] — close check, no trades: breaker clear at **2.34×**, sleeve empty (both tests n-a, 7th straight check); **XLF −1.16% on the day and now $0.42 below its 20-SMA** — it would fail the §3 filter on current prices, logged for tomorrow's re-rank rather than acted on. **SMH +1.07% and its 20-day return crossed back positive (+0.64% vs −2.69% at 9:30)** as the window rolled off the 08-07 high — the sleeve gate that refused a call this morning would now be open, but entries are buys and out of scope for a check
   - [[2026-09-09 0930 Cycle — Rotation XLF out, XLE in]] — **traded, 2 fills**: XLF sold in full at $56.9015 (**−$5.27**) after failing the §3 trend filter *and* falling to rank 7 — **both of yesterday's checks predicted this and correctly deferred it to the cycle**; XLE returned at rank 2 but could only be funded with **$51 of settled cash**, leaving $351.02 idle until 09-10. **The sleeve's trend gate opened for the first time and the trade was still impossible** — the only conforming SMH contract costs **$4,262.50 against a $379.06 cap (11.2×)**. The leverage switch also opened (SMH 20d +0.76%) and was **deliberately not taken** — it is a buy-time rule and no slot-1 buy was due
+  - [[2026-09-09 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 8th straight check); **SMH's 20-day return decayed +0.76% → ~0.00% on a −0.14% day — the window rolled off the 08-10 close, so both gates that opened this morning are shut again by the calendar, not by price.** Book healthy on the §3 test (SMH +1.29%, XLE +3.42% above their 20-SMAs); XLF **+0.43% since this morning's exit**, and **QQQ −0.45% is on track to fail, cutting qualifiers 3 → 2**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
   - [[2026-08-27 1230 Midday Check]] — no action: breaker clear at 1.79×, sleeve empty
@@ -271,6 +272,11 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   costing a spread and a settlement day. **Recommend codifying it as a buy-time rule**, which also
   avoids the sleeve's exact failure mode — a gate that moves daily pointed at an instrument that
   does not. Left as-is pending the owner; it should be written down, not inferred.
+  **Update, 12:30 same day: the switch has already closed itself.** SMH's 20-day return decayed
+  **+0.76% → ~0.00% (−0.004%)** by lunchtime with the price down only −0.14% — the window rolled off
+  the 08-10 close ($569.41) and picked up 08-11's ($572.93). **The base rose; SMH did not fall.**
+  A 76 bp margin on a rolling 20-day window is noise with a calendar attached, which strengthens the
+  case for reading the switch at the moment of the buy rather than treating it as a standing state.
 - **NEW 2026-09-09 — the check/cycle division of labour paid off.** Both 09-08 intraday checks saw
   XLF fall below its 20-SMA, both said it *"would fail the §3 filter on current prices,"* and both
   **declined to act**, deferring to the cycle. The cycle sold it this morning at $56.90 — within
@@ -286,7 +292,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
      highest RSI in the universe is XLE's 66.2, well under the 75 ceiling.
   3. **QQQ is the marginal qualifier** — $0.975 (0.14%) over its 20-SMA at rank 3, and it opened
      −0.33% today. If it slips, only two names qualify and any further loss sends a slot to cash.
-  4. **SMH's +0.76% 20-day return is a 76 bp margin holding up two gates** (leverage and sleeve). One
-     red session flips both shut again. It flipped from −2.69% in a single session two days ago.
+  4. **SMH's 20-day return is already back to ~0.00% as of the 12:30 check** — the 76 bp margin that
+     held up two gates (leverage and sleeve) this morning is gone, and **not to a red session**: the
+     price is −0.14% and the 20-day *base* rose as the window rolled off 08-10. Re-read this number
+     from fresh bars at 9:30; do not carry this morning's +0.76% forward.
   5. **The sleeve stays dormant while slot 1 is SMH** regardless of trend — see the arithmetic above.
      It only re-opens if slot 1 becomes XLE, XLF or TLT.

@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-09-10 Daily Signals]] — v3 cycle #15: **XLE and SMH swap slots 1↔2 (a reorder, not a rotation)**; QQQ fails exactly as both 09-09 checks predicted, qualifiers 3 → **2 of 8**, all six failures below their 20-SMA. **Slot 1 becoming a cheap name re-opened the options sleeve** — gate clear by 719 bp, not calendar noise
   - [[2026-09-09 Daily Signals]] — v3 cycle #14: **XLF fails the trend filter and leaves the book; XLE returns at rank 2**; qualifiers 5 → **3 of 8**, all five failures below their 20-SMA. **Both 20-day gates (leverage, sleeve) opened on SMH's +0.76% — and neither fired**
   - [[2026-09-08 Daily Signals]] — v3 cycle #13: **SMH goes rank 8 → rank 1 on one green session**; XLF demoted to slot 2, SPY out; qualifiers 4 → 5 of 8. Leverage gate **shut** (SMH 20d −2.69%), so 1x SMH not SOXL
   - *(no 2026-09-07 note — Labor Day, no session and no new bar. Writing one would have restated the
@@ -81,6 +82,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-08 1545 Check — No Action]] — close check, no trades: breaker clear at **2.34×**, sleeve empty (both tests n-a, 7th straight check); **XLF −1.16% on the day and now $0.42 below its 20-SMA** — it would fail the §3 filter on current prices, logged for tomorrow's re-rank rather than acted on. **SMH +1.07% and its 20-day return crossed back positive (+0.64% vs −2.69% at 9:30)** as the window rolled off the 08-07 high — the sleeve gate that refused a call this morning would now be open, but entries are buys and out of scope for a check
   - [[2026-09-09 0930 Cycle — Rotation XLF out, XLE in]] — **traded, 2 fills**: XLF sold in full at $56.9015 (**−$5.27**) after failing the §3 trend filter *and* falling to rank 7 — **both of yesterday's checks predicted this and correctly deferred it to the cycle**; XLE returned at rank 2 but could only be funded with **$51 of settled cash**, leaving $351.02 idle until 09-10. **The sleeve's trend gate opened for the first time and the trade was still impossible** — the only conforming SMH contract costs **$4,262.50 against a $379.06 cap (11.2×)**. The leverage switch also opened (SMH 20d +0.76%) and was **deliberately not taken** — it is a buy-time rule and no slot-1 buy was due
   - [[2026-09-09 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 8th straight check); **SMH's 20-day return decayed +0.76% → ~0.00% on a −0.14% day — the window rolled off the 08-10 close, so both gates that opened this morning are shut again by the calendar, not by price.** Book healthy on the §3 test (SMH +1.29%, XLE +3.42% above their 20-SMAs); XLF **+0.43% since this morning's exit**, and **QQQ −0.45% is on track to fail, cutting qualifiers 3 → 2**
+  - [[2026-09-10 0930 Cycle — Options Sleeve Re-Armed (XLE Nov 66C) + Slot 1 Top-Up]] — **traded, 2 fills**: **the options sleeve is re-armed** — 1 XLE Nov 20 $66C at $2.95 ($295, 0.529Δ, 71 DTE) filled **exactly at mid**, plus $56 of XLE equity into the starved slot 1. **XLE and SMH only swapped ranks 1↔2, so §5 held both and no rotation was owed.** The sleeve fired because **slot 1 became a cheap name**, not because the signal changed — the same arithmetic that made SMH's call cost 11.2× the cap gives XLE's at 39.3% of account. **Rejected the cheaper Oct 30 expiry as illiquid: 0 OI, 0 volume, $0.34 × $4.45 book** — a new screen (conforming greeks ≠ tradable contract). Account **99.7% deployed**, cash $2.11. **The 09-04 sleeve-design question is now live money, not hypothetical — owner decision wanted urgently**
   - [[2026-09-09 1545 Check — No Action]] — close check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 9th straight check); **the 12:30 call on QQQ came true — at $716.17 it closed $1.22 *below* its 20-SMA, cutting qualifiers 3 → 2 (SMH, XLE) on current prices.** Both legs pass §3 wide (SMH +1.38%, XLE +3.58% above their 20-SMAs); XLE **+0.91%** on the day vs SMH flat (−0.05%), and **SMH's 20d round-tripped +0.76% → ~0.00% → +0.09% in one session with the price barely moving** — the sleeve/leverage gate margin is calendar noise. XLF $57.16, **+0.45% since this morning's exit**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
@@ -94,22 +96,22 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-09, 9:36 AM ET — **traded**: XLF out on a failed trend filter, XLE in at slot 2 but funded only $51; account back to 53% invested for one session)
+## Current state (as of 2026-09-10, 9:36 AM ET — **traded**: options sleeve re-armed on XLE + slot-1 top-up; no rotation owed, the top two merely swapped ranks)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$758.13** — equity $404.98, options $0, cash $353.15. **+16.5%** vs $650.54 contributed, or **−16.6%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$148.91** (equity legs **−$19.79**; options sleeve **−$129.12**) — XLF's exit today cost **−$5.27** (−1.48%) on a $356.29 position |
-| Unrealized P&L | **−$2.01** on $407.00 of cost — SMH marked $574.76 vs a $578.0599 basis (−$2.03), XLE $65.57 vs a $65.5468 fill (+$0.02) |
-| Slot 1 | **SMH** 0.615853 sh @ $578.0599 ($356.00 basis) — held from 09-08, unchanged. Rank 1 at **+4.93% 10d** (up from +1.18%), RSI 53.4, **$8.095 (1.43%) above its 20-SMA**. **20-day trend crossed positive at +0.76%** — see the two gates that opened and did not fire, below |
-| Slot 2 | **XLE** 0.778070 sh @ $65.5468 ($51.00 basis) — opened today. Rank 2 at **+2.63% 10d**, RSI 66.2, **$1.669 (2.65%) above its 20-SMA**, and **+7.63% over 20 days — the strongest 4-week trend in the universe by ~10×**. **Funded at $51 of a ~$203 fair share; the rest settles overnight** |
-| **Ranks** | **Fresh as of the 2026-09-08 close** (scored this morning) — one new session since the last scoring |
-| Cash | **$353.15**, of which only **$2.13 is settled** — `unsettled_funds` reads **$351.02** (today's XLF proceeds, settling 09-10). Buying power of $353.15 **overstates what [[Risk Rules v2]] §6 permits by exactly that $351.02**. The account is **53% invested / 47% cash** for one session |
-| Options sleeve | **Empty — and for the first time the trend gate passed while the trade stayed impossible.** SMH's 20d is +0.76%, so the filter that refused yesterday said yes. The only conforming contract (SMH Nov 20 $570C, 0.569Δ, 72 DTE) marks **$42.625 = $4,262.50**, against a §4 cap of **$379.06** — **11.2× over**. Not a signal problem; an arithmetic one |
-| Circuit-breaker | $325 (50% of contributed capital) — **checked first, before any order**; account at **2.33×** ($433.13 headroom). Clear. *(Also clear at **1.67×** against the $454.51 breaker the deposit reading would imply)* |
-| **Concentration** | **Lopsided by settlement, not by choice.** SMH $354 vs XLE $51 — yesterday's $0.80-apart balance is gone for one session because $351.02 of slot 2's money is unsettled. Restores on 09-10 |
-| **Sleeve scorecard** | **0-for-2, −$129.12** (Oct $59C −$63.08; Nov $65C −$66.04) vs **−$14.26** from every equity rotation combined. **The options sleeve is the account's entire loss story.** Both died the same way: a 45–90 DTE call held 2–4 days because slot 1 changed hands. See below |
+| Account value | **$750.92** — equity $452.31, options $296.50, cash $2.11. **+15.4%** vs $650.54 contributed, or **−17.4%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Realized P&L to date | **−$148.91** (equity legs **−$19.79**; options sleeve **−$129.12**) — **unchanged today; nothing was sold** |
+| Unrealized P&L | **−$9.19** on $758.00 of cost — **SMH carries all of it** at $560.80 vs a $578.06 basis (−$10.63, −2.35% on the session); XLE equity −$0.06, the new Nov 66C **+$1.50** |
+| Slot 1 | **XLE** — equity 1.632641 sh @ $65.5380 ($107.00 basis) **plus** 1 Nov 20 $66C @ $2.95 ($295.00). Rank 1 at **+5.24% 10d**, RSI 68.4, **$1.99 (3.14%) above its 20-SMA**, and **+7.19% over 20 days — the strongest 4-week trend in the universe by ~10×**. Topped up $56 today |
+| Slot 2 | **SMH** 0.615853 sh @ $578.0600 ($356.00 basis) — held from 09-08, **demoted 1 → 2 and held, not churned**. Rank 2 at **+3.32% 10d**, RSI 53.2, $8.59 (1.52%) above its 20-SMA *on the 09-09 close* — but **trading −2.35% today, which would put it below that SMA**. See the forward plan |
+| **Ranks** | **Fresh as of the 2026-09-09 close** (scored this morning) — one new session since the last scoring |
+| Cash | **$2.11** — the buffer, nothing more. `unsettled_funds` **$0.0000**, verified before *and* after trading. The account is **99.7% deployed**, the most fully invested it has been under v3 |
+| Options sleeve | **Re-armed today: 1 XLE Nov 20 $66C, 0.529Δ, 71 DTE, $295.00 at exactly the mid.** Premium at risk = **39.3%** of account against the §4 50% cap. It fired because **slot 1 became a cheap name**, not because the signal improved — and the gate is clear by **719 bp**, not the 24–76 bp of calendar noise the last three cycles flagged |
+| Circuit-breaker | $325 (50% of contributed capital) — **checked first, before any order**; account at **2.31×** ($425.92 headroom). Clear. *(Also clear at **1.65×** against the $454.51 breaker the deposit reading would imply)* |
+| **Concentration** | **XLE is now 53.7% of the account** ($106.94 equity + $296.50 premium = $403.44) vs SMH's $345.37 — so slot 1 is the larger leg by exposure while holding the smaller *equity* leg. **Compliant: §2 allows this only for the top-ranked asset, and XLE is rank 1.** The delta-adjusted XLE notional from the call alone is ~$3,424 |
+| **Sleeve scorecard** | **0-for-2, −$129.12** (Oct $59C −$63.08; Nov $65C −$66.04) vs **−$14.26** from every equity rotation combined. **The options sleeve is the account's entire loss story**, and as of today **trade #3 is open**. Both prior deaths were identical: a 45–90 DTE call held 2–4 days because slot 1 changed hands — and slot 1 has changed hands **three times in five sessions** |
 
 ## Standing schedule
 
@@ -208,6 +210,13 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   because a *different* name outranked it. **Owner decision wanted: either lengthen what holds the
   sleeve open (close on XLE's own trend/DTE, not on losing a relative rank), shorten the contract,
   or retire the sleeve.** Continuing as-is is a third loss waiting to happen.
+  **Update 2026-09-10: the third trade is now open** (XLE Nov 20 $66C, $295). The sleeve was blocked on
+  *affordability* every day since 09-04, so the unanswered question was never forced; today slot 1
+  became a cheap name and it was. The trade was placed because **v3 §9 and [[Risk Rules v2]] §4
+  authorize it and no owner decision has changed them** — declining would have substituted this run's
+  judgment for the owner's on a live strategy question. **The decision is now about real money, and
+  slot 1 has changed hands three times in five sessions.** Highest-value fix remains #1: close the
+  sleeve on XLE's *own* trend/DTE rather than on losing a relative rank.
 - **NEW 2026-09-04 — a 1.4-cent close decided a full liquidation.** SPY beat XLE for slot 2 by
   **$0.0136 of closing price** (10-day returns +1.386% vs +1.365%, 2.1 bp apart). §4 has no tie band
   and no hysteresis, so it was executed as written — and XLE promptly fell another −1.44% in the
@@ -283,22 +292,50 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   **declined to act**, deferring to the cycle. The cycle sold it this morning at $56.90 — within
   $0.08 of where it traded when the close check flagged it. **The no-intraday-rotation rule cost
   nothing here**, which is the first direct evidence either way since the rule was written.
-- **Next cycle (Thu 2026-09-10, 9:30 ET):**
-  1. **The main job is funding slot 2.** $351.02 settles overnight; if XLE still qualifies, deploy it
-     to bring slot 2 toward parity with slot 1 (~$203 each). **Confirm with `unsettled_funds` from
-     `get_accounts`, not by counting days** — that check has now been run before *and* after trading
-     on two consecutive cycles, and it is the only thing that caught the 09-08 date error.
-  2. **Breadth is contracting: 5 of 8 qualifiers → 3** (SMH, XLE, QQQ). **All five failures fail the
-     same test — price below the 20-day SMA.** Nothing is disqualified for being overbought; the
-     highest RSI in the universe is XLE's 66.2, well under the 75 ceiling.
-  3. **QQQ has already slipped — re-score it, don't assume it qualifies.** It was the marginal
-     qualifier at $0.975 (0.14%) over its 20-SMA at rank 3 this morning; **by the 15:45 check it was
-     $1.22 below** ($716.17 vs a $717.39 20-SMA) after a −0.31% session. On the 09-09 close only
-     **SMH and XLE qualify**, so if either fails tomorrow a slot goes to cash with no third name to
-     take it.
-  4. **SMH's 20-day return is already back to ~0.00% as of the 12:30 check** — the 76 bp margin that
-     held up two gates (leverage and sleeve) this morning is gone, and **not to a red session**: the
-     price is −0.14% and the 20-day *base* rose as the window rolled off 08-10. Re-read this number
-     from fresh bars at 9:30; do not carry this morning's +0.76% forward.
-  5. **The sleeve stays dormant while slot 1 is SMH** regardless of trend — see the arithmetic above.
-     It only re-opens if slot 1 becomes XLE, XLF or TLT.
+- **NEW 2026-09-10 — the sleeve's dormancy prediction was exactly right, and it re-armed the moment
+  slot 1 got cheap.** The 09-09 note predicted the sleeve "only re-opens if slot 1 becomes XLE, XLF
+  or TLT." XLE took slot 1 on the next session and a conforming call cost **$295 against a $375.19
+  cap** — where the SMH equivalent had cost **$4,262.50 against $379.06**. **Nothing about the signal
+  changed; the ticket price did.** The rule of thumb `underlying × 0.07 ≤ 50% of account value` held
+  to within a few percent on a third data point. **Before asking "why didn't the sleeve fire," check
+  the ticket price, not the signal** — and conversely, expect it to fire whenever slot 1 is cheap.
+- **NEW 2026-09-10 — conforming greeks do not make a tradable contract. New pre-trade screen.**
+  The 45–90 DTE window held **two** XLE expirations today (Oct 30 at 50 DTE, Nov 20 at 71 DTE), so
+  **the one-expiration cliff found on 09-02 and 09-09 is not a permanent property of these chains —
+  it depends on where the calendar sits.** Oct 30 was cheaper, shorter and better matched to a
+  fast-moving signal, and was **rejected as illiquid: every strike showed 0 open interest, 0 volume,
+  and a $0.34 × $4.45 book** on the 0.50Δ strike, with a purely model-derived "mark." [[Risk Rules v2]]
+  §1/§4 forbid it, and the round-trip spread would have exceeded any plausible gain. **Add to the
+  sleeve checklist: check OI, volume and spread width *before* pricing the greeks.** A fresh
+  end-of-month expiry can look perfect on delta and DTE and have never traded.
+- **NEW 2026-09-10 — "limit at mid" is not always expressible, and it depends on the $3.00 tick
+  cutoff.** These chains tick at **$0.01 below $3.00 and $0.05 above it**. At 9:32 the $66C mid was
+  $3.06, which the grid would have forced to $3.05 or $3.10 (neither is mid); by 9:35 it had eased to
+  **$2.955**, so **$2.95 was both a valid tick and effectively the mid — and it filled there in 17
+  seconds with zero slippage.** When a premium sits just above $3.00, expect to pay or save a tick
+  versus mid and say so in the note rather than calling it "mid."
+- **NEW 2026-09-10 — the leverage switch was armed, not taken, and it saved real money.** SMH's 20d
+  is **+0.24%**, technically arming the SOXL substitution. It did not apply: SMH is slot 2, already
+  held, so no slot-2 buy was due and the switch is a **buy-time** rule. **SOXL opened −6.50%.**
+  Three consecutive cycles have now recommended codifying this as buy-time rather than leaving it to
+  inference, and this is the first one where the inference would have cost money.
+- **Next cycle (Fri 2026-09-11, 9:30 ET):**
+  1. **SMH is the name at risk, and its failure is expensive in two ways.** It qualified on the 09-09
+     close with $8.59 (1.52%) over its 20-SMA but traded **−2.35%** at $560.80 this morning. A close
+     near there puts it roughly **$2–5 below** its 20-SMA → fails the §3 trend filter → slot 2 sells.
+     **With QQQ also failing there is no third qualifier, so slot 2 goes to cash** and the proceeds
+     are unspendable for a day. Re-score from fresh bars; do not assume either outcome.
+  2. **Re-read all three sleeve close conditions.** Today they are wide — XLE 20d **+7.19%**, **70 DTE**
+     at tomorrow's open — but the binding one is the **slot-1 test**, and XLE has held slot 1 for one
+     session. **Note the asymmetry: if SMH fails and XLE holds rank 1, the sleeve is safe.** The
+     sleeve dies only if something **outranks XLE**, and nothing is close — rank 3 QQQ is below its
+     own trend filter.
+  3. **Cash is $2.11 — there is nothing to deploy.** Barring a sale, tomorrow is a hold-or-sell cycle
+     only. Do not plan a buy.
+  4. **Breadth is at its second-tightest reading of the v3 era: 2 of 8** (only 09-02's single
+     qualifier was tighter). **All six failures fail on trend alone** — nothing is disqualified for
+     being overbought, the highest RSI is XLE's 68.4. A broad bounce would re-qualify several names
+     at once.
+  5. **Fri 2026-09-11 is a normal session; the next US market holiday is Thanksgiving, 2026-11-26.**
+     Checked against the calendar when writing this plan, not merely left to the skip guard — two
+     cycles (09-07, 09-08) mis-stated a date from memory in opposite directions.

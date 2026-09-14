@@ -15,6 +15,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-09-14 Daily Signals]] — v3 cycle #17: **SMH re-qualifies one session after being sold and retakes slot 2**; qualifiers 1 → **2 of 8**, XLE unchallenged at rank 1 for a fifth session. **The leverage gate refused SOXL on SMH's −3.50% 20d — and SOXL opened −16.9% vs SMH's −5.05%.** Scored on the 09-11 close, on which SMH passes; **on live prices it fails §3 by 4.2%** — bought as written, the mirror image of Friday
   - [[2026-09-11 Daily Signals]] — v3 cycle #16: **SMH fails the trend filter and leaves the book; XLE is the only qualifier (1 of 8)**, tying the tightest breadth of the v3 era. **Slot 2 goes to cash — there is no third name.** Both 09-10 checks called it a day early and correctly deferred. **The whole universe gapped up at the open and SMH would re-qualify on live prices** — sold on the close anyway, as written
   - [[2026-09-10 Daily Signals]] — v3 cycle #15: **XLE and SMH swap slots 1↔2 (a reorder, not a rotation)**; QQQ fails exactly as both 09-09 checks predicted, qualifiers 3 → **2 of 8**, all six failures below their 20-SMA. **Slot 1 becoming a cheap name re-opened the options sleeve** — gate clear by 719 bp, not calendar noise
   - [[2026-09-09 Daily Signals]] — v3 cycle #14: **XLF fails the trend filter and leaves the book; XLE returns at rank 2**; qualifiers 5 → **3 of 8**, all five failures below their 20-SMA. **Both 20-day gates (leverage, sleeve) opened on SMH's +0.76% — and neither fired**
@@ -89,6 +90,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-11 0930 Cycle — Rotation SMH out, slot 2 to cash]] — **traded, 1 fill**: SMH sold in full at $566.80 (**−$6.93**) after failing the §3 trend filter on the 09-10 close ($4.20 below its 20-SMA) — **still rank 2, but rank without qualification buys nothing**. **XLE is the sole qualifier, so slot 2 goes to cash**; breadth ties the tightest reading of the v3 era. **The sleeve survived a slot-2 failure untouched, confirming yesterday's predicted asymmetry** — only a name *outranking* XLE can kill it, and none qualifies. **Sold into a +1.04% gap on which SMH would have re-qualified** — executed on the close as written, and flagged: if it re-qualifies Monday the book pays a spread and a settlement cycle to end where it started. **The 09-04 hysteresis-band decision is now urgent, not academic**
   - [[2026-09-11 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.27×**, **sleeve held** — XLE 20d **+6.94%** and **70 DTE**, both tests passing by percentage points; the Nov 66C recovered to $2.79 vs a $2.95 fill (**−$16.00**, from −$22.00 at yesterday's close) and delta 0.499 → 0.511. **SMH at $570.11 is +1.75% on the day and $3.31 above this morning's $566.80 exit** — the two-day-round-trip risk flagged in the forward plan is live, logged not acted on
   - [[2026-09-11 1545 Check — No Action]] — close check, no trades: breaker clear at **2.23×**, **sleeve held** — XLE 20d **+6.64%** and **70 DTE**, passing by 664 bp and 49 days; the Nov 66C marks **$2.66 vs a $2.95 fill (−$29.00, its worst mark yet)** with delta at 0.499 — **a mark-to-market drawdown is not a close condition** and no stop was invented. XLE closes the week **$1.57 (2.47%) above its 20-SMA**, wider than at 9:30. **SMH closed at $569.055, +1.57% on the day and $2.25 above this morning's $566.80 exit** — the gap held all session, so the two-day round trip is now the likely Monday outcome; third consecutive check to log it and decline to act
+  - [[2026-09-14 0930 Cycle — SMH Re-Bought into Slot 2]] — **traded, 1 fill**: SMH re-qualified one session after Friday's sale and retook slot 2 — 0.647844 sh at **$538.7099** ($349.00), reviewed clean, filled in 0.13 s. **Friday's "urgent" hysteresis-band recommendation is refuted by its own first live test**: the band would have held SMH through a **−4.96%** session for an unrealized **−$24.21**, versus the **−$6.93** actually realized — **the mechanical rule won by $17.28** and bought back **5.2% more shares for the same dollars**. **The leverage gate refused SOXL and saved ~$41** (SOXL −16.9% vs SMH −5.05%). Bought on a stale passing close while the live tape fails §3 by 4.2% — **the exact mirror of Friday, resolved the same way on purpose**, and flagged ex-ante as likely today's loser. Sleeve held and **green for the first time (+$9.00)**
   - [[2026-09-09 1545 Check — No Action]] — close check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 9th straight check); **the 12:30 call on QQQ came true — at $716.17 it closed $1.22 *below* its 20-SMA, cutting qualifiers 3 → 2 (SMH, XLE) on current prices.** Both legs pass §3 wide (SMH +1.38%, XLE +3.58% above their 20-SMAs); XLE **+0.91%** on the day vs SMH flat (−0.05%), and **SMH's 20d round-tripped +0.76% → ~0.00% → +0.09% in one session with the price barely moving** — the sleeve/leverage gate margin is calendar noise. XLF $57.16, **+0.45% since this morning's exit**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
@@ -102,22 +104,22 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-11, 3:45 PM ET — marks refreshed by the close check; **the day's only trade** was the 9:30 SMH sale on a trend-filter failure, leaving XLE the sole qualifier and slot 2 in cash)
+## Current state (as of 2026-09-14, 9:36 AM ET — **the day's only trade** was the 9:35 SMH buy that refilled slot 2 one session after Friday's sale; the account is back to ~100% deployed)
 
 | Item | Value |
 |---|---|
 | Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02 |
-| Account value | **$723.45** (as of the 15:45 check) — equity $106.27, options $266.00, cash $351.18. **+11.2%** vs $650.54 contributed, or **−20.4%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
-| Realized P&L to date | **−$155.84** (equity legs **−$26.72**; options sleeve **−$129.12**) — **−$6.93 today on the SMH exit** |
-| Unrealized P&L | **−$29.74** on $402.00 of cost — the **Nov 66C carries −$29.00** (marked $2.66 vs a $2.95 fill, delta 0.529 → 0.499), its worst mark since entry; XLE equity −$0.74. **Neither is a close condition** |
-| Slot 1 | **XLE** — equity 1.632641 sh @ $65.54 ($107.00 basis) **plus** 1 Nov 20 $66C @ $2.95 ($295.00). Rank 1 and **the only qualifier in the universe** at **+4.00% 10d**, RSI 65.2, **$1.42 (2.23%) above its 20-SMA**, **+6.39% over 20 days** — still the strongest 4-week trend by ~3×, with the runner-up negative |
-| Slot 2 | **CASH.** SMH sold in full at $566.80 (−$6.93) after closing **$4.20 (0.74%) below its 20-SMA** on 09-10. It is **still rank 2 on 10-day return** — but §4 fills slot 2 with the second *qualifier*, and there isn't one. Second single-qualifier day of the v3 era (after 09-02) |
-| **Ranks** | **Fresh as of the 2026-09-10 close** (scored this morning) — one new session since the last scoring |
-| Cash | **$351.18 total, of which `unsettled_funds` is $349.07** (the SMH proceeds, to the cent) — **genuinely settled cash is $2.11**, the buffer. Settles **Mon 2026-09-14**. Read from the broker, not inferred from a date. The account is **48.3% cash**, the least invested it has been since 09-04 |
-| Options sleeve | **Held: 1 XLE Nov 20 $66C, 0.499Δ, 70 DTE, $295.00 cost / $266.00 mark.** Premium at risk = **36.8%** of account against the §4 50% cap. **All three close conditions pass wide** — XLE still rank 1, 20d +6.39% on completed bars / +6.64% to live (664 bp of margin), 70 DTE (floor 21). A mark-to-market loss is not a close condition |
-| Circuit-breaker | $325 (50% of contributed capital) — **checked first, before any order**; account at **2.23×** ($398.45 headroom) at the 15:45 check. Clear. *(Also clear at **1.59×** against the $454.51 breaker the deposit reading would imply)* |
-| **Concentration** | **XLE is 51.5% of the account and is the only security the book owns** ($106.27 equity + $266.00 premium). The rest is cash. **Compliant: §2 allows up to 100% for the top-ranked asset, and XLE is not merely top-ranked but the sole qualifier** — the concentration arrived from the system, which is the test §2 actually applies |
-| **Sleeve scorecard** | **0-for-2 closed, −$129.12** (Oct $59C −$63.08; Nov $65C −$66.04), **trade #3 open at −$29.00** (its worst mark since entry), vs **−$26.72** from every equity rotation combined. The gap narrowed today for the first time in weeks — because the *equity* side took the loss. **Today is weak evidence for the current design**: the sleeve correctly survived a slot-2 failure untouched |
+| Account value | **$762.63** — equity $456.45, options $304.00, cash $2.18. **+17.2%** vs $650.54 contributed, or **−16.1%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one until the owner confirms |
+| Realized P&L to date | **−$155.84** (equity legs **−$26.72**; options sleeve **−$129.12**) — **unchanged today; nothing was sold** |
+| Unrealized P&L | **+$9.45** on $751.00 of cost — the **Nov 66C carries +$9.00** (marked $3.04 vs a $2.95 fill, delta 0.499 → 0.537), **its first positive mark since entry**; XLE equity +$0.45; SMH flat, just filled |
+| Slot 1 | **XLE** — equity 1.632641 sh @ $65.54 ($107.00 basis) **plus** 1 Nov 20 $66C @ $2.95 ($295.00). Rank 1 for a **fifth consecutive session** at **+4.58% 10d**, RSI 66.1, **$1.42 (2.23%) above its 20-SMA**, **+6.68% over 20 days** — the only positive 10-day return in the universe, and ~4× the runner-up, which is negative |
+| Slot 2 | **SMH** — 0.647844 sh @ $538.7099 ($349.00 basis), bought 9:35 today. Re-qualified on the 09-11 close ($568.53, **+0.90% over its 20-SMA**) one session after being sold at $566.80. **Caveat: on live prices it fails §3 by 4.2%** — it gapped −5.05% at the open and is the likely sell at tomorrow's re-rank |
+| **Ranks** | **Fresh as of the 2026-09-11 close** (scored this morning at 9:31) |
+| Cash | **$2.18, all settled** — the buffer. `unsettled_funds` read **$0.0000** at 9:30 with the full $351.18 spendable, so the whole slot-2 tranche went to work today. The account is **99.7% deployed** |
+| Options sleeve | **Held: 1 XLE Nov 20 $66C, 0.537Δ, 67 DTE, $295.00 cost / $304.00 mark.** Premium at risk = **39.9%** of account against the §4 50% cap. **All three close conditions pass wide** — XLE still rank 1, 20d **+6.68%**, 67 DTE (floor 21). **First green mark since entry** |
+| Circuit-breaker | $325 (50% of contributed capital) — **checked first, before any order**; account at **2.35×** ($437.63 headroom). Clear. *(Also clear at **1.68×** against the $454.51 breaker the deposit reading would imply)* |
+| **Concentration** | **XLE is 54.0% of the account** ($107.45 equity + $304.00 premium), **SMH 45.8%** ($349.00). Both compliant under §2 — up to 100% is permitted for the top-ranked asset, and this concentration arrived from the system, which is the test §2 actually applies |
+| **Sleeve scorecard** | **0-for-2 closed, −$129.12** (Oct $59C −$63.08; Nov $65C −$66.04), **trade #3 open at +$9.00 — the first time any sleeve trade has been green** — vs **−$26.72** from every equity rotation combined. Still not evidence the design works; it is evidence the design has not yet failed a third time |
 
 ## Standing schedule
 
@@ -348,29 +350,52 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   not acted on,"* and the cycle sold it this morning. Same pattern as XLF on 09-09. **The
   no-intraday-rotation rule has now cost nothing on two consecutive rotations it correctly
   predicted a day early.**
-- **Next cycle (Mon 2026-09-14, 9:30 ET):**
-  1. **~$349 settles Monday, and SMH coming straight back is now the likely case, not a hypothetical.**
-     **Confirmed at the 15:45 check: the gap held all session — SMH $569.055, +1.57% on the day and
-     $2.25 above the $566.80 exit**, so on Monday's scoring **SMH re-qualifies and is the obvious
-     slot-2 buy** — with settled cash available to fund it. That is a **two-day round trip on the
-     same name**: a spread, a settlement cycle and a realized −$6.93 to end exactly where the book
-     started. **This is the cleanest case yet for the rank-boundary hysteresis band proposed on
-     09-04** (an incumbent holds unless beaten by ≥25 bp — or here, unless it fails the trend filter
-     by more than a small band). **Owner decision wanted before Monday's open, because Monday is
-     when it costs money.** It is a strategy change and was deliberately not applied on the fly.
-  2. **Read `unsettled_funds` before believing the settlement date.** T+1 from Fri 09-11 is Mon
-     09-14 and **the next US holiday is Thanksgiving 2026-11-26** (checked against the calendar, not
-     recalled) — but the broker's figure is free and has been wrong from memory twice, in opposite
-     directions.
-  3. **Breadth is the binding constraint and it can reverse in one session.** Seven of eight names
-     fail on **trend alone**, five of them within 2% of their 20-SMA, and nothing is disqualified
-     for being overbought (top RSI is XLE's 65.2). If today's broad +0.7–1.5% gap sticks, **SMH,
-     XLF, QQQ, SPY and TLT could all re-qualify at once** — one qualifier to five in a day.
-  4. **The sleeve needs nothing unless a new name takes rank 1.** 20d +6.39% and **69 DTE** at
-     Monday's open; both risk tests pass wide and there is no qualifying challenger. **Re-read all
-     three anyway** — the 09-02 lesson is that conformance is a property of the morning you check
-     it, not of the position.
+- **NEW 2026-09-14 — the hysteresis band failed its first live test, and Friday's "urgent" label was
+  wrong.** The 09-11 note closed by calling the rank-boundary hysteresis band *"urgent rather than
+  academic"* and wanted an owner decision *"before Monday's open, because Monday is when it costs
+  money."* Monday came and **the mechanical rule beat the band by $17.28.** SMH was sold Friday at
+  $566.80 (realized **−$6.93**) and re-bought this morning at **$538.7099** — it fell another
+  **−4.96%** in the one session the band would have held it. Under the band the book would own
+  0.615853 sh against a $356.00 basis marked at $331.79, an unrealized **−$24.21**; as executed it
+  owns **0.647844 sh — 5.2% more shares for the same dollars.** The mechanism the band would
+  suppress is the entire point of a trend filter: **a name below its 20-SMA is more likely to keep
+  falling, and this one did.** Friday's staleness looked like a bug (selling into a +1.04% gap); it
+  was the filter being **early, not wrong**. **Downgraded from "urgent" to "open question" — and it
+  should not be re-decided on two data points in either direction.**
+- **NEW 2026-09-14 — the same staleness cut the opposite way within one session, and was resolved
+  the same way on purpose.** SMH qualifies on the **09-11 close** ($5.08 above its 20-SMA) and was
+  **bought at 9:35 while trading −5.05%, $23.64 (4.2%) *below* that same 20-SMA.** Friday the tape
+  argued against a *sale* and the sale went through; today it argued against a *buy* and the buy
+  went through. Both follow from **the signal being defined on completed daily bars** — the
+  commitment the 09-11 note made in the hard direction, when an override would have *avoided* a
+  realized loss. **Overriding today, when the override would reduce risk, would produce a strategy
+  that sells on stale bad news and refuses to buy on fresh bad news** — a ratchet no backtest
+  supports and one that would make the whole record meaningless. **Flagged ex-ante in the run note:
+  this may well be today's loser, and saying so before the fact is the point.**
+- **NEW 2026-09-14 — the leverage gate was read at buy time and saved ~$41 on a $763 account.**
+  Slot 2's target was SMH, which arms the SOXL substitution *if* semis' 4-week trend is positive.
+  It is **−3.50%**, so the gate was **shut** and the slot bought 1×. **SOXL opened −16.90%
+  ($121.82 → $101.23) against SMH's −5.05%** — $349 into the 3× wrapper would have been worth
+  ~$290 within two minutes of the open. This is the **fourth** consecutive cycle to recommend
+  **codifying the switch as an explicit buy-time rule** rather than leaving it to inference, and
+  the second where the inference would have cost real money. It keeps being right by luck of who
+  reads it; it should be written down.
+- **Next cycle (Tue 2026-09-15, 9:30 ET):**
+  1. **Expect to sell SMH.** On current prices it closes today far below its 20-SMA and fails the §3
+     trend filter at tomorrow's re-rank — one session after being bought. That is the cost side of
+     the staleness trade, and it should be recorded without flinching if it happens.
+  2. **If SMH goes, slot 2 returns to cash** unless something recovers its 20-SMA. **QQQ (−0.11%),
+     SPY (−0.34%) and XLF (−0.78%) are all within 1% of qualifying**, so breadth can go 2 → 1 or
+     2 → 4 in a single session. Nothing is disqualified for being overbought (top RSI 66.1).
+  3. **Read `unsettled_funds` before believing any settlement date.** It read **$0.0000** today with
+     the full $351.18 spendable. **The next US holiday is Thanksgiving 2026-11-26** (checked against
+     the calendar, not recalled), but the broker's figure is free and has been wrong from memory
+     twice, in opposite directions.
+  4. **The sleeve needs nothing unless a new name takes rank 1.** **66 DTE** tomorrow, XLE 20d
+     +6.68%, and the only other qualifier is 5.4 points behind on 10-day return with a negative
+     4-week trend. **Re-read all three anyway** — the 09-02 lesson is that conformance is a property
+     of the morning you check it, not of the position.
   5. **The 09-04 sleeve-design question is still the highest-value fix.** Close on XLE's *own* trend
-     and DTE rather than on losing a relative rank. Today is weak evidence *for* the status quo, but
-     both closed losses came from the slot-1 test firing on a fast signal pointed at a slow
-     instrument, and that has not changed.
+     and DTE rather than on losing a relative rank. **The sleeve is green for the first time
+     (+$9.00), which makes this the calmest moment to decide it** — better than deciding it during
+     the next drawdown.

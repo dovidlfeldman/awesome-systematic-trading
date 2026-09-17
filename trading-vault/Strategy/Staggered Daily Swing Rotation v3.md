@@ -29,8 +29,12 @@ Effect: **the account trades every single trading day**, each position is a 1–
 5. **Selling tranche:** sells at the morning check **only if** its holding is no longer its target slot. Still the target → hold, no churn, no settlement clock burned.
 6. **Buying tranche:** deploys full settled cash into its target slot (dollar-based market order on these penny-spread ETFs; review before place, always).
 7. **Never** sell a position bought with unsettled funds (GFV). Never buy with unsettled proceeds.
-8. **Circuit-breaker** check first, trade second ([[Risk Rules v2]] §7: close below $200 → liquidate, halt, owner conversation).
-9. **Options overlay** ([[Aggressive Leveraged Momentum v2]] §6 spec carries over): once approval lands, the sleeve trades the same daily signal — long calls on the slot-1 asset when it also has positive 4-week trend; premium at risk ≤50% of account.
+8. **Circuit-breaker** check first, trade second ([[Risk Rules v2]] §7: close below **50% of contributed capital** → liquidate, halt, owner conversation). *(The old "$200" figure here was stale from v1; §7 has been a formula since 2026-07-31. Corrected 2026-09-17 — current level **$454.51** on $909.02 contributed.)*
+9. **Options sleeve — opens on the signal, exits on its own tests** (revised 2026-09-17, [[Decisions]] #1):
+   - **Open:** only when the sleeve is empty and the slot-1 underlying's 20-day return is positive. Buy one conforming long call on that underlying — 0.50–0.65 delta, 45–90 DTE, liquid strike, limit at mid, premium within [[Risk Rules v2]] §4.
+   - **Close:** on **either** of its own two tests — the underlying's 20-day return turns **negative**, or the contract falls below **21 DTE**. Limit at mid, GFD; re-place an unfilled GFD close at the new mid.
+   - **The sleeve does not read equity rank.** Once open it is an independent position. It is **not** closed because its underlying left slot 1, lost rank, failed §3, or was sold from the equity book. An **orphaned call — one whose underlying the equity book no longer holds — is legal and expected**, and is exempted from [[Risk Rules v2]] §2 concentration by §2's sleeve carve-out.
+   - **Why:** the sleeve went 0-for-3 for −$218.16 (90% of all realized loss) and every one of the three was killed by losing a relative rank while its own risk tests still passed. A 45–90 DTE contract cannot be held against a signal that reranks daily.
 10. **Log** the cycle in the vault (signal table + orders + P&L), push, and **re-arm tomorrow's wakeup** via send_later (trigger-management API is approval-gated; chained one-shots achieve the same daily cadence).
 
 ## Leverage note
@@ -47,3 +51,4 @@ The v2 leverage switch (3x wrapper on positive 4-week trend) still applies to sl
 ## Change log
 
 - 2026-07-29 — Adopted. Bootstrap scheduled for 2026-07-30: tranche A deploys per that morning's signal; B waits one day.
+- **2026-09-17 — §9 rewritten: the options sleeve is decoupled from equity rank.** Owner decision ([[Decisions]] #1) after the sleeve went 0-for-3 for −$218.16, all three closed on rank rather than on their own risk tests. The clause *"close if its underlying lost slot 1"* is deleted; the sleeve now exits only on its own 20-day-trend and 21-DTE tests, and may be orphaned. §8's stale "$200" breaker reference corrected to the §7 formula at the same time. **First change to this document since adoption, 50 days.**

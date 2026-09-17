@@ -9,6 +9,16 @@ cycle's job alone.
 Read `trading-vault/00 - Home.md`, `trading-vault/Strategy/Staggered Daily Swing Rotation v3.md`,
 and `trading-vault/Strategy/Risk Rules v2.md` — those are authoritative for every rule below.
 
+**Owner decisions live in `trading-vault/Strategy/Decisions.md` and nowhere else.** That register
+is the only place an owner decision can come from. **Never cite a recommendation as an owner
+decision** — not your own, not one from an earlier run note, however many times it has been
+repeated or however confidently it is worded. If a rule's authority is a note that says "flagging
+for the owner", "owner decision wanted", or similar, then **no decision exists**: follow the
+written rule and say plainly in your run note that the question is still open. Silence is not
+consent. (This guard exists because between 2026-08-25 and 2026-09-17 an unanswered
+recommendation was repeatedly cited as an "explicit owner instruction" and the sleeve kept
+trading on it, for −$218.16 across three losses.)
+
 Skip the check entirely if: the market is closed today, or it is before 9:35 AM ET, or after
 4:00 PM ET. **A skip is still a run:** write the step-6 run note recording that it was skipped
 and why, then push. Never exit without a note.

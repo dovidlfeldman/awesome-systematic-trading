@@ -9,8 +9,9 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 ## Map of Content
 
 - **Strategy**
-  - [[Staggered Daily Swing Rotation v3]] — **active** since 2026-07-29 (owner mandate: constant swing/day trading)
-  - [[Risk Rules v2]] — active hard limits
+  - [[Decisions]] — **the owner decision register. The only source of owner decisions.** Started 2026-09-17; anything not in it is a recommendation, never an authority
+  - [[Staggered Daily Swing Rotation v3]] — **active** since 2026-07-29 (owner mandate: constant swing/day trading). **§9 rewritten 2026-09-17: the options sleeve no longer reads equity rank**
+  - [[Risk Rules v2]] — active hard limits. **§7 breaker raised to $454.51 on 2026-09-17** (deposit confirmed); §2 gains a sleeve carve-out
   - [[Aggressive Leveraged Momentum v2]] — retired (leverage switch + options spec carry into v3)
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
@@ -103,6 +104,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-16 1230 Check — No Action]] — midday check, no trades: breaker clear at **2.17×** ($704.85, down $16.41 on marks alone since 9:36 with nothing bought or sold), **sleeve held** — but **the 20d test is the closest it has ever come to firing: +1.48% against a base of $63.68, needing only another −1.46% in XLE**, versus −4.81%/−4.87%/−5.08% at the four prior checks. **Both legs of the compression push the same way for the first time** — the window rolled off 08-17 ($62.58 → $63.68, base +1.76%) *and* XLE fell **−1.98%** to $64.625, with neither offsetting the other. Same move thinned XLE's §3 cushion **+2.99% → +0.87%**, so **the sleeve's trend test and the equity's §3 test now sit ~1.5% apart** and one bad afternoon could fire both. The Nov 66C marks **$2.43 vs $2.95 (−$52.00), a $61 round trip from yesterday's best-ever +$9.00** — not a close condition in either direction. Tape inverted again: XLE the only faller while SPY +0.37% and QQQ +0.82%
   - [[2026-09-16 1545 Check — No Action]] — close check, no trades: breaker clear at **2.06×** ($670.61, −$34.24 on marks alone since midday), **sleeve held** — but **the 20d test is now 21 cents from firing: +0.33% against a base of $63.68**, from +1.48% at midday and −5.08% at the open. **This leg of the compression is all price** (the base cannot roll until tomorrow): XLE fell a further −1.14% to **$63.89, −3.09% on the day**. The Nov 66C marks **$2.10 vs $2.95 (−$85.00)**, its worst yet, delta 0.488 → 0.431 — not a close condition in either direction. **The bigger number is one this check may not act on: XLE's §3 cushion went through the line, +2.99% → +0.87% → −0.21%, so the sole qualifier now fails the trend filter on live prices.** If it holds, tomorrow has no qualifier at all and the coupled unwind takes both legs — logged, not acted on
   - [[2026-09-17 0930 Cycle — Coupled Unwind, Book to 100% Cash]] — **traded, 2 fills: the book is flat for the first time since 2026-07-30.** **Zero of eight names qualify — never happened before** — so §4 assigns both slots to cash and §5 sells everything. XLE equity out at **$63.8401** (−$2.78) and the **Nov 66C closed at $2.06 (−$89.04)** in the same session: the **second coupled unwind**, and the **third sleeve loss killed by relative rank while both of its own risk tests passed** (64 DTE, XLE 20d +0.55%). **Sleeve now 0-for-3, −$218.16 — 90% of all realized loss against −$24.36 from every equity rotation combined.** XLE failed §3 by **$0.0045**, the narrowest call v3 has ever produced, but rank 4 decided the sleeve independently. **−$91.82 realized is the largest single-session realized loss in account history — and the account still rose $656.19 → $666.49**, because every dollar of it was already carried as unrealized at 9:30. **With the book 100% cash the arithmetic closes to one cent: $650.54 + $258.48 − $242.52 = $666.50 vs an actual $666.49 — the disputed deposit is almost certainly real**
+  - [[2026-09-17 1230 Check — No Action]] — midday check, no trades: **the first check in account history to run against no position of any kind.** Breaker clear at **1.47×** ($211.98 headroom) — and this is **the first check measured against the true $454.51 level**, where every note since 08-28 compared against a stale $325. Sleeve **empty**, so both tests are **n-a rather than passing**; settlement guard not binding because there is nothing to sell. Broker-verified the flat book rather than trusting this morning's note: zero equity and option positions, exactly two orders on the day (both the 9:35 unwind), nothing pending, `unsettled_funds` $310.17 matching the proceeds to the cent. **Logged, not acted on: the 0-of-8 reading is already reversing** — all eight names green and **three back above their 20-SMAs (SMH +0.62%, QQQ +0.58%, XLE +0.22%)**, with **XLE back over the exact line it failed by $0.0045 this morning**. On live 10-day returns the book would be SMH/QQQ, and **the sleeve would stay dormant on ticket price anyway** (~$3,900 contract vs a $333 cap)
   - [[2026-09-09 1545 Check — No Action]] — close check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 9th straight check); **the 12:30 call on QQQ came true — at $716.17 it closed $1.22 *below* its 20-SMA, cutting qualifiers 3 → 2 (SMH, XLE) on current prices.** Both legs pass §3 wide (SMH +1.38%, XLE +3.58% above their 20-SMAs); XLE **+0.91%** on the day vs SMH flat (−0.05%), and **SMH's 20d round-tripped +0.76% → ~0.00% → +0.09% in one session with the price barely moving** — the sleeve/leverage gate margin is calendar noise. XLF $57.16, **+0.45% since this morning's exit**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
@@ -120,18 +122,18 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 
 | Item | Value |
 |---|---|
-| Contributed capital | $650.54 ($400 start + $250 deposit 2026-07-31) — **unconfirmed +$258.48 not included**; if it is an owner deposit this becomes $909.02. **As of today the flat book reconciles this to within one cent — see below** |
-| Account value | **$666.49** — equity $0, options $0, **cash $666.49**. **+2.45%** vs $650.54 contributed, or **−26.7%** vs $909.02 if the disputed cash is a deposit. The second figure is the honest one, and today's arithmetic makes it very hard to argue with |
+| Contributed capital | **$909.02** ($400 start + $250 deposit 2026-07-31 + **$258.48 deposit 2026-08-28**). **Confirmed by the owner 2026-09-17** ([[Decisions]] #2) after 20 days unresolved — the flat book had already reconciled it to one cent |
+| Account value | **$666.49** — equity $0, options $0, **cash $666.49**. **−26.7% vs $909.02 contributed.** This is now the *only* performance figure; the +2.45% reading died with the deposit confirmation, having been an artifact of counting the owner's own money as profit |
 | Realized P&L to date | **−$242.52** (equity legs **−$24.36**; options sleeve **−$218.16**) — **−$91.82 realized today**, the largest single-session realized loss in account history. **It was not a bad day:** every dollar was already carried as unrealized at 9:30 (−$102.13), and the account *rose* $656.19 → $666.49 over the cycle |
 | Unrealized P&L | **$0.00 — nothing is held.** First time the account has carried no mark-to-market exposure since 2026-07-30 |
 | Slot 1 | **Cash.** Was XLE for seven consecutive sessions; it failed §3 by **$0.0045** ($64.0300 close vs $64.0345 20-SMA) and fell to **rank 4** behind SMH, QQQ and SPY |
 | Slot 2 | **Cash** — 4th consecutive session with no second qualifier, and now no *first* one either |
 | **Ranks** | **Fresh as of the 2026-09-16 close** (scored this morning at 9:31) |
 | Cash | **$666.49**, of which **$356.32 settled / $310.17 unsettled**. Today's proceeds (equity $104.23 + option $205.96) settle **T+1 Fri 2026-09-18**; the option execution carries `settlement_date: 2026-09-18` explicitly. **Nothing was constrained by §6 today** — with zero qualifiers there was nothing to size |
-| Options sleeve | **Empty — closed this morning at $2.06 for −$89.04.** Killed by the slot-1 test alone; **both of its own risk tests still passed (64 DTE, XLE 20d +0.55%)**. Cannot re-arm unless a *cheap* name takes slot 1 — at a $666 account, SMH/QQQ/SPY are unreachable on the `underlying × 0.07 ≤ 50%` arithmetic |
-| Circuit-breaker | $325 (50% of contributed capital) — **checked first, before any order**; account at **2.05×** ($341.49 headroom). Clear. *(Also clear at **1.47×** against the $454.51 breaker the deposit reading would imply)* |
+| Options sleeve | **Empty — closed this morning at $2.06 for −$89.04**, the third loss killed by rank while both of its own tests passed. **The rule that did it is gone as of today** ([[Decisions]] #1): the sleeve no longer reads equity rank and exits only on its own 20-day-trend and 21-DTE tests. Orphaned calls are now legal. Scorecard under the old rule: **0-for-3, −$218.16** |
+| Circuit-breaker | **$454.51** (50% of $909.02) — raised from $325 on 2026-09-17 with the deposit confirmation. **Checked first, before any order**; account at **1.47×** (**$211.98 headroom**). Clear — but the true margin is a third smaller than every note since 08-28 claimed |
 | **Concentration** | **None — 100% cash.** Compliant with §2 trivially, and arrived at entirely by the system: no name qualified, so no name was held |
-| **Sleeve scorecard** | **0-for-3 closed, −$218.16** (Oct $59C −$63.08; Nov $65C −$66.04; Nov $66C **−$89.04**) — vs **−$24.36** from every equity rotation combined. **The sleeve is 90% of all realized loss on 3 of 12 closed positions, and all three died on relative rank rather than on a risk test.** This is no longer "not yet evidence"; it is three for three |
+| **Sleeve scorecard** | **0-for-3 closed, −$218.16** (Oct $59C −$63.08; Nov $65C −$66.04; Nov $66C **−$89.04**) — vs **−$24.36** from every equity rotation combined. **The sleeve is 90% of all realized loss on 3 of 16 closed positions, and all three died on relative rank rather than on a risk test.** Three for three — and as of 2026-09-17 that cause of death is **removed by owner decision** ([[Decisions]] #1). Every future sleeve close must be attributable to the 20-day-trend or 21-DTE test; if one is ever closed on rank again, that is a bug |
 
 ## Standing schedule
 
@@ -159,7 +161,12 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
 - **Options tooling proven 2026-09-02.** `review_option_order` and `place_option_order` both work under the desktop allowlist — exercised end-to-end (review → place → cancel → re-place → fill) on the XLE Nov 20 $65C. **`replace_option_order` is absent from the allowlist**, so a re-price is cancel-then-place; workable, but it costs two round-trips and briefly takes the order off the book. Worth adding.
 - **Scheduler proven again 2026-08-27:** second consecutive unattended 9:30 cycle, full path (breaker → signals → sells → buys → log → push) with no manual ping.
 - **Status of the two open items from 2026-08-28 (both moved on 08-31):**
-  1. **Unexplained +$258.48 cash — still unconfirmed, but now deployed.** Free cash went
+  1. **✅ RESOLVED 2026-09-17 — the +$258.48 was an owner deposit.** Confirmed in session
+     ([[Decisions]] #2). Contributed capital is now **$909.02** and the breaker **$454.51**;
+     the account is **−26.7%**, not +2.45%. The 08-31 decision to deploy it was correct. The
+     open-item text below is kept as the record of how long it stayed unresolved — **20 days,
+     flagged every single cycle, and it moved only when the owner was asked directly.**
+     *Original 08-31 entry follows.* Free cash went
      $2.01 → $260.49 with zero orders and both share counts unchanged; `unsettled_funds` and
      `pending_deposits` both $0. The 08-31 cycle **deployed it** into GLD/XLE rather than let a
      third of the account sit idle indefinitely: it has fully cleared, it matches the owner's
@@ -169,7 +176,8 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
      nobody has confirmed. If confirmed, contributed becomes $909.02 and the breaker moves
      $325 → $454.51 (account still clear at 1.85×). Until then the "+29.1% vs contributed"
      reading is a stale-denominator artifact, not a gain: the account is −7.6% against
-     contributed-plus-deposit. **Owner action still wanted: confirm or deny the deposit.**
+     contributed-plus-deposit. ~~**Owner action still wanted: confirm or deny the deposit.**~~
+     **— answered 2026-09-17, see above.**
   2. **The 08-28 missed re-rank is cleared.** ✅ The 08-31 cycle scored all 8 names on fresh bars
      through the 08-28 close; no rotation was owed (GLD/XLE were still the top two), so the
      skipped Friday decision cost nothing. **The underlying bug is not fixed:** the 08-28 agent

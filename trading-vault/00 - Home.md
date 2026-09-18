@@ -589,6 +589,16 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   check predicted was a *re-entry* rather than an exit. Practical lesson: **a 100%-cash book at
   0 qualifiers is a one-session state, not a regime** — it cost nothing here because the cash was
   fully settled and redeployable the next morning.
+- **NEW 2026-09-18 — the git permission defect did not recur, but the push failed anyway on DNS.**
+  Two facts worth separating, because they produce the identical symptom (a stale remote):
+  **`git add`/`commit` both succeeded today** — commit `8c9a8af` — where on 09-16 the permission layer
+  refused *every* git verb including `status`. **`git push` then failed three times on
+  `Could not resolve host: github.com`**, including once outside the sandbox: **no network egress in
+  this run's environment.** `automation/mirror-trades.sh` was separately refused by the permission
+  layer, so the Obsidian mirror is a session behind unless the launchd post-step runs it.
+  **The vault is correct on disk and in local git, stale on the remote and in the mirror.** The next
+  run with network should push `8c9a8af`. **Diagnosis matters here:** the permission defect needs an
+  allowlist change, the DNS failure needs network — treating them as one bug will fix neither.
 - **Next cycle (Mon 2026-09-21, 9:30 ET):**
   1. **Neither position is sellable before Monday without a good-faith violation.** Both were bought
      today (Friday) with settled cash and settle **T+1 = Mon 2026-09-21**; both show

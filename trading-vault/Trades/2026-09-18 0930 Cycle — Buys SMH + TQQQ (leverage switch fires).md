@@ -19,7 +19,7 @@ outcome: Buys SMH + TQQQ (leverage switch fires)
 | **Traded** | **2 orders, 2 fills — SMH 0.588900 sh @ $564.1699 and TQQQ 4.623601 sh @ $71.8574, $332.24 each** |
 | Options sleeve | **empty — entry gate shut on its own arithmetic** (slot-1 SMH 20-day return **−0.06%**, §9 needs positive) |
 | Realized / unrealized P&L | **−$242.52 (unchanged — nothing sold today) / −$0.08** |
-| Blocked | none |
+| Blocked | **nothing in trading — both orders filled.** Ops only: **`git push` failed on DNS** (`Could not resolve host: github.com`, 3 attempts incl. outside the sandbox) and the **vault mirror was refused by the permission layer**. Commit `8c9a8af` is on disk and local-only |
 
 ## What happened
 
@@ -140,6 +140,26 @@ $0.80 apart on 09-08.
   good-faith violation**, and the next cycle must treat them as such if a rotation is owed.
 - Verified no orders existed on the day before placing (guard against a double run): `get_equity_orders`
   and `get_option_orders` both returned empty for 2026-09-18 UTC.
+
+## Ops — publishing failed, for a new reason
+
+**Trading is complete and correct; only publication is blocked.** Recorded plainly so a stale remote
+is not mistaken for a stale book.
+
+- **`git add` and `git commit` both succeeded** — commit `8c9a8af`, 3 files. **The sixteen-day-old
+  git *permission* defect did not recur this run**, which is new information and worth keeping: the
+  permission layer refused every git verb on 09-16 and allowed all of them today.
+- **`git push` failed three times on DNS** — `fatal: unable to access ... Could not resolve host:
+  github.com` — including one attempt run outside the sandbox. This is **not** the old permission
+  defect; it is **no network egress in this run's environment**, a distinct failure mode with the
+  same symptom (stale remote). Distinguishing the two matters: the permission defect needs an
+  allowlist change, this needs network.
+- **`automation/mirror-trades.sh` was refused by the permission layer**, so the Obsidian mirror at
+  `~/TradingVaultMirror/` is **not** updated by this run. The launchd runner normally invokes it as a
+  post-step; if it does, the mirror self-heals. If it does not, the mirror is a session behind.
+- **Net effect: the vault is correct on disk and in local git, and stale on the remote and in the
+  mirror.** The next run that has network should push `8c9a8af`. Nothing about the book, the orders
+  or the P&L depends on this.
 
 ## What would change tomorrow
 

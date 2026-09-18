@@ -16,6 +16,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[Dual Momentum Rotation]] — retired v1 (lived one morning)
   - [[Risk Rules]] — retired v1 limits
 - **Signals**
+  - [[2026-09-18 Daily Signals]] — v3 cycle #21: **the 0-of-8 reading lasted exactly one session — breadth recovers 0 → 3 of 8** (SMH, QQQ, XLE), exactly the book both 09-17 checks called on live prices. **SMH takes rank 1 (+1.84% 10d), QQQ rank 2 — and for the first time in 21 cycles the leverage switch is ON**, so slot 2 buys **TQQQ** on QQQ's +0.12% 4-week trend (positive on both the 20-trading-day and 28-calendar-day measures). SMH's switch stays **off by 31 bp**, which also shuts the sleeve's entry gate. **XLE qualifies with the universe's best 20-day return (+1.42%) and widest cushion, and buys nothing — its 10-day return is −0.95% and rank fills slots.** The RSI ≤ 75 ceiling has now gone **twenty-one cycles** without rejecting anything
   - [[2026-09-17 Daily Signals]] — v3 cycle #20: **zero qualifiers — the first 0-of-8 reading in v3 history.** XLE joins the other seven, failing the trend filter by **$0.0045** ($64.0300 close vs a $64.0345 20-SMA) and falling to **rank 4**. Every one of the eight closes below its 20-SMA; **the RSI ≤ 75 ceiling has now gone twenty cycles without rejecting anything** (highest reading in the universe: XLE's 54.5). Target book empty → both slots cash. **The live tape agrees with the settled bar for the first time in five sessions** — XLE is the only faller while SMH +2.71%, QQQ +1.53%, SPY +1.11%
   - [[2026-09-16 Daily Signals]] — v3 cycle #19: **XLE is the sole qualifier for a second straight session and breadth stays 1 of 8** — the fourth such reading of the v3 era and **the first to print twice running**. XLE rank 1 for a **seventh** session and it *widened*, cushion +1.07% → **+2.99%**, while the three names closest to re-qualifying (SPY, XLF, QQQ) all fell **further** below their 20-SMAs. **All seven failures are trend failures; the RSI ceiling has still never bound in nineteen cycles.** Live tape inverts it — **XLE −1.58% is the only name falling** while all seven non-qualifiers rally
   - [[2026-09-15 Daily Signals]] — v3 cycle #18: **SMH fails the trend filter one session after being bought and leaves the book; XLE is the sole qualifier**, breadth 2 → **1 of 8**, tying the tightest reading of the v3 era for a third time. **All seven failures are trend failures — every one closed below its 20-SMA** and the RSI ≤ 75 ceiling has still never bound. XLE rank 1 for a **sixth** session, and unlike 09-11/09-14 **the live tape and the settled bar agree** on today's sell
@@ -106,6 +107,7 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-09-17 0930 Cycle — Coupled Unwind, Book to 100% Cash]] — **traded, 2 fills: the book is flat for the first time since 2026-07-30.** **Zero of eight names qualify — never happened before** — so §4 assigns both slots to cash and §5 sells everything. XLE equity out at **$63.8401** (−$2.78) and the **Nov 66C closed at $2.06 (−$89.04)** in the same session: the **second coupled unwind**, and the **third sleeve loss killed by relative rank while both of its own risk tests passed** (64 DTE, XLE 20d +0.55%). **Sleeve now 0-for-3, −$218.16 — 90% of all realized loss against −$24.36 from every equity rotation combined.** XLE failed §3 by **$0.0045**, the narrowest call v3 has ever produced, but rank 4 decided the sleeve independently. **−$91.82 realized is the largest single-session realized loss in account history — and the account still rose $656.19 → $666.49**, because every dollar of it was already carried as unrealized at 9:30. **With the book 100% cash the arithmetic closes to one cent: $650.54 + $258.48 − $242.52 = $666.50 vs an actual $666.49 — the disputed deposit is almost certainly real**
   - [[2026-09-17 1230 Check — No Action]] — midday check, no trades: **the first check in account history to run against no position of any kind.** Breaker clear at **1.47×** ($211.98 headroom) — and this is **the first check measured against the true $454.51 level**, where every note since 08-28 compared against a stale $325. Sleeve **empty**, so both tests are **n-a rather than passing**; settlement guard not binding because there is nothing to sell. Broker-verified the flat book rather than trusting this morning's note: zero equity and option positions, exactly two orders on the day (both the 9:35 unwind), nothing pending, `unsettled_funds` $310.17 matching the proceeds to the cent. **Logged, not acted on: the 0-of-8 reading is already reversing** — all eight names green and **three back above their 20-SMAs (SMH +0.62%, QQQ +0.58%, XLE +0.22%)**, with **XLE back over the exact line it failed by $0.0045 this morning**. On live 10-day returns the book would be SMH/QQQ, and **the sleeve would stay dormant on ticket price anyway** (~$3,900 contract vs a $333 cap)
   - [[2026-09-17 1545 Check — No Action]] — close check, no trades: breaker clear at **1.47×** ($211.98 headroom), account **$666.49 unchanged to the cent from midday and from 9:36** — with the book 100% cash there is no mark-to-market to move it. Sleeve **empty**, so both tests are **n-a**; settlement guard not binding because nothing is held. Broker-verified the flat book again: zero positions, still exactly two orders on the day (the 9:35 unwind), nothing pending, `unsettled_funds` $310.17 settling Fri 09-18. **Logged, not acted on: the 0-of-8 reading has kept reversing — three names are now above their 20-SMAs (SMH +0.63%, QQQ +0.62%, XLE +0.54%) on live prices, up from zero at 9:30.** **XLE is back over the line it failed by $0.0045 this morning but is only rank 3**; on live 10-day returns tomorrow's book would be **SMH/QQQ**. A re-armed sleeve stays arithmetically impossible either way (~$3,900 SMH contract vs a $333 cap). No buys, no rotation
+  - [[2026-09-18 0930 Cycle — Buys SMH + TQQQ (leverage switch fires)]] — **traded, 2 fills: the book goes 100% cash → 99.7% deployed in one session, and the leverage switch fires for the first time in 21 cycles.** SMH 0.588900 sh at **$564.1699** (slot 1, 1x — its own switch off by 31 bp) and **TQQQ** 4.623601 sh at **$71.8574** (slot 2, the 3x wrapper on QQQ's **+0.12%** 4-week trend), $332.24 each — **tranches within one cent, the cleanest balance the book has had.** Both reviews clean, both filled inside the quoted spread in under 0.2 s; **total slippage −$0.08.** **Roughly half the account now carries 3x Nasdaq exposure on a 12-basis-point signal** — executed as written because both definitions of "4 weeks" agree in sign and the rule has no tie band, and flagged plainly as the largest single step-up in risk the account has taken. **The sleeve was blocked at its own entry gate** (slot-1 SMH 20d −0.06%, §9 needs positive) — **the first cycle since [[Decisions]] #1 where its rules could be exercised, and no rank reasoning entered it.** Affordability would have blocked it anyway: **$3,372.50 vs a $333.25 cap, 10.1×**, priced live. **New rule conflict opened and left unanswered: §5 says hold while the slot target is unchanged, §3 says a 3x wrapper needs a positive trend — if QQQ's trend flips tomorrow they disagree and nothing written resolves it**
   - [[2026-09-09 1545 Check — No Action]] — close check, no trades: breaker clear at **2.33×**, sleeve empty (both tests n-a, 9th straight check); **the 12:30 call on QQQ came true — at $716.17 it closed $1.22 *below* its 20-SMA, cutting qualifiers 3 → 2 (SMH, XLE) on current prices.** Both legs pass §3 wide (SMH +1.38%, XLE +3.58% above their 20-SMAs); XLE **+0.91%** on the day vs SMH flat (−0.05%), and **SMH's 20d round-tripped +0.76% → ~0.00% → +0.09% in one session with the price barely moving** — the sleeve/leverage gate margin is calendar noise. XLF $57.16, **+0.45% since this morning's exit**
 - **Checks** — *archive.* Per-check notes through 2026-08-27 12:30; superseded by the Trades
   run ledger above, which now carries the intraday checks too. Nothing new is written here.
@@ -119,21 +121,21 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   - [[2026-07-29 Mandate Change to Aggressive]] — why everything changed at 10 AM
   - [[2026-07-29 Mandate v3 Constant Swing]] — daily cadence, and the T+1 wall it's built around
 
-## Current state (as of 2026-09-17, 9:36 AM ET — **the book is flat.** Zero of eight names qualify, so §4 assigns both slots to cash and §5 sold everything: XLE equity and the Nov 66C in the same session, the **second coupled unwind**. First 100%-cash book since 2026-07-30)
+## Current state (as of 2026-09-18, 9:36 AM ET — **the book is fully invested again, and leveraged for the first time.** Breadth recovered 0 → 3 of 8 in one session; slot 1 bought SMH 1x, and slot 2 bought **TQQQ** — the v3 leverage switch fired for the first time in 21 cycles)
 
 | Item | Value |
 |---|---|
 | Contributed capital | **$909.02** ($400 start + $250 deposit 2026-07-31 + **$258.48 deposit 2026-08-28**). **Confirmed by the owner 2026-09-17** ([[Decisions]] #2) after 20 days unresolved — the flat book had already reconciled it to one cent |
-| Account value | **$666.49** — equity $0, options $0, **cash $666.49**. **−26.7% vs $909.02 contributed.** This is now the *only* performance figure; the +2.45% reading died with the deposit confirmation, having been an artifact of counting the owner's own money as profit |
-| Realized P&L to date | **−$242.52** (equity legs **−$24.36**; options sleeve **−$218.16**) — **−$91.82 realized today**, the largest single-session realized loss in account history. **It was not a bad day:** every dollar was already carried as unrealized at 9:30 (−$102.13), and the account *rose* $656.19 → $666.49 over the cycle |
-| Unrealized P&L | **$0.00 — nothing is held.** First time the account has carried no mark-to-market exposure since 2026-07-30 |
-| Slot 1 | **Cash.** Was XLE for seven consecutive sessions; it failed §3 by **$0.0045** ($64.0300 close vs $64.0345 20-SMA) and fell to **rank 4** behind SMH, QQQ and SPY |
-| Slot 2 | **Cash** — 4th consecutive session with no second qualifier, and now no *first* one either |
-| **Ranks** | **Fresh as of the 2026-09-16 close** (scored this morning at 9:31) |
-| Cash | **$666.49**, of which **$356.32 settled / $310.17 unsettled**. Today's proceeds (equity $104.23 + option $205.96) settle **T+1 Fri 2026-09-18**; the option execution carries `settlement_date: 2026-09-18` explicitly. **Nothing was constrained by §6 today** — with zero qualifiers there was nothing to size |
-| Options sleeve | **Empty — closed this morning at $2.06 for −$89.04**, the third loss killed by rank while both of its own tests passed. **The rule that did it is gone as of today** ([[Decisions]] #1): the sleeve no longer reads equity rank and exits only on its own 20-day-trend and 21-DTE tests. Orphaned calls are now legal. Scorecard under the old rule: **0-for-3, −$218.16** |
-| Circuit-breaker | **$454.51** (50% of $909.02) — raised from $325 on 2026-09-17 with the deposit confirmation. **Checked first, before any order**; account at **1.47×** (**$211.98 headroom**). Clear — but the true margin is a third smaller than every note since 08-28 claimed |
-| **Concentration** | **None — 100% cash.** Compliant with §2 trivially, and arrived at entirely by the system: no name qualified, so no name was held |
+| Account value | **$666.41** — equity $664.40, options $0, cash $2.01. **−26.7% vs $909.02 contributed.** Down **$0.08** on the session, which is the entire round-trip cost of putting the whole book to work |
+| Realized P&L to date | **−$242.52** (equity legs **−$24.36**; options sleeve **−$218.16**) — **unchanged; nothing was sold today.** The book came in 100% cash, so this cycle was buys only |
+| Unrealized P&L | **−$0.08** — both legs marked essentially at cost minutes after filling |
+| Slot 1 | **SMH — 0.588900 sh @ $564.1699** ($332.24). Rank 1 on a **+1.84%** 10-day return, RSI 49.9, **+0.59%** over its 20-SMA. **1x, not SOXL** — its 4-week trend is −0.06%, so the leverage switch stayed shut by 31 bp |
+| Slot 2 | **TQQQ — 4.623601 sh @ $71.8574** ($332.24), the **3x wrapper on QQQ** (rank 2, +1.08% 10d, RSI 52.8). **The first leveraged position in the account's history**, bought on QQQ's **+0.12%** 4-week trend — positive on both the 20-trading-day and 28-calendar-day measures, which is the only reason it was executed without hesitation |
+| **Ranks** | **Fresh as of the 2026-09-17 close** (scored this morning at 9:31) |
+| Cash | **$2.01** — the designed buffer. `unsettled_funds` read **$0.00** at 9:30, so yesterday's $310.17 of unwind proceeds had settled on schedule and all $666.49 was genuinely spendable; **verified on the broker's number rather than inferred from a calendar**, per the 09-07/09-08 errors. **Both positions were bought today and settle Mon 2026-09-21** — neither is sellable before then without a good-faith violation |
+| Options sleeve | **Empty — blocked at its own entry gate**, not by rank and not by cash. §9 opens only on a *positive* slot-1 20-day return; SMH's is **−0.06%**. **First cycle since [[Decisions]] #1 in which the sleeve's rules could actually be exercised, and no rank reasoning entered the decision.** Affordability would have blocked it regardless — the only conforming contract (Nov 20 $565C, 0.544Δ, 63 DTE) marks **$3,372.50 against a $333.25 cap, 10.1×**, priced live per the 09-02 lesson. Scorecard unchanged: **0-for-3, −$218.16** |
+| Circuit-breaker | **$454.51** (50% of $909.02). **Checked first, before any order**; account at **1.47×** (**$211.90 headroom**). Clear — but note the headroom is now being carried against a **~2x-beta book**: a −5% QQQ session costs roughly **−$50**, about a quarter of it |
+| **Concentration** | **Two ~equal tranches, $332.24 each — within one cent, the cleanest balance the book has had.** Compliant with §2: neither position is 100% of the account, and both came from the system's top-2 ranking rather than conviction. **Leverage, not concentration, is what changed today** |
 | **Sleeve scorecard** | **0-for-3 closed, −$218.16** (Oct $59C −$63.08; Nov $65C −$66.04; Nov $66C **−$89.04**) — vs **−$24.36** from every equity rotation combined. **The sleeve is 90% of all realized loss on 3 of 16 closed positions, and all three died on relative rank rather than on a risk test.** Three for three — and as of 2026-09-17 that cause of death is **removed by owner decision** ([[Decisions]] #1). Every future sleeve close must be attributable to the 20-day-trend or 21-DTE test; if one is ever closed on rank again, that is a bug |
 
 ## Standing schedule
@@ -541,7 +543,84 @@ Obsidian vault documenting all systematic trading activity in the Robinhood **Ag
   no-intraday-rotation rule. Mechanical footnote worth keeping: **XLE actually closed *up* from its
   15:45 print ($63.89 → $64.03) and failed anyway**, because the SMA barely moved. It did not need a
   bad afternoon; it needed only to stop rising.
-- **Next cycle (Fri 2026-09-18, 9:30 ET):**
+- **NEW 2026-09-18 — the leverage switch fired for the first time in 21 cycles, on a 12-basis-point
+  signal.** QQQ took slot 2 with a 4-week trend of **+0.12%**, which under [[Risk Rules v2]] §3 and
+  v3's leverage note makes the slot buy **TQQQ** rather than QQQ. It was executed as written: the
+  rule has no tie band, and the two prior attempts to argue for hysteresis were each refuted by
+  their own first live test (09-14, 09-15). **The one check that made it safe to execute without
+  hesitation: both definitions of "4 weeks" agree in sign** — +0.12% over 20 trading days, +0.84%
+  over 28 calendar days — so the rule is unambiguous today even though it never says which it means.
+  **Had they disagreed, the honest answer would have been that the rule is underspecified**, and that
+  is the test to run next time rather than reaching for whichever number is handy. The margin is
+  squarely inside what this file has called "calendar noise" at least four times; **that is an
+  argument for the owner to add a band, not for a run to invent one.**
+- **NEW 2026-09-18 — half the account now carries 3x exposure, and the breaker headroom should be
+  read differently because of it.** The book is ~**2x beta** rather than 1x: a −5% QQQ session costs
+  roughly **−$50**, about a quarter of the **$211.90** of headroom above the $454.51 breaker. This is
+  fully inside the mandate — §1 permits 3x, §3 gates it on exactly this test, and the mandate's own
+  honest-expectations section promises ±5–10% daily account swings once leverage engages. **It is
+  still the largest single step-up in risk the account has taken, and it arrived on a 12-bp signal.**
+  Recorded so that a bad week is recognised as the mandate working as designed rather than as a
+  surprise. **Worth the owner's attention: nothing in the rules scales the leverage switch by how
+  thin the breaker headroom is** — the same +0.12% would have fired it at 1.05× the breaker.
+- **NEW 2026-09-18 — §5 and §3 disagree the moment a held wrapper's trend flips, and nothing written
+  resolves it.** §5 sells only when a holding *"is no longer its target slot."* If QQQ's 4-week trend
+  turns negative tomorrow, slot 2's target is **still QQQ** — so §5 says hold TQQQ while §3 says a 3x
+  wrapper requires a positive trend. The mirror case is equally unspecified: if SMH's trend turns
+  positive, does a held 1x SMH become SOXL mid-hold? **Precedent leans "only at a fresh buy"** — on
+  09-09 the switch opened and was deliberately not taken because no slot-1 buy was due — **but that
+  was one run's reading, recorded as a recommendation, and it is not an owner decision.** This has
+  been recommended as a buy-time rule **eight consecutive cycles** and is now live money rather than
+  a hypothetical. Until it is answered in [[Decisions]], the next cycle follows §5's plain text
+  (hold while the slot target is unchanged) and notes the conflict each time it binds.
+- **NEW 2026-09-18 — the sleeve was blocked at its own gate, and the fix is visibly working.** First
+  cycle since [[Decisions]] #1 in which the sleeve's rules could actually be exercised. Slot 1 is
+  SMH, SMH's 20-day return is **−0.06%**, §9 needs positive → **gate shut, no call.** **No rank
+  reasoning entered the decision anywhere**, which is precisely the bug the decision removed. The
+  ticket price confirmed it independently: the only conforming contract (Nov 20 $565C, 0.544Δ,
+  63 DTE) marks **$3,372.50 against a $333.25 cap — 10.1×** — and the chain again held **exactly one
+  expiration inside the 45–90 DTE window**, the same cliff found on 09-02 and 09-09. **The 09-09 rule
+  of thumb (`underlying × 0.07 ≤ 50% of account`) held to within a few percent on a fourth data
+  point:** $564 × 0.07 = $39.5 per share of premium ≈ $3,950 predicted vs $3,372 actual.
+- **NEW 2026-09-18 — breadth mean-reverted in a single session, and the checks called it.** The
+  0-of-8 reading — the only one in v3 history — lasted exactly one day. **Both 09-17 checks logged it
+  reversing on live prices and named tomorrow's book as SMH/QQQ**; the settled bars produced exactly
+  that. **The check/cycle division of labour is now 4-for-4**, and for the first time the thing a
+  check predicted was a *re-entry* rather than an exit. Practical lesson: **a 100%-cash book at
+  0 qualifiers is a one-session state, not a regime** — it cost nothing here because the cash was
+  fully settled and redeployable the next morning.
+- **Next cycle (Mon 2026-09-21, 9:30 ET):**
+  1. **Neither position is sellable before Monday without a good-faith violation.** Both were bought
+     today (Friday) with settled cash and settle **T+1 = Mon 2026-09-21**; both show
+     `intraday_quantity` equal to full quantity. **Monday's cycle may rotate freely; today's could
+     not have.** Calendar checked explicitly rather than recalled — T+1 from Friday is Monday, and
+     the next holiday is Thanksgiving 2026-11-26.
+  2. **Read both leverage gates at buy time, and expect at least one to move.** SMH's 4-week trend is
+     **31 bp from positive** and QQQ's is **12 bp from negative**; the 08-19 base rolls off Monday, so
+     the calendar alone can flip either. **If QQQ's flips while TQQQ is still held, item 3 of the
+     rule conflict above binds for real** — follow §5's plain text (hold) and say so in the note.
+  3. **The sleeve stays unreachable while slot 1 is SMH or QQQ**, whatever the trend gate does — 10.1×
+     the cap today. It re-arms only if a cheap name (XLE, XLF, TLT) takes slot 1. **Re-price it on the
+     morning regardless**; the 09-02 lesson is that conformance is a property of the day you check.
+  4. **XLE is the most likely mover into the book** — best 20-day return in the universe (+1.42%) and
+     the widest trend cushion, held out only by a −0.95% 10-day return. It needs to beat QQQ's +1.08%
+     on the 10-day measure, not to qualify; it already qualifies.
+  5. **Re-derive everything from the rules; this plan is a prediction, not an instruction.** Forward
+     plans in this file have now been wrong in **four distinct ways** (calendar, settlement, a rule,
+     and an untested rule-reading), and 09-16 is the precedent where only re-reading §4 caught it.
+  6. **Open owner items, re-ranked by what they now cost:**
+     (a) **the §5-vs-§3 wrapper conflict above** — new today, live money, and the only open item that
+         can bind on the very next cycle;
+     (b) **write the leverage switch down as a buy-time rule** (eighth consecutive recommendation —
+         no longer academic now that it has actually fired);
+     (c) **the §4 premium cap is still 50% of account value** — [[Decisions]] #1 explicitly left it
+         unreviewed and named it the next question worth answering;
+     (d) **whether the leverage switch should scale with breaker headroom**, raised by today's trade;
+     (e) **the T+1/§6 settled-funds conservatism**, open since 09-01;
+     (f) **tooling: add `get_realized_pnl` and `replace_option_order` to the allowlist**, and fix the
+         **git permission defect** that still blocks unattended publishing.
+- **Superseded plan (Fri 2026-09-18) — kept because items 1 and 4 both came true and item 5 was
+  right for the wrong reason (the sleeve was blocked at its gate before price ever mattered):**
   1. **Expect to buy, possibly into two slots.** The entire $666.49 is uncommitted and the tape at
      9:31 was ripping: **SMH +2.71%, QQQ +1.53%, SPY +1.11% — and XLE −0.59% was the only faller.**
      SMH needs **+2.11%** on the session to retake its 20-SMA and is already past it; QQQ needs

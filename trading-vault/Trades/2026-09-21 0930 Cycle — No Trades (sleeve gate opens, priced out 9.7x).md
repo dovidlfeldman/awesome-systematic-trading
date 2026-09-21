@@ -19,7 +19,7 @@ outcome: No Trades (sleeve gate opens, priced out 9.7x)
 | **Traded** | **none — nothing sells (book *is* the top 2), nothing buys (settled cash is $2.01, the designed buffer), and the sleeve's gate opened but its only conforming contract costs 9.7× the §4 cap** |
 | Options sleeve | **Empty — gate OPEN for the first time since [[Decisions]] #1, blocked purely on price.** SMH 20d **+1.84%** (positive, §9 satisfied). Nov 20 $585C: 0.532Δ, 60 DTE, mark **$3,342.50** vs a **$345.92** cap = **9.66×** |
 | Realized / unrealized P&L | **−$242.52** (unchanged — nothing sold) / **+$25.35** |
-| Blocked | Sleeve entry, on affordability (9.66× the premium cap). Git push permissions — see below |
+| Blocked | Sleeve entry, on affordability (9.66× the premium cap). Nothing else — **the git-permission defect did not recur; this run committed and pushed itself** |
 
 ## Why there was nothing to do
 
@@ -115,10 +115,13 @@ returned exactly the two expected legs at their expected quantities; `get_option
 equals `quantity` on both legs and `intraday_quantity` is zero on both, so Friday's purchases have
 settled and §6's no-same-day-sale rule is not binding on anything.
 
-**Still open (ops):** the git-permission defect first seen 2026-08-31 and recurrent 2026-09-16 —
-non-interactive runs have had every git verb refused, leaving vault files on disk and the remote
-stale until a later run picks them up. **Nineteen days open; the longest-standing unfixed ops
-defect in this account.** No owner decision exists on it either.
+**Ops — the git defect did NOT recur today.** `add`, `commit` and `push` all succeeded on this run
+(commit `7335ef2`), so the remote is current without waiting for a later slot to pick the files up.
+That is the second clean publish in a row after the 09-16 recurrence. **The defect is not declared
+fixed on two successes** — it was intermittent before, refusing every verb on 08-31 and again on
+09-16 while working in between — but it did not bind here, and this note should not be read as
+claiming it is still blocking. No owner decision exists on it; no fix has been made to the
+permission layer that anyone has recorded.
 
 ## Next cycle (Tue 2026-09-22)
 
